@@ -155,7 +155,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               title: "Logout",
               color: Colors.redAccent,
               onTap: () {
-                context.read<AuthCubit>().logout();
+                context.read<AuthCubit>().logout(context);
                 Navigator.push(
                   context,
                   MaterialPageRoute(
