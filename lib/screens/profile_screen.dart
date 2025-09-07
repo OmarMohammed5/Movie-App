@@ -12,6 +12,7 @@ import 'package:moviee_app/core/cubit/cubit/auth_cubit.dart';
 import 'package:moviee_app/core/cubit/cubit/bottom_nav_cubit.dart';
 import 'package:moviee_app/core/cubit/cubit/profile_cubit.dart';
 import 'package:moviee_app/core/cubit/cubit/theme_cubit.dart';
+import 'package:moviee_app/screens/about_app_screen.dart';
 import 'package:moviee_app/theme/app_colors.dart';
 import 'package:moviee_app/theme/app_text_style.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -96,10 +97,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             color: Colors.white,
           ),
           actions: [
-            HugeIcon(
-              icon: HugeIcons.strokeRoundedUser,
-              color: AppColors.kIconColor,
-            ),
+            HugeIcon(icon: HugeIcons.strokeRoundedUser, color: Colors.white),
             Gap(10),
           ],
           backgroundColor: Colors.black,
@@ -176,7 +174,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     ProfileMenu(
                       icon: HugeIcons.strokeRoundedInformationCircle,
                       title: "About App",
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) {
+                              return AboutAppScreen();
+                            },
+                          ),
+                        );
+                      },
                     ),
                     ProfileMenu(
                       icon: HugeIcons.strokeRoundedLogout02,
