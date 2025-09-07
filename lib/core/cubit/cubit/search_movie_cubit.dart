@@ -24,8 +24,7 @@ class SearchMovieCubit extends Cubit<SearchMovieState> {
 
   // ====== Clear text of search field  ======
   void clearSearchText() {
-    searchText = "";
-    emit(SearchMovieInitial());
+    emit(SearchMovieEmpty());
   }
 
   //// search movie
