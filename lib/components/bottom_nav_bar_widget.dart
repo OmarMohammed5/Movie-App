@@ -1,8 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hugeicons/hugeicons.dart';
 import 'package:moviee_app/components/auth_required_dialog.dart';
+import 'package:moviee_app/core/cubit/cubit/bottom_nav_cubit.dart';
 import 'package:moviee_app/screens/favourite_screen.dart';
 import 'package:moviee_app/screens/home_screen.dart';
 import 'package:moviee_app/screens/profile_screen.dart';
@@ -111,36 +113,40 @@ class _BottomNavBarState extends State<BottomNavBar> {
 
   @override
   Widget build(BuildContext context) {
-    return PersistentTabView(
-      onItemSelected: (selectedIndex) async {
-        if (selectedIndex == 3) {
-          final user = FirebaseAuth.instance.currentUser;
-          if (user == null) {
-            showDialog(
-              context: context,
-              builder: (context) {
-                return AuthRequiredDialog();
-              },
-            );
-            return;
-          }
-        }
-        _controller.index = selectedIndex;
-      },
-      context,
-      controller: _controller,
-      screens: _buildScreens(),
-      items: _navBarsItems(),
-      backgroundColor: Colors.black87,
-      handleAndroidBackButtonPress: true,
-      resizeToAvoidBottomInset: true,
-      stateManagement: true,
-      decoration: NavBarDecoration(
-        borderRadius: BorderRadius.circular(12),
-        colorBehindNavBar: Colors.black,
-      ),
+    return BlocBuilder<BottomNavCubit, int>(
+      builder: (context, state) {
+        return PersistentTabView(
+          onItemSelected: (selectedIndex) async {
+            if (selectedIndex == 3) {
+              final user = FirebaseAuth.instance.currentUser;
+              if (user == null) {
+                showDialog(
+                  context: context,
+                  builder: (context) {
+                    return AuthRequiredDialog();
+                  },
+                );
+                return;
+              }
+            }
+            _controller.index = selectedIndex;
+          },
+          context,
+          controller: _controller,
+          screens: _buildScreens(),
+          items: _navBarsItems(),
+          backgroundColor: Colors.black87,
+          handleAndroidBackButtonPress: true,
+          resizeToAvoidBottomInset: true,
+          stateManagement: true,
+          decoration: NavBarDecoration(
+            borderRadius: BorderRadius.circular(12),
+            colorBehindNavBar: Colors.black,
+          ),
 
-      navBarStyle: NavBarStyle.style9,
+          navBarStyle: NavBarStyle.style9,
+        );
+      },
     );
   }
 }
