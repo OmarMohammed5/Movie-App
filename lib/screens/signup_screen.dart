@@ -49,7 +49,7 @@ class _SignupScreenState extends State<SignupScreen> {
           ),
         ),
       );
-      Navigator.of(context).pushReplacement(
+      Navigator.of(context).push(
         MaterialPageRoute(
           builder: (context) {
             return HomeScreen();
