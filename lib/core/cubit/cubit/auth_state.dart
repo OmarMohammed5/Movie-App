@@ -15,6 +15,8 @@ final class AuthLoaded extends AuthState {
   AuthLoaded({required this.uid, required this.email, required this.name});
 }
 
+final class AuthLoggedOut extends AuthState {}
+
 final class AuthError extends AuthState {
   final String errorMessage;
 

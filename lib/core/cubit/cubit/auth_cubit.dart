@@ -1,7 +1,10 @@
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
+import 'package:moviee_app/core/cubit/cubit/profile_cubit.dart';
 
 part 'auth_state.dart';
 
@@ -49,7 +52,11 @@ class AuthCubit extends Cubit<AuthState> {
   }
 
   //// Logout
-  Future<void> logout() async {
+  Future<void> logout(BuildContext context) async {
     await FirebaseAuth.instance.signOut();
+
+    /// clear profile data
+    context.read<ProfileCubit>().clearUserProfile();
+    emit(AuthLoggedOut());
   }
 }
