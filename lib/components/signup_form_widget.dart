@@ -5,10 +5,12 @@ import 'package:flutter_gap/flutter_gap.dart';
 import 'package:moviee_app/components/auth_button_widget.dart';
 import 'package:moviee_app/components/auth_header_section.dart';
 import 'package:moviee_app/components/auth_text_row_widget.dart';
+import 'package:moviee_app/components/bottom_nav_bar_widget.dart';
 import 'package:moviee_app/components/text_field_widget.dart';
 import 'package:moviee_app/core/cubit/cubit/auth_cubit.dart';
 import 'package:moviee_app/screens/home_screen.dart';
 import 'package:moviee_app/theme/app_colors.dart';
+import 'package:moviee_app/theme/app_text_style.dart';
 
 class SignupFormWidget extends StatelessWidget {
   const SignupFormWidget({
@@ -119,7 +121,7 @@ class SignupFormWidget extends StatelessWidget {
           listener: (context, state) {
             if (state is AuthLoaded) {
               Navigator.of(context).pushReplacement(
-                MaterialPageRoute(builder: (_) => HomeScreen()),
+                MaterialPageRoute(builder: (_) => BottomNavBar()),
               );
             } else if (state is AuthError) {
               ScaffoldMessenger.of(
@@ -141,10 +143,23 @@ class SignupFormWidget extends StatelessWidget {
                     password: _password.text.trim(),
                     context: context,
                   );
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      backgroundColor: Colors.black,
+                      content: AppText(
+                        "Account Created Successfully",
+                        color: Colors.white,
+                      ),
+                    ),
+                  );
                 } else {
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(
-                      content: Text("Please fill all fields correctly "),
+                      backgroundColor: Colors.black,
+                      content: AppText(
+                        "Please fill all fields correctly ",
+                        color: Colors.white,
+                      ),
                     ),
                   );
                 }

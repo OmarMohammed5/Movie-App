@@ -12,7 +12,6 @@ import 'package:moviee_app/core/cubit/cubit/auth_cubit.dart';
 import 'package:moviee_app/core/cubit/cubit/bottom_nav_cubit.dart';
 import 'package:moviee_app/core/cubit/cubit/profile_cubit.dart';
 import 'package:moviee_app/core/cubit/cubit/theme_cubit.dart';
-import 'package:moviee_app/screens/login_screen.dart';
 import 'package:moviee_app/theme/app_colors.dart';
 import 'package:moviee_app/theme/app_text_style.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -47,172 +46,171 @@ class _ProfileScreenState extends State<ProfileScreen> {
         selectedImage = pickedImage;
       });
       final prefs = await SharedPreferences.getInstance();
-      await prefs.setString('profile_image_path', pickedImage.path);
+      await prefs.setString('profile_image_${user.uid}', pickedImage.path);
     }
   }
 
   /// Saved Image with SharedPreferences
-  Future<void> _loadSavedImage() async {
+  Future<void> _savedImage() async {
+    final user = FirebaseAuth.instance.currentUser;
     final prefs = await SharedPreferences.getInstance();
-    final path = prefs.getString('profile_image_path');
-    if (path != null) {
+
+    if (user == null) {
       setState(() {
-        selectedImage = XFile(path);
+        selectedImage = null;
       });
+      return;
     }
+
+    final path = prefs.getString('profile_image_${user.uid}');
+    setState(() {
+      selectedImage = path != null ? XFile(path) : null;
+    });
   }
 
   @override
   void initState() {
     super.initState();
     context.read<ProfileCubit>().loadUserProfile();
-    _loadSavedImage();
+    _savedImage();
   }
 
   @override
   Widget build(BuildContext context) {
     final themeCubit = context.watch<ThemeCubit>();
-    final isDarkMode = themeCubit.state == ThemeMode.dark; // by default
+    final isDarkMode = themeCubit.state == ThemeMode.dark; //  default
 
-    return Scaffold(
-      backgroundColor: Colors.black,
-      appBar: AppBar(
-        title: AppText(
-          "Profile",
-          fontSize: 20,
-          fontWeight: FontWeight.bold,
-          color: Colors.white,
-        ),
-        actions: [
-          HugeIcon(
-            icon: HugeIcons.strokeRoundedUser,
-            color: AppColors.kIconColor,
-          ),
-          Gap(10),
-        ],
+    return BlocListener<AuthCubit, AuthState>(
+      listener: (context, state) {
+        if (state is AuthLoaded) {
+          _savedImage();
+        }
+      },
+      child: Scaffold(
         backgroundColor: Colors.black,
-      ),
-      body: BlocBuilder<AuthCubit, AuthState>(
-        builder: (context, state) {
-          if (state is AuthLoading) {
-            return Center(
-              child: CircularProgressIndicator(
-                color: AppColors.kLogoColor,
-                strokeWidth: 2,
-              ),
-            );
-          } else if (state is AuthLoaded) {
-            return SingleChildScrollView(
-              child: Column(
-                children: [
-                  Gap(20),
-                  // Image profile
-                  ImageProfile(selectedImage: selectedImage),
-                  Gap(10),
-                  // upload image
-                  GestureDetector(
-                    onTap: _uploadImage,
+        appBar: AppBar(
+          title: AppText(
+            "Profile",
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),
+          actions: [
+            HugeIcon(
+              icon: HugeIcons.strokeRoundedUser,
+              color: AppColors.kIconColor,
+            ),
+            Gap(10),
+          ],
+          backgroundColor: Colors.black,
+        ),
+        body: BlocBuilder<AuthCubit, AuthState>(
+          builder: (context, state) {
+            if (state is AuthLoading) {
+              return Center(
+                child: CircularProgressIndicator(
+                  color: AppColors.kLogoColor,
+                  strokeWidth: 2,
+                ),
+              );
+            } else if (state is AuthLoaded) {
+              return SingleChildScrollView(
+                child: Column(
+                  children: [
+                    Gap(20),
+                    // Image profile
+                    ImageProfile(selectedImage: selectedImage),
+                    Gap(10),
+                    // upload image
+                    GestureDetector(
+                      onTap: _uploadImage,
 
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 110),
-                      child: Container(
-                        padding: EdgeInsets.all(6),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 110),
+                        child: Container(
+                          padding: EdgeInsets.all(6),
 
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          spacing: 8,
-                          children: [
-                            AppText(
-                              selectedImage == null
-                                  ? "Upload Image"
-                                  : "Change Image",
-                              color: AppColors.kLogoColor,
-                              fontSize: 14,
-                            ),
-                            Icon(
-                              //// Upload or change photo
-                              selectedImage == null
-                                  ? Icons.add_photo_alternate_outlined
-                                  : Icons.edit,
-                              color: AppColors.kLogoColor,
-                            ),
-                          ],
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            spacing: 8,
+                            children: [
+                              AppText(
+                                selectedImage == null
+                                    ? "Upload Image"
+                                    : "Change Image",
+                                color: AppColors.kLogoColor,
+                                fontSize: 14,
+                              ),
+                              Icon(
+                                //// Upload or change photo
+                                selectedImage == null
+                                    ? Icons.add_photo_alternate_outlined
+                                    : Icons.edit,
+                                color: AppColors.kLogoColor,
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),
-                  ),
 
-                  Gap(70),
+                    Gap(70),
 
-                  //// Name && Email
-                  NameAndEmailProfile(),
-                  Gap(10),
+                    //// Name && Email
+                    NameAndEmailProfile(),
+                    Gap(10),
 
-                  // Profile Menu Section
-                  ProfileMenu(
-                    icon: isDarkMode
-                        ? HugeIcons.strokeRoundedSun02
-                        : HugeIcons.strokeRoundedMoon02,
-                    title: isDarkMode ? "Light Mode" : "Dark Mode",
-                    onTap: () {
-                      context.read<ThemeCubit>().toggleTheme();
-                    },
-                  ),
-                  ProfileMenu(
-                    icon: HugeIcons.strokeRoundedInformationCircle,
-                    title: "About App",
-                    onTap: () {},
-                  ),
-                  ProfileMenu(
-                    icon: HugeIcons.strokeRoundedLogout02,
-                    title: "Logout",
-                    color: Colors.redAccent,
-                    onTap: () {
-                      context.read<AuthCubit>().logout(context);
-                      context.read<BottomNavCubit>().changeTab(0);
-                    },
-                  ),
-                ],
-              ),
-            );
-          } else {
-            return Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(Icons.lock_outline, size: 60, color: Colors.grey),
-                  SizedBox(height: 16),
-                  AppText(
-                    "You need to login to view your profile",
-                    fontSize: 16,
-                    color: Colors.white,
-                  ),
-                  SizedBox(height: 20),
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (_) => LoginScreen(),
-
-                          /// to hide bottom nav bar
-                          fullscreenDialog: true,
-                        ),
-                      );
-                    },
-                    child: AppText(
-                      "Login   /   Signup",
-                      color: AppColors.kLogoColor,
+                    // Profile Menu Section
+                    ProfileMenu(
+                      icon: isDarkMode
+                          ? HugeIcons.strokeRoundedSun02
+                          : HugeIcons.strokeRoundedMoon02,
+                      title: isDarkMode ? "Light Mode" : "Dark Mode",
+                      onTap: () {
+                        context.read<ThemeCubit>().toggleTheme();
+                      },
                     ),
-                  ),
-                ],
-              ),
-            );
-          }
-        },
+                    ProfileMenu(
+                      icon: HugeIcons.strokeRoundedInformationCircle,
+                      title: "About App",
+                      onTap: () {},
+                    ),
+                    ProfileMenu(
+                      icon: HugeIcons.strokeRoundedLogout02,
+                      title: "Logout",
+                      color: Colors.redAccent,
+                      onTap: () {
+                        context.read<AuthCubit>().logout(context);
+                        context.read<BottomNavCubit>().changeTab(0);
+                        setState(() {
+                          selectedImage = null;
+                        });
+                      },
+                    ),
+                  ],
+                ),
+              );
+            } else {
+              return Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(Icons.lock_outline, size: 60, color: Colors.grey),
+                    SizedBox(height: 16),
+                    AppText(
+                      "You need to login to view your profile",
+                      fontSize: 16,
+                      color: Colors.white,
+                    ),
+                  ],
+                ),
+              );
+            }
+          },
+        ),
       ),
     );
   }
