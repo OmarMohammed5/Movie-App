@@ -9,7 +9,9 @@ import 'package:moviee_app/theme/app_colors.dart';
 import 'package:moviee_app/theme/app_text_style.dart';
 
 class FavouriteScreen extends StatelessWidget {
-  const FavouriteScreen({super.key});
+  const FavouriteScreen({super.key, this.moviee});
+
+  final dynamic moviee;
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +41,7 @@ class FavouriteScreen extends StatelessWidget {
 
             return GridView.builder(
               padding: const EdgeInsets.all(12),
-              itemCount: favorites.length,
+              itemCount: state.favorites.length,
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
                 mainAxisSpacing: 12,
@@ -47,15 +49,17 @@ class FavouriteScreen extends StatelessWidget {
                 childAspectRatio: 0.65,
               ),
               itemBuilder: (context, index) {
-                final movie = favorites[index];
+                final movie = state.favorites[index];
                 return GestureDetector(
                   onTap: () {
+                    // print("Movie tapped: ${movie['id']}, ${movie['title']}");
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) {
-                          return DetailsMovieScreen(movieId: movie['id']);
-                        },
+                        builder: (_) => DetailsMovieScreen(
+                          key: ValueKey(movie['id']),
+                          movieId: movie['id'] as int,
+                        ),
                       ),
                     );
                   },
