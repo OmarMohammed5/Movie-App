@@ -15,6 +15,7 @@ import 'package:moviee_app/core/cubit/cubit/theme_cubit.dart';
 import 'package:moviee_app/screens/login_screen.dart';
 import 'package:moviee_app/theme/app_colors.dart';
 import 'package:moviee_app/theme/app_text_style.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -24,15 +25,11 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-  @override
-  void initState() {
-    super.initState();
-    context.read<ProfileCubit>().loadUserProfile();
-  }
   // logic function for upload image
 
   XFile? selectedImage;
 
+  /// upload image
   Future<void> _uploadImage() async {
     final user = FirebaseAuth.instance.currentUser;
     if (user == null) {
@@ -49,9 +46,27 @@ class _ProfileScreenState extends State<ProfileScreen> {
       setState(() {
         selectedImage = pickedImage;
       });
-
-      // await uploadImageToServer(pickedImage);
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.setString('profile_image_path', pickedImage.path);
     }
+  }
+
+  /// Saved Image with SharedPreferences
+  Future<void> _loadSavedImage() async {
+    final prefs = await SharedPreferences.getInstance();
+    final path = prefs.getString('profile_image_path');
+    if (path != null) {
+      setState(() {
+        selectedImage = XFile(path);
+      });
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    context.read<ProfileCubit>().loadUserProfile();
+    _loadSavedImage();
   }
 
   @override
@@ -180,7 +195,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (_) => LoginScreen()),
+                        MaterialPageRoute(
+                          builder: (_) => LoginScreen(),
+
+                          /// to hide bottom nav bar
+                          fullscreenDialog: false,
+                        ),
                       );
                     },
                     child: AppText(

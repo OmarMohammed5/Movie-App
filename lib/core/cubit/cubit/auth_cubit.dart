@@ -10,7 +10,22 @@ import 'package:moviee_app/core/cubit/cubit/profile_cubit.dart';
 part 'auth_state.dart';
 
 class AuthCubit extends Cubit<AuthState> {
-  AuthCubit() : super(AuthInitial());
+  AuthCubit() : super(AuthInitial()) {
+    _checkCurrentUser();
+  }
+
+  void _checkCurrentUser() {
+    final user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      emit(
+        AuthLoaded(
+          uid: user.uid,
+          name: user.displayName ?? '',
+          email: user.email ?? '',
+        ),
+      );
+    }
+  }
 
   Future<void> signUp({
     required String name,
