@@ -55,13 +55,20 @@ class _LoginScreenState extends State<LoginScreen> {
         message = "Login failed ";
       }
 
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: AppText(message, fontSize: 15)));
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          backgroundColor: Colors.black,
+          content: AppText(message, fontSize: 15),
+        ),
+      );
     } catch (e) {
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: AppText("Unexpected error")));
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          backgroundColor: Colors.black,
+
+          content: AppText("Unexpected error"),
+        ),
+      );
     }
 
     isLoading = false;
