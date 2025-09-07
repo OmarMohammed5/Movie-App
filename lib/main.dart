@@ -19,6 +19,7 @@ import 'package:moviee_app/core/cubit/cubit/search_movie_cubit.dart';
 import 'package:moviee_app/core/cubit/cubit/theme_cubit.dart';
 import 'package:moviee_app/core/cubit/cubit/top_movies_cubit.dart';
 import 'package:moviee_app/screens/splash_screen.dart';
+import 'package:moviee_app/theme/app_colors.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -69,9 +70,9 @@ class MoviesApp extends StatelessWidget {
               iconTheme: IconThemeData(color: Colors.black),
               titleTextStyle: TextStyle(color: Colors.black, fontSize: 20),
             ),
-            bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+            bottomNavigationBarTheme: BottomNavigationBarThemeData(
               backgroundColor: Colors.white,
-              selectedItemColor: Colors.blue, // اللون اللي تحبه
+              selectedItemColor: AppColors.kLogoColor,
               unselectedItemColor: Colors.grey,
             ),
           ),
@@ -83,13 +84,12 @@ class MoviesApp extends StatelessWidget {
               iconTheme: IconThemeData(color: Colors.white),
               titleTextStyle: TextStyle(color: Colors.white, fontSize: 20),
             ),
-            bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+            bottomNavigationBarTheme: BottomNavigationBarThemeData(
               backgroundColor: Colors.black,
-              selectedItemColor: Colors.red,
+              selectedItemColor: AppColors.kLogoColor,
               unselectedItemColor: Colors.grey,
             ),
           ),
-
           home: const SplashScreen(),
         );
       },
