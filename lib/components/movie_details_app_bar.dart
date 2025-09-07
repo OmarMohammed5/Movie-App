@@ -16,8 +16,8 @@ class MovieDetailsAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Positioned(
       top: 45,
-      left: 10,
-      right: 10,
+      left: 12,
+      right: 3,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -26,7 +26,7 @@ class MovieDetailsAppBar extends StatelessWidget {
               Navigator.pop(context);
             },
             child: Container(
-              padding: EdgeInsets.all(10),
+              padding: EdgeInsets.all(8),
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 color: Colors.black.withValues(alpha: 0.7),
@@ -69,7 +69,7 @@ class MovieDetailsAppBar extends StatelessWidget {
                   }
                 },
                 icon: Container(
-                  padding: EdgeInsets.all(10),
+                  padding: EdgeInsets.all(8),
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     color: Colors.black.withValues(alpha: 0.7),
