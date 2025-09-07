@@ -139,6 +139,7 @@ class SignupFormWidget extends StatelessWidget {
                     name: _name.text.trim(),
                     email: _email.text.trim(),
                     password: _password.text.trim(),
+                    context: context,
                   );
                 } else {
                   ScaffoldMessenger.of(context).showSnackBar(
