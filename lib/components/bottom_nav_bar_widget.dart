@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hugeicons/hugeicons.dart';
 import 'package:moviee_app/components/auth_required_dialog.dart';
-import 'package:moviee_app/theme/app_colors.dart';
 import 'package:moviee_app/screens/favourite_screen.dart';
 import 'package:moviee_app/screens/home_screen.dart';
 import 'package:moviee_app/screens/profile_screen.dart';
