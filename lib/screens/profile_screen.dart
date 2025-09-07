@@ -199,7 +199,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           builder: (_) => LoginScreen(),
 
                           /// to hide bottom nav bar
-                          fullscreenDialog: false,
+                          fullscreenDialog: true,
                         ),
                       );
                     },
