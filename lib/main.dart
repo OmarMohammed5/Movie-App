@@ -71,7 +71,7 @@ class MoviesApp extends StatelessWidget {
             ),
             bottomNavigationBarTheme: const BottomNavigationBarThemeData(
               backgroundColor: Colors.white,
-              selectedItemColor: Colors.blue, // اللون اللي تحبه
+              selectedItemColor: Colors.blue,
               unselectedItemColor: Colors.grey,
             ),
           ),
