@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:moviee_app/core/api/dio_consumer.dart';
 import 'package:moviee_app/core/cubit/cubit/actor_cubit.dart';
 import 'package:moviee_app/core/cubit/cubit/auth_cubit.dart';
+import 'package:moviee_app/core/cubit/cubit/bottom_nav_cubit.dart';
 import 'package:moviee_app/core/cubit/cubit/cast_cubit.dart';
 import 'package:moviee_app/core/cubit/cubit/cubit/actor_movies_cubit.dart';
 import 'package:moviee_app/core/cubit/cubit/cubit/filter_cubit.dart';
@@ -47,6 +48,7 @@ void main() async {
         BlocProvider(create: (_) => AuthCubit()),
         BlocProvider(create: (_) => ProfileCubit()),
         BlocProvider(create: (_) => ThemeCubit()),
+        BlocProvider(create: (_) => BottomNavCubit()),
       ],
       child: MoviesApp(),
     ),
