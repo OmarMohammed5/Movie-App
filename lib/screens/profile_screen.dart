@@ -31,17 +31,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
   // logic function for upload image
 
   XFile? selectedImage;
-  // Future<void> _uploadImage() async {
-  //   final pickedImage = await ImagePicker().pickImage(
-  //     source: ImageSource.gallery,
-  //   );
-
-  //   if (pickedImage != null) {
-  //     setState(() {
-  //       selectedImage = pickedImage;
-  //     });
-  //   }
-  // }
 
   Future<void> _uploadImage() async {
     final user = FirebaseAuth.instance.currentUser;
