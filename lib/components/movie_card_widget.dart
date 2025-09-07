@@ -65,35 +65,6 @@ class _MovieCardWidgetState extends State<MovieCardWidget> {
           }
         },
       ),
-
-      // BlocBuilder<FilterCubit, FilterState>(
-      //   builder: (context, filterState) {
-      //     if (filterState is FilterLoading) {
-      //       return Center(child: CircularProgressIndicator());
-      //     } else if (filterState is FilterLoaded) {
-      //       final movies = filterState.movies;
-      //       return GridView.builder(
-      //         itemCount: movies.length,
-      //         physics: const NeverScrollableScrollPhysics(),
-      //         shrinkWrap: true,
-      //         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-      //           crossAxisCount: 2,
-      //           crossAxisSpacing: 18,
-      //           mainAxisSpacing: 20,
-      //           childAspectRatio: 0.6,
-      //         ),
-      //         itemBuilder: (context, index) {
-      //           final movie = movies[index];
-      //           return MovieCategory(key: ValueKey(movie.id), movie: movie);
-      //         },
-      //       );
-      //     } else if (filterState is FilterError) {
-      //       return Center(child: Text(filterState.errorMessage));
-      //     } else {
-      //       return SizedBox.shrink();
-      //     }
-      //   },
-      // ),
     );
   }
 }

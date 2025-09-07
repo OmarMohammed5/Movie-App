@@ -14,18 +14,6 @@ class LogoSplashWidget extends StatelessWidget {
           child: SvgPicture.asset(
             "assets/svg/Rectangle 28.svg",
             width: 290,
-
-            // placeholderBuilder: (context) => Container(
-            //   width: 290,
-            //   height: 200,
-            //   color: Colors.grey[900],
-            //   child: Center(
-            //     child: CircularProgressIndicator(
-            //       color: AppColors.kLogoColor,
-            //       strokeWidth: 2,
-            //     ),
-            //   ),
-            // ),
           ),
         ),
         Positioned(
