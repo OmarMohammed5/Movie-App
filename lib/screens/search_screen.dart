@@ -5,6 +5,7 @@ import 'package:hugeicons/hugeicons.dart';
 import 'package:lottie/lottie.dart';
 import 'package:moviee_app/components/filter_widget.dart';
 import 'package:moviee_app/components/movie_card_widget.dart';
+import 'package:moviee_app/components/movie_category.dart';
 import 'package:moviee_app/core/cubit/cubit/cubit/filter_cubit.dart';
 import 'package:moviee_app/core/cubit/cubit/search_movie_cubit.dart';
 import 'package:moviee_app/theme/app_colors.dart';
@@ -76,31 +77,21 @@ class _SearchScreenState extends State<SearchScreen> {
                                 icon: HugeIcons.strokeRoundedSearch01,
                                 color: AppColors.kIconColor,
                               ),
-                              suffixIcon:
-                                  controller.text != "" &&
-                                      controller.text.isNotEmpty
-                                  ? GestureDetector(
-                                      onTap: () {
-                                        setState(() {
-                                          controller.clear();
+                              suffixIcon: GestureDetector(
+                                onTap: () {
+                                  controller.clear();
+                                  context
+                                      .read<SearchMovieCubit>()
+                                      .clearSearchText();
+                                },
 
-                                          context.read<SearchMovieCubit>().emit(
-                                            SearchMovieInitial(),
-                                          );
-                                          context.read<SearchMovieCubit>().emit(
-                                            SearchMovieEmpty(),
-                                          );
-                                          context.read<FilterCubit>().emit(
-                                            FilterInitial(),
-                                          );
-                                        });
-                                      },
-                                      child: HugeIcon(
+                                child: controller.text.isNotEmpty
+                                    ? HugeIcon(
                                         icon: HugeIcons.strokeRoundedTextClear,
                                         color: AppColors.kIconColor,
-                                      ),
-                                    )
-                                  : SizedBox.shrink(),
+                                      )
+                                    : SizedBox.shrink(),
+                              ),
                               filled: true,
                               fillColor: AppColors.kTextFieldColor,
                               focusedBorder: OutlineInputBorder(
@@ -145,13 +136,21 @@ class _SearchScreenState extends State<SearchScreen> {
                               padding: const EdgeInsets.symmetric(
                                 horizontal: 16,
                               ),
-                              child: Column(
-                                spacing: 50,
-                                children: movies
-                                    .map(
-                                      (movie) => MovieCardWidget(movie: movie),
-                                    )
-                                    .toList(),
+                              child: GridView.builder(
+                                physics: const NeverScrollableScrollPhysics(),
+                                shrinkWrap: true,
+                                itemCount: movies.length,
+                                gridDelegate:
+                                    const SliverGridDelegateWithFixedCrossAxisCount(
+                                      crossAxisCount: 2,
+                                      crossAxisSpacing: 18,
+                                      mainAxisSpacing: 20,
+                                      childAspectRatio: 0.6,
+                                    ),
+                                itemBuilder: (context, index) {
+                                  final movie = movies[index];
+                                  return MovieCategory(movie: movie);
+                                },
                               ),
                             );
                           } else if (state is FilterInitial) {
