@@ -33,9 +33,9 @@ class MovieCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(16),
           boxShadow: const [
             BoxShadow(
-              color: Colors.black26,
-              blurRadius: 6,
-              offset: Offset(0, 4),
+              color: Colors.black12,
+              blurRadius: 12,
+              offset: Offset(0, 9),
             ),
           ],
         ),
@@ -113,7 +113,13 @@ class MovieCard extends StatelessWidget {
                   right: 0,
                   child: Container(
                     padding: const EdgeInsets.all(10),
-                    color: Colors.black.withValues(alpha: 0.6),
+                    decoration: BoxDecoration(
+                      color: Colors.black.withValues(alpha: 0.6),
+                      borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(16),
+                        bottomRight: Radius.circular(16),
+                      ),
+                    ),
 
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -121,7 +127,7 @@ class MovieCard extends StatelessWidget {
                       children: [
                         AppText(
                           movie.title,
-                          fontSize: 14,
+                          fontSize: 16,
                           fontWeight: FontWeight.bold,
                           color: Colors.white,
                         ),
@@ -139,7 +145,7 @@ class MovieCard extends StatelessWidget {
                                 Gap(4),
                                 AppText(
                                   movie.voteAverage.toStringAsFixed(1),
-                                  fontSize: 13,
+                                  fontSize: 14,
                                   fontWeight: FontWeight.bold,
                                   color: Colors.white,
                                 ),
@@ -147,7 +153,7 @@ class MovieCard extends StatelessWidget {
                             ),
                             AppText(
                               DateTime.parse(movie.releaseDate).year.toString(),
-                              fontSize: 13,
+                              fontSize: 14,
                               fontWeight: FontWeight.bold,
                               color: Colors.white,
                             ),
