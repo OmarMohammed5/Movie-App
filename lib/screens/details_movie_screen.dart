@@ -12,6 +12,9 @@ class DetailsMovieScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    /// to build details screen
+    context.read<MovieDetailsCubit>().getDetailsMovie(movieId);
+
     final screenHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
