@@ -57,7 +57,6 @@ class _TrailerScreenState extends State<TrailerScreen> {
       body: Column(
         children: [
           YoutubePlayer(
-            aspectRatio: 16 / 9,
             controller: _controller,
             progressIndicatorColor: AppColors.kLogoColor,
             showVideoProgressIndicator: true,
