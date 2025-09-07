@@ -40,7 +40,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
         ),
         inactiveIcon: HugeIcon(
           icon: HugeIcons.strokeRoundedHome01,
-          color: AppColors.kIconColor,
+          color: Colors.white,
         ),
         title: ("Home"),
         textStyle: TextStyle(
@@ -59,7 +59,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
         ),
         inactiveIcon: HugeIcon(
           icon: HugeIcons.strokeRoundedSearch01,
-          color: AppColors.kIconColor,
+          color: Colors.white,
         ),
         title: ("Search"),
         textStyle: TextStyle(
@@ -78,7 +78,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
         ),
         inactiveIcon: HugeIcon(
           icon: HugeIcons.strokeRoundedFavourite,
-          color: AppColors.kIconColor,
+          color: Colors.white,
         ),
         title: ("Favorite"),
         textStyle: TextStyle(
@@ -97,7 +97,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
         ),
         inactiveIcon: HugeIcon(
           icon: HugeIcons.strokeRoundedUser,
-          color: AppColors.kIconColor,
+          color: Colors.white,
         ),
         title: ("Profile"),
         textStyle: TextStyle(
