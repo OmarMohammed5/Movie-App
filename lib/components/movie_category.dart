@@ -41,9 +41,6 @@ class MovieCategory extends StatelessWidget {
             ),
           ],
         ),
-        //////////////////////// refactor =========
-        ///
-        ///
         child: ClipRRect(
           borderRadius: BorderRadius.circular(16),
           child: Stack(
