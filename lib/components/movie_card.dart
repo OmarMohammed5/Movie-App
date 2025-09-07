@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gap/flutter_gap.dart';
 import 'package:hugeicons/hugeicons.dart';
 import 'package:moviee_app/components/auth_required_dialog.dart';
+import 'package:moviee_app/core/cubit/cubit/auth_cubit.dart';
 import 'package:moviee_app/core/cubit/cubit/favorites_cubit.dart';
 import 'package:moviee_app/core/cubit/cubit/movie_details_cubit.dart';
 import 'package:moviee_app/screens/details_movie_screen.dart';
@@ -78,8 +79,24 @@ class MovieCard extends StatelessWidget {
                     builder: (context, isFav) {
                       return IconButton(
                         onPressed: () {
-                          final user = FirebaseAuth.instance.currentUser;
-                          if (user == null) {
+                          // final user = FirebaseAuth.instance.currentUser;
+                          // if (user == null) {
+                          //   showDialog(
+                          //     context: context,
+                          //     builder: (context) => AuthRequiredDialog(),
+                          //   );
+                          // } else {
+                          //   context.read<FavoritesCubit>().toggleFavorite({
+                          //     'id': movie.id,
+                          //     'title': movie.title,
+                          //     'poster': movie.poster,
+                          //     'vote_average': movie.voteAverage,
+                          //     'release_date': movie.releaseDate,
+                          //   });
+                          // }
+                          final authState = context.read<AuthCubit>().state;
+
+                          if (authState is! AuthLoaded) {
                             showDialog(
                               context: context,
                               builder: (context) => AuthRequiredDialog(),
@@ -91,6 +108,7 @@ class MovieCard extends StatelessWidget {
                               'poster': movie.poster,
                               'vote_average': movie.voteAverage,
                               'release_date': movie.releaseDate,
+                              'uid': authState.uid,
                             });
                           }
                         },
