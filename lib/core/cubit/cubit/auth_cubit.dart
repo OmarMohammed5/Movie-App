@@ -47,4 +47,9 @@ class AuthCubit extends Cubit<AuthState> {
       emit(AuthError("Network Connection Error"));
     }
   }
+
+  //// Logout
+  Future<void> logout() async {
+    await FirebaseAuth.instance.signOut();
+  }
 }

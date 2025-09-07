@@ -1,13 +1,17 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gap/flutter_gap.dart';
 import 'package:hugeicons/hugeicons.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:moviee_app/components/auth_required_dialog.dart';
 import 'package:moviee_app/components/image_profile.dart';
 import 'package:moviee_app/components/name_and_email_profile.dart';
 import 'package:moviee_app/components/profile_menu.dart';
+import 'package:moviee_app/core/cubit/cubit/auth_cubit.dart';
 import 'package:moviee_app/core/cubit/cubit/profile_cubit.dart';
 import 'package:moviee_app/core/cubit/cubit/theme_cubit.dart';
+import 'package:moviee_app/screens/login_screen.dart';
 import 'package:moviee_app/theme/app_colors.dart';
 import 'package:moviee_app/theme/app_text_style.dart';
 
@@ -27,7 +31,26 @@ class _ProfileScreenState extends State<ProfileScreen> {
   // logic function for upload image
 
   XFile? selectedImage;
+  // Future<void> _uploadImage() async {
+  //   final pickedImage = await ImagePicker().pickImage(
+  //     source: ImageSource.gallery,
+  //   );
+
+  //   if (pickedImage != null) {
+  //     setState(() {
+  //       selectedImage = pickedImage;
+  //     });
+  //   }
+  // }
+
   Future<void> _uploadImage() async {
+    final user = FirebaseAuth.instance.currentUser;
+    if (user == null) {
+      showDialog(context: context, builder: (context) => AuthRequiredDialog());
+      return;
+    }
+
+    /// if user have an account
     final pickedImage = await ImagePicker().pickImage(
       source: ImageSource.gallery,
     );
@@ -36,6 +59,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
       setState(() {
         selectedImage = pickedImage;
       });
+
+      // await uploadImageToServer(pickedImage);
     }
   }
 
@@ -129,6 +154,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
               icon: HugeIcons.strokeRoundedLogout02,
               title: "Logout",
               color: Colors.redAccent,
+              onTap: () {
+                context.read<AuthCubit>().logout();
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return LoginScreen();
+                    },
+                  ),
+                );
+              },
             ),
           ],
         ),
