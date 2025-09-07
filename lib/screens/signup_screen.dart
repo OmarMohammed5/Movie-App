@@ -42,6 +42,7 @@ class _SignupScreenState extends State<SignupScreen> {
 
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
+          backgroundColor: Colors.black,
           content: AppText(
             "Account created successfully  ",
             color: Colors.white,
@@ -61,7 +62,11 @@ class _SignupScreenState extends State<SignupScreen> {
       handelFirebaseSignupException(e);
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("Unexpected error: ${e.toString()}")),
+        SnackBar(
+          backgroundColor: Colors.black,
+
+          content: Text("Unexpected error: ${e.toString()}"),
+        ),
       );
     }
 
