@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
+import 'package:moviee_app/core/cubit/cubit/favorites_cubit.dart';
 import 'package:moviee_app/core/cubit/cubit/profile_cubit.dart';
 
 part 'auth_state.dart';
@@ -15,6 +16,7 @@ class AuthCubit extends Cubit<AuthState> {
     required String name,
     required String email,
     required String password,
+    required BuildContext context,
   }) async {
     emit(AuthLoading());
 
@@ -44,6 +46,7 @@ class AuthCubit extends Cubit<AuthState> {
           email: email.trim(),
         ),
       );
+      await context.read<FavoritesCubit>().fetchFavorites();
     } on FirebaseAuthException catch (e) {
       emit(AuthError(e.message ?? "Auth error"));
     } catch (e) {

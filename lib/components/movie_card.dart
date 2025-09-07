@@ -79,21 +79,6 @@ class MovieCard extends StatelessWidget {
                     builder: (context, isFav) {
                       return IconButton(
                         onPressed: () {
-                          // final user = FirebaseAuth.instance.currentUser;
-                          // if (user == null) {
-                          //   showDialog(
-                          //     context: context,
-                          //     builder: (context) => AuthRequiredDialog(),
-                          //   );
-                          // } else {
-                          //   context.read<FavoritesCubit>().toggleFavorite({
-                          //     'id': movie.id,
-                          //     'title': movie.title,
-                          //     'poster': movie.poster,
-                          //     'vote_average': movie.voteAverage,
-                          //     'release_date': movie.releaseDate,
-                          //   });
-                          // }
                           final authState = context.read<AuthCubit>().state;
 
                           if (authState is! AuthLoaded) {
