@@ -1,6 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hugeicons/hugeicons.dart';
+import 'package:moviee_app/components/auth_required_dialog.dart';
 import 'package:moviee_app/theme/app_colors.dart';
 import 'package:moviee_app/screens/favourite_screen.dart';
 import 'package:moviee_app/screens/home_screen.dart';
@@ -42,7 +44,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
         ),
         title: ("Home"),
         textStyle: TextStyle(
-          fontFamily: GoogleFonts.poppins().fontFamily,
+          fontFamily: GoogleFonts.acme().fontFamily,
           fontSize: 14,
         ),
         activeColorPrimary: Colors.redAccent,
@@ -61,7 +63,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
         ),
         title: ("Search"),
         textStyle: TextStyle(
-          fontFamily: GoogleFonts.poppins().fontFamily,
+          fontFamily: GoogleFonts.acme().fontFamily,
           fontSize: 14,
         ),
         activeColorPrimary: Colors.redAccent,
@@ -80,7 +82,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
         ),
         title: ("Favorite"),
         textStyle: TextStyle(
-          fontFamily: GoogleFonts.poppins().fontFamily,
+          fontFamily: GoogleFonts.acme().fontFamily,
           fontSize: 14,
         ),
         activeColorPrimary: Colors.redAccent,
@@ -99,7 +101,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
         ),
         title: ("Profile"),
         textStyle: TextStyle(
-          fontFamily: GoogleFonts.poppins().fontFamily,
+          fontFamily: GoogleFonts.acme().fontFamily,
           fontSize: 14,
         ),
         activeColorPrimary: Colors.redAccent,
@@ -111,6 +113,21 @@ class _BottomNavBarState extends State<BottomNavBar> {
   @override
   Widget build(BuildContext context) {
     return PersistentTabView(
+      onItemSelected: (selectedIndex) async {
+        if (selectedIndex == 3) {
+          final user = FirebaseAuth.instance.currentUser;
+          if (user == null) {
+            showDialog(
+              context: context,
+              builder: (context) {
+                return AuthRequiredDialog();
+              },
+            );
+            return;
+          }
+        }
+        _controller.index = selectedIndex;
+      },
       context,
       controller: _controller,
       screens: _buildScreens(),
