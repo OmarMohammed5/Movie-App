@@ -35,9 +35,9 @@ class MovieCategory extends StatelessWidget {
           borderRadius: BorderRadius.circular(16),
           boxShadow: const [
             BoxShadow(
-              color: Colors.black26,
-              blurRadius: 6,
-              offset: Offset(0, 4),
+              color: Colors.black12,
+              blurRadius: 12,
+              offset: Offset(0, 6),
             ),
           ],
         ),
@@ -45,18 +45,21 @@ class MovieCategory extends StatelessWidget {
           borderRadius: BorderRadius.circular(16),
           child: Stack(
             children: [
-              CachedNetworkImage(
-                imageUrl: movie.poster,
-                fit: BoxFit.cover,
-                width: double.infinity,
-                placeholder: (context, url) => Center(
-                  child: CircularProgressIndicator(
-                    color: AppColors.kLogoColor,
-                    strokeWidth: 2,
+              ClipRRect(
+                borderRadius: BorderRadius.circular(16),
+                child: CachedNetworkImage(
+                  imageUrl: movie.poster,
+                  fit: BoxFit.cover,
+                  width: double.infinity,
+                  placeholder: (context, url) => Center(
+                    child: CircularProgressIndicator(
+                      color: AppColors.kLogoColor,
+                      strokeWidth: 2,
+                    ),
                   ),
-                ),
-                errorWidget: (context, url, error) => Center(
-                  child: Icon(Icons.error, color: AppColors.kLogoColor),
+                  errorWidget: (context, url, error) => Center(
+                    child: Icon(Icons.error, color: AppColors.kLogoColor),
+                  ),
                 ),
               ),
 
@@ -102,12 +105,18 @@ class MovieCategory extends StatelessWidget {
               ),
 
               Positioned(
-                bottom: 0,
+                bottom: 27,
                 left: 0,
                 right: 0,
                 child: Container(
                   padding: const EdgeInsets.all(10),
-                  color: Colors.black.withValues(alpha: 0.6),
+                  decoration: BoxDecoration(
+                    color: Colors.black.withValues(alpha: 0.6),
+                    borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(16),
+                      bottomRight: Radius.circular(16),
+                    ),
+                  ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisSize: MainAxisSize.min,
