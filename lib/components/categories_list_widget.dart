@@ -75,8 +75,8 @@ class _CategoriesListWidgetState extends State<CategoriesListWidget> {
                         },
                         child: AnimatedContainer(
                           duration: Duration(milliseconds: 400),
-                          width: 90,
-                          padding: EdgeInsets.all(6),
+                          width: 100,
+                          padding: EdgeInsets.all(7),
                           decoration: BoxDecoration(
                             color:
                                 (state is GenersLoaded &&
