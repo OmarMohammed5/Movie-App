@@ -23,7 +23,7 @@ class ActorCubit extends Cubit<ActorState> {
     } on ServerException catch (e) {
       emit(ActorError(e.errorModel.errorMessage));
     } catch (e) {
-      emit(ActorError("Unexpected Error"));
+      emit(ActorError("Network Connection Error"));
     }
   }
 }

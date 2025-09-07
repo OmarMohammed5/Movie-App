@@ -25,7 +25,7 @@ class BannerCubit extends Cubit<BannerState> {
     } on ServerException catch (e) {
       emit(BannerError(e.errorModel.errorMessage));
     } catch (e) {
-      emit(BannerError("Unexpected Error"));
+      emit(BannerError("Network Connection Error"));
     }
   }
 }

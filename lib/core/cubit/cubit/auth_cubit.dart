@@ -44,7 +44,7 @@ class AuthCubit extends Cubit<AuthState> {
     } on FirebaseAuthException catch (e) {
       emit(AuthError(e.message ?? "Auth error"));
     } catch (e) {
-      emit(AuthError(e.toString()));
+      emit(AuthError("Network Connection Error"));
     }
   }
 }

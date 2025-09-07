@@ -26,7 +26,7 @@ class CastCubit extends Cubit<CastState> {
     } on ServerException catch (e) {
       emit(CastError(e.errorModel.errorMessage));
     } catch (e) {
-      emit(CastError("Unexcpected Error"));
+      emit(CastError("Network Connection Error"));
     }
   }
 }
