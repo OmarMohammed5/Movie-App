@@ -4,7 +4,6 @@ import 'package:flutter_gap/flutter_gap.dart';
 import 'package:hugeicons/hugeicons.dart';
 import 'package:lottie/lottie.dart';
 import 'package:moviee_app/components/filter_widget.dart';
-import 'package:moviee_app/components/movie_card_widget.dart';
 import 'package:moviee_app/components/movie_category.dart';
 import 'package:moviee_app/core/cubit/cubit/cubit/filter_cubit.dart';
 import 'package:moviee_app/core/cubit/cubit/search_movie_cubit.dart';
@@ -115,7 +114,6 @@ class _SearchScreenState extends State<SearchScreen> {
                       //// Filter
                       FilterWidget(),
 
-                      Gap(70),
                       //// reBuild ui of search screen
                       BlocBuilder<FilterCubit, FilterState>(
                         builder: (context, state) {
