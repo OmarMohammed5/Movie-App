@@ -76,33 +76,23 @@ class _SearchScreenState extends State<SearchScreen> {
                                 icon: HugeIcons.strokeRoundedSearch01,
                                 color: AppColors.kIconColor,
                               ),
-                              suffixIcon:
-                                  BlocListener<
-                                    SearchMovieCubit,
-                                    SearchMovieState
-                                  >(
-                                    listener: (context, state) {
-                                      context
-                                          .read<SearchMovieCubit>()
-                                          .clearSearchText();
-                                    },
-                                    child: GestureDetector(
-                                      onTap: () {
-                                        controller.clear();
-                                        context
-                                            .read<SearchMovieCubit>()
-                                            .clearSearchText();
-                                      },
+                              suffixIcon: GestureDetector(
+                                onTap: () {
+                                  setState(() {
+                                    controller.clear();
+                                    context
+                                        .read<SearchMovieCubit>()
+                                        .clearSearchText();
+                                  });
+                                },
 
-                                      child: controller.text.isNotEmpty
-                                          ? HugeIcon(
-                                              icon: HugeIcons
-                                                  .strokeRoundedTextClear,
-                                              color: AppColors.kIconColor,
-                                            )
-                                          : SizedBox.shrink(),
-                                    ),
-                                  ),
+                                child: controller.text.isNotEmpty
+                                    ? HugeIcon(
+                                        icon: HugeIcons.strokeRoundedTextClear,
+                                        color: AppColors.kIconColor,
+                                      )
+                                    : SizedBox.shrink(),
+                              ),
                               filled: true,
                               fillColor: AppColors.kTextFieldColor,
                               focusedBorder: OutlineInputBorder(
