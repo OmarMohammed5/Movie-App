@@ -83,6 +83,10 @@ class _SearchScreenState extends State<SearchScreen> {
                                     context
                                         .read<SearchMovieCubit>()
                                         .clearSearchText();
+                                    context
+                                        .read<SearchMovieCubit>()
+                                        .setSearchText("");
+                                    context.read<FilterCubit>().setMovies([]);
                                   });
                                 },
 
