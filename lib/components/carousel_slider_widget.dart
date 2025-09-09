@@ -53,7 +53,7 @@ class CarouselSliderWidget extends StatelessWidget {
                             ),
                           ),
 
-                          /// Coming Soon
+                          /// Trending Now
                           Positioned(
                             top: 16,
                             left: 16,
@@ -67,7 +67,7 @@ class CarouselSliderWidget extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(8),
                               ),
                               child: AppText(
-                                "Coming Soon",
+                                "Trending Now",
                                 color: Colors.white,
                                 fontSize: 14,
                                 fontWeight: FontWeight.bold,
@@ -77,8 +77,8 @@ class CarouselSliderWidget extends StatelessWidget {
 
                           //// Title
                           Positioned(
-                            bottom: 35,
-                            left: 20,
+                            bottom: 40,
+                            left: 16,
                             right: 20,
                             child: AppText(
                               state.banners[itemIndex].title,
