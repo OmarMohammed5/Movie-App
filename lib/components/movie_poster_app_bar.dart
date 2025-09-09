@@ -17,6 +17,7 @@ class MoviePosterAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
+      scrolledUnderElevation: 0,
       expandedHeight: screenHeight * 0.63,
       pinned: true,
       backgroundColor: Colors.black.withValues(alpha: 0.0),
