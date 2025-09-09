@@ -23,7 +23,7 @@ class MovieDetailsCubit extends Cubit<MovieDetailsState> {
     } on ServerException catch (e) {
       emit(MovieDetailsError(e.errorModel.errorMessage));
     } catch (e) {
-      emit(MovieDetailsError("Unexpected Error"));
+      emit(MovieDetailsError("Network Connection Error"));
     }
   }
 }

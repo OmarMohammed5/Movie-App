@@ -6,14 +6,25 @@ import 'package:moviee_app/core/cubit/cubit/movie_details_cubit.dart';
 import 'package:moviee_app/theme/app_colors.dart';
 import 'package:moviee_app/theme/app_text_style.dart';
 
-class DetailsMovieScreen extends StatelessWidget {
+class DetailsMovieScreen extends StatefulWidget {
   const DetailsMovieScreen({super.key, required this.movieId});
   final int movieId;
 
   @override
+  State<DetailsMovieScreen> createState() => _DetailsMovieScreenState();
+}
+
+class _DetailsMovieScreenState extends State<DetailsMovieScreen> {
+  @override
+  void initState() {
+    super.initState();
+    context.read<MovieDetailsCubit>().getDetailsMovie(widget.movieId);
+  }
+
+  @override
   Widget build(BuildContext context) {
     /// to build details screen
-    context.read<MovieDetailsCubit>().getDetailsMovie(movieId);
+    // context.read<MovieDetailsCubit>().getDetailsMovie(widget.movieId);
 
     final screenHeight = MediaQuery.of(context).size.height;
 

@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -6,6 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gap/flutter_gap.dart';
 import 'package:hugeicons/hugeicons.dart';
 import 'package:moviee_app/components/auth_favorite_dialog.dart';
+import 'package:moviee_app/core/api/dio_consumer.dart';
 import 'package:moviee_app/core/cubit/cubit/cubit/similar_movies_cubit.dart';
 import 'package:moviee_app/core/cubit/cubit/favorites_cubit.dart';
 import 'package:moviee_app/core/cubit/cubit/movie_details_cubit.dart';
@@ -69,20 +71,21 @@ class _SimilarMoviesSectionState extends State<SimilarMoviesSection> {
                     final similarMovies = state.similarMovies[index];
                     return GestureDetector(
                       onTap: () {
-                        context.read<MovieDetailsCubit>().getDetailsMovie(
-                          similarMovies.id,
-                        );
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) {
-                              return DetailsMovieScreen(
-                                movieId: widget.movieId,
-                              );
-                            },
+                            builder: (context) => BlocProvider(
+                              create: (_) =>
+                                  MovieDetailsCubit(DioConsumer(dio: Dio()))
+                                    ..getDetailsMovie(similarMovies.id),
+                              child: DetailsMovieScreen(
+                                movieId: similarMovies.id,
+                              ),
+                            ),
                           ),
                         );
                       },
+
                       child: Container(
                         width: 160,
                         decoration: BoxDecoration(
