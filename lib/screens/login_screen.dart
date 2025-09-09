@@ -47,7 +47,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             )
                           : CachedNetworkImage(
                               imageUrl:
-                                  "https://e1.pxfuel.com/desktop-wallpaper/544/126/desktop-wallpaper-related-keywords-suggestions-for-movie-theater-backgrounds-1215x734-for-your-mobile-tablet-movie-screen.jpg",
+                                  "https://as1.ftcdn.net/jpg/02/67/96/22/1000_F_267962289_Y9WDy3b7nC5E7GVjuHEZ4vK2q5NU6k9V.jpg",
                               fit: BoxFit.cover,
                             ),
                     ),
@@ -55,7 +55,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       height: screenHieght,
                       width: screenWidth,
                       decoration: BoxDecoration(
-                        color: Colors.black.withValues(alpha: 0.6),
+                        color: Colors.black.withValues(alpha: 0.72),
                       ),
                       child:
                           //// Login form [email , password , validation ,  ]

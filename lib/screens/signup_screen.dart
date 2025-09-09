@@ -108,7 +108,7 @@ class _SignupScreenState extends State<SignupScreen> {
                       height: screenHieght,
                       width: screenWidth,
                       child: Image.network(
-                        "https://i.pinimg.com/736x/5e/01/65/5e01654f163c2b488ccbd41e4f717c97.jpg",
+                        "https://as1.ftcdn.net/jpg/02/67/96/22/1000_F_267962289_Y9WDy3b7nC5E7GVjuHEZ4vK2q5NU6k9V.jpg",
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -116,7 +116,7 @@ class _SignupScreenState extends State<SignupScreen> {
                       height: screenHieght,
                       width: screenWidth,
                       decoration: BoxDecoration(
-                        color: Colors.black.withValues(alpha: 0.77),
+                        color: Colors.black.withValues(alpha: 0.72),
                       ),
                       child:
                           //// signup form [name , email , password , confPassword , validation , BlocConsumer to rebuild it]
