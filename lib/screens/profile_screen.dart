@@ -41,11 +41,24 @@ class _ProfileScreenState extends State<ProfileScreen> {
     final pickedImage = await ImagePicker().pickImage(
       source: ImageSource.gallery,
     );
+    final isUpload = selectedImage == null;
 
     if (pickedImage != null) {
       setState(() {
         selectedImage = pickedImage;
       });
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: AppText(
+            isUpload
+                ? " Image Uploaded Successfully"
+                : "Image Changed Successfully",
+            color: Colors.white,
+          ),
+          backgroundColor: Colors.black,
+        ),
+      );
+
       final prefs = await SharedPreferences.getInstance();
       await prefs.setString('profile_image_${user.uid}', pickedImage.path);
     }
@@ -191,6 +204,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       color: Colors.redAccent,
                       onTap: () {
                         context.read<AuthCubit>().logout(context);
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: AppText(
+                              "Logout Successfully",
+                              color: Colors.white,
+                            ),
+                            backgroundColor: Colors.black,
+                          ),
+                        );
                         context.read<BottomNavCubit>().changeTab(0);
                         setState(() {
                           selectedImage = null;
