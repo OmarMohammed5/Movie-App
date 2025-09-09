@@ -9,6 +9,7 @@ import 'package:moviee_app/screens/favourite_screen.dart';
 import 'package:moviee_app/screens/home_screen.dart';
 import 'package:moviee_app/screens/profile_screen.dart';
 import 'package:moviee_app/screens/search_screen.dart';
+import 'package:moviee_app/theme/app_colors.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 
 class BottomNavBar extends StatefulWidget {
@@ -135,7 +136,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
           controller: _controller,
           screens: _buildScreens(),
           items: _navBarsItems(),
-          backgroundColor: Colors.black87,
+          backgroundColor: Colors.grey.shade900,
           handleAndroidBackButtonPress: true,
           resizeToAvoidBottomInset: true,
           stateManagement: true,

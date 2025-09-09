@@ -31,10 +31,12 @@ class _TrailerScreenState extends State<TrailerScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      // backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      backgroundColor: AppColors.kPrimaryColor,
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
+        // backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
+        backgroundColor: AppColors.kPrimaryColor,
         centerTitle: true,
         title: Row(
           spacing: 6,

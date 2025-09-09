@@ -33,7 +33,9 @@ class _SearchScreenState extends State<SearchScreen> {
         FocusScope.of(context).unfocus();
       },
       child: Scaffold(
-        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+        // backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+        backgroundColor: AppColors.kPrimaryColor,
+
         body: Column(
           children: [
             Expanded(

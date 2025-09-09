@@ -26,68 +26,67 @@ class _ActorProfileScreenState extends State<ActorProfileScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-        body: SingleChildScrollView(
-          child: BlocBuilder<ActorCubit, ActorState>(
-            builder: (context, state) {
-              if (state is ActorLoading) {
-                return Center(
-                  child: CircularProgressIndicator(
-                    color: AppColors.kLogoColor,
-                    strokeWidth: 2,
-                  ),
-                );
-              } else if (state is ActorLoaded) {
-                return Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    /// ===== Header Section =====
-                    const Gap(50),
-                    //// image profile
-                    ActorProfileImage(actorModel: state.actors),
+    return Scaffold(
+      // backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      backgroundColor: AppColors.kPrimaryColor,
+      body: SingleChildScrollView(
+        child: BlocBuilder<ActorCubit, ActorState>(
+          builder: (context, state) {
+            if (state is ActorLoading) {
+              return Center(
+                child: CircularProgressIndicator(
+                  color: AppColors.kLogoColor,
+                  strokeWidth: 2,
+                ),
+              );
+            } else if (state is ActorLoaded) {
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  /// ===== Header Section =====
+                  const Gap(80),
+                  //// image profile
+                  ActorProfileImage(actorModel: state.actors),
 
-                    const Gap(16),
-                    //// Actor Details [name , born , place , died , biography(cv)]
-                    ActorDetails(actorModel: state.actors),
+                  const Gap(16),
+                  //// Actor Details [name , born , place , died , biography(cv)]
+                  ActorDetails(actorModel: state.actors),
 
-                    const Gap(50),
+                  const Gap(50),
 
-                    /// ===== His Works =====
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                      child: Align(
-                        alignment: Alignment.centerLeft,
-                        child: AppText(
-                          "His Works",
-                          color: Colors.white,
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                        ),
+                  /// ===== His Works =====
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: AppText(
+                        "His Works",
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
-
-                    Gap(16),
-                    //// Actor Movie List [His Works]
-                    ActorMovieList(),
-
-                    const Gap(80),
-                  ],
-                );
-              } else if (state is ActorError) {
-                return Center(
-                  child: AppText(
-                    state.errorMessage,
-                    color: AppColors.kLogoColor,
-                    fontSize: 16,
                   ),
-                );
-              } else {
-                return SizedBox.shrink();
-              }
-            },
-          ),
+
+                  Gap(16),
+                  //// Actor Movie List [His Works]
+                  ActorMovieList(),
+
+                  const Gap(80),
+                ],
+              );
+            } else if (state is ActorError) {
+              return Center(
+                child: AppText(
+                  state.errorMessage,
+                  color: AppColors.kLogoColor,
+                  fontSize: 16,
+                ),
+              );
+            } else {
+              return SizedBox.shrink();
+            }
+          },
         ),
       ),
     );

@@ -21,12 +21,10 @@ class FavoriteAppBar extends StatelessWidget implements PreferredSize {
         fontWeight: FontWeight.bold,
         color: Colors.white,
       ),
-      backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
+      // backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
+      backgroundColor: AppColors.kPrimaryColor,
       actions: [
-        HugeIcon(
-          icon: HugeIcons.strokeRoundedFavourite,
-          color: AppColors.kIconColor,
-        ),
+        HugeIcon(icon: HugeIcons.strokeRoundedFavourite, color: Colors.white),
         Gap(10),
       ],
     );

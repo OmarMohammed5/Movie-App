@@ -88,7 +88,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         }
       },
       child: Scaffold(
-        backgroundColor: Colors.black,
+        backgroundColor: AppColors.kPrimaryColor,
         appBar: AppBar(
           title: AppText(
             "Profile",
@@ -100,7 +100,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             HugeIcon(icon: HugeIcons.strokeRoundedUser, color: Colors.white),
             Gap(10),
           ],
-          backgroundColor: Colors.black,
+          backgroundColor: AppColors.kPrimaryColor,
         ),
         body: BlocBuilder<AuthCubit, AuthState>(
           builder: (context, state) {
