@@ -17,6 +17,8 @@ class MovieCategory extends StatelessWidget {
   final dynamic movie;
   @override
   Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
     return GestureDetector(
       onTap: () {
         context.read<MovieDetailsCubit>().getDetailsMovie(movie.id);
@@ -105,9 +107,9 @@ class MovieCategory extends StatelessWidget {
               ),
 
               Positioned(
-                bottom: 27,
-                left: 0,
-                right: 0,
+                bottom: screenHeight * 0.02,
+                left: screenWidth * 0,
+                right: screenWidth * 0,
                 child: Container(
                   padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
