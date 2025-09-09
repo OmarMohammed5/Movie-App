@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
 import 'package:moviee_app/components/movie_category.dart';
 import 'package:moviee_app/core/cubit/cubit/cubit/filter_cubit.dart';
+import 'package:moviee_app/theme/app_colors.dart';
 
 class FilteredMoviesGrid extends StatelessWidget {
   const FilteredMoviesGrid({super.key});
@@ -12,7 +13,12 @@ class FilteredMoviesGrid extends StatelessWidget {
     return BlocBuilder<FilterCubit, FilterState>(
       builder: (context, state) {
         if (state is FilterLoading) {
-          return Center(child: CircularProgressIndicator());
+          return Center(
+            child: CircularProgressIndicator(
+              color: AppColors.kLogoColor,
+              strokeWidth: 2,
+            ),
+          );
         } else if (state is FilterLoaded) {
           final movies = state.movies;
           if (movies.isEmpty) {
