@@ -55,7 +55,7 @@ class _ProfileContentState extends State<ProfileContent> {
                 : "Image Changed Successfully",
             color: Colors.white,
           ),
-          backgroundColor: Colors.black,
+          backgroundColor: Colors.grey.shade800,
         ),
       );
 
@@ -203,7 +203,7 @@ class _ProfileContentState extends State<ProfileContent> {
                                     "Logout Successfully",
                                     color: Colors.white,
                                   ),
-                                  backgroundColor: Colors.grey.shade900,
+                                  backgroundColor: Colors.grey.shade800,
                                 ),
                               );
                               context.read<BottomNavCubit>().changeTab(0);

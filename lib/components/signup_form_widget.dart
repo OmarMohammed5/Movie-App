@@ -37,7 +37,7 @@ class SignupFormWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Gap(90),
-        // Image
+        // Header
         AuthHeaderSection(),
         Gap(40),
 
@@ -119,19 +119,25 @@ class SignupFormWidget extends StatelessWidget {
         BlocConsumer<AuthCubit, AuthState>(
           listener: (context, state) {
             if (state is AuthLoaded) {
+              /// Navigate to bottom nav bar (home screen)
               Navigator.of(context).pushReplacement(
                 MaterialPageRoute(builder: (_) => BottomNavBar()),
               );
             } else if (state is AuthError) {
-              ScaffoldMessenger.of(
-                context,
-              ).showSnackBar(SnackBar(content: Text(state.errorMessage)));
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  backgroundColor: Colors.grey.shade800,
+                  content: Text(state.errorMessage),
+                ),
+              );
             }
           },
           builder: (context, state) {
             if (state is AuthLoading) {
               return CircularProgressIndicator(color: AppColors.kLogoColor);
             }
+
+            /// Sign up Button
             return AuthButtonWidget(
               text: 'Sign up',
               onTap: () {
@@ -144,7 +150,7 @@ class SignupFormWidget extends StatelessWidget {
                   );
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
-                      backgroundColor: Colors.black,
+                      backgroundColor: Colors.grey.shade800,
                       content: AppText(
                         "Account Created Successfully",
                         color: Colors.white,
@@ -153,8 +159,8 @@ class SignupFormWidget extends StatelessWidget {
                   );
                 } else {
                   ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      backgroundColor: Colors.black,
+                    SnackBar(
+                      backgroundColor: Colors.grey.shade800,
                       content: AppText(
                         "Please fill all fields correctly ",
                         color: Colors.white,
