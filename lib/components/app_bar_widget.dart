@@ -26,7 +26,7 @@ class AppBarWidget extends StatelessWidget implements PreferredSize {
         children: [
           AppText(
             "Movie",
-            fontSize: 26,
+            fontSize: 28,
             fontWeight: FontWeight.bold,
             color: Colors.white,
           ),
@@ -34,7 +34,7 @@ class AppBarWidget extends StatelessWidget implements PreferredSize {
           AppText(
             "saga",
             color: AppColors.kLogoColor,
-            fontSize: 26,
+            fontSize: 28,
             fontWeight: FontWeight.bold,
           ),
         ],
