@@ -92,7 +92,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         appBar: AppBar(
           title: AppText(
             "Profile",
-            fontSize: 20,
+            fontSize: 22,
             fontWeight: FontWeight.bold,
             color: Colors.white,
           ),
