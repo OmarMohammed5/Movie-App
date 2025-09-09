@@ -26,11 +26,11 @@ class MovieCubit extends Cubit<MovieState> {
     } on ServerException catch (e) {
       emit(MovieError(e.errorModel.errorMessage));
     } catch (e) {
-      emit(MovieError("Unexcepected Error"));
+      emit(MovieError("Network Connection Error"));
     }
   }
 
-  //// get All Movies [All]
+  //// get All Movies
   getAllMovies() async {
     try {
       final response = await api.get(
@@ -42,7 +42,7 @@ class MovieCubit extends Cubit<MovieState> {
     } on ServerException catch (e) {
       emit(MovieError(e.errorModel.errorMessage));
     } catch (e) {
-      emit(MovieError("Unexcepected Error"));
+      emit(MovieError("Network Connection Error"));
     }
   }
 }

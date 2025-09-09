@@ -27,7 +27,7 @@ class TopMoviesCubit extends Cubit<TopMoviesState> {
     } on ServerException catch (e) {
       emit(TopMoviesError(e.errorModel.errorMessage));
     } catch (e) {
-      emit(TopMoviesError("Unexpected error: $e"));
+      emit(TopMoviesError("Network Connection Error"));
     }
   }
 }

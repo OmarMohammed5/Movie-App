@@ -8,7 +8,6 @@ import 'package:moviee_app/components/auth_text_row_widget.dart';
 import 'package:moviee_app/components/bottom_nav_bar_widget.dart';
 import 'package:moviee_app/components/text_field_widget.dart';
 import 'package:moviee_app/core/cubit/cubit/auth_cubit.dart';
-import 'package:moviee_app/screens/home_screen.dart';
 import 'package:moviee_app/theme/app_colors.dart';
 import 'package:moviee_app/theme/app_text_style.dart';
 

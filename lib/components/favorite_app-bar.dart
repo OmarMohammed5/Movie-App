@@ -15,6 +15,7 @@ class FavoriteAppBar extends StatelessWidget implements PreferredSize {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      scrolledUnderElevation: 0,
       title: AppText(
         "My Favorites",
         fontSize: 22,

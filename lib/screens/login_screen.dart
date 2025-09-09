@@ -11,7 +11,6 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final _formKey = GlobalKey<FormState>();
   bool isLoading = false;
   @override
   Widget build(BuildContext context) {
@@ -28,43 +27,40 @@ class _LoginScreenState extends State<LoginScreen> {
 
         body: SingleChildScrollView(
           ///  Form validation
-          child: Form(
-            key: _formKey,
-            child: Column(
-              children: [
-                Stack(
-                  children: [
-                    /// background
-                    SizedBox(
-                      height: screenHieght,
-                      width: screenWidth,
-                      child: isLoading
-                          ? Center(
-                              child: CircularProgressIndicator(
-                                color: AppColors.kLogoColor,
-                                strokeWidth: 2,
-                              ),
-                            )
-                          : CachedNetworkImage(
-                              imageUrl:
-                                  "https://as1.ftcdn.net/jpg/02/67/96/22/1000_F_267962289_Y9WDy3b7nC5E7GVjuHEZ4vK2q5NU6k9V.jpg",
-                              fit: BoxFit.cover,
+          child: Column(
+            children: [
+              Stack(
+                children: [
+                  /// background
+                  SizedBox(
+                    height: screenHieght,
+                    width: screenWidth,
+                    child: isLoading
+                        ? Center(
+                            child: CircularProgressIndicator(
+                              color: AppColors.kLogoColor,
+                              strokeWidth: 2,
                             ),
+                          )
+                        : CachedNetworkImage(
+                            imageUrl:
+                                "https://as1.ftcdn.net/jpg/02/67/96/22/1000_F_267962289_Y9WDy3b7nC5E7GVjuHEZ4vK2q5NU6k9V.jpg",
+                            fit: BoxFit.cover,
+                          ),
+                  ),
+                  Container(
+                    height: screenHieght,
+                    width: screenWidth,
+                    decoration: BoxDecoration(
+                      color: Colors.black.withValues(alpha: 0.72),
                     ),
-                    Container(
-                      height: screenHieght,
-                      width: screenWidth,
-                      decoration: BoxDecoration(
-                        color: Colors.black.withValues(alpha: 0.72),
-                      ),
-                      child:
-                          //// Login form [email , password , validation ,  ]
-                          LoginFormWidget(),
-                    ),
-                  ],
-                ),
-              ],
-            ),
+                    child:
+                        //// Login form [email , password , validation ,  ]
+                        LoginFormWidget(),
+                  ),
+                ],
+              ),
+            ],
           ),
         ),
       ),

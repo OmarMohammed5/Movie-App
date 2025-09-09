@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gap/flutter_gap.dart';
 import 'package:hugeicons/hugeicons.dart';
-import 'package:moviee_app/components/auth_required_dialog.dart';
+import 'package:moviee_app/components/auth_favorite_dialog.dart';
 import 'package:moviee_app/core/cubit/cubit/auth_cubit.dart';
 import 'package:moviee_app/core/cubit/cubit/favorites_cubit.dart';
 import 'package:moviee_app/core/cubit/cubit/movie_details_cubit.dart';
@@ -83,7 +83,7 @@ class MovieCard extends StatelessWidget {
                           if (authState is! AuthLoaded) {
                             showDialog(
                               context: context,
-                              builder: (context) => AuthRequiredDialog(),
+                              builder: (context) => AuthFavoriteDialog(),
                             );
                           } else {
                             context.read<FavoritesCubit>().toggleFavorite({

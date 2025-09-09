@@ -28,7 +28,7 @@ class AppBarWidget extends StatelessWidget implements PreferredSize {
           Container(
             height: kToolbarHeight * 0.7,
             width: kToolbarHeight * 0.7,
-            padding: EdgeInsets.all(8),
+            padding: EdgeInsets.all(6),
             decoration: BoxDecoration(
               color: AppColors.kLogoColor,
               shape: BoxShape.circle,

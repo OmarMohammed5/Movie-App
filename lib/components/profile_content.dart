@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gap/flutter_gap.dart';
 import 'package:hugeicons/hugeicons.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:moviee_app/components/auth_required_dialog.dart';
+import 'package:moviee_app/components/auth_favorite_dialog.dart';
 import 'package:moviee_app/components/image_profile.dart';
 import 'package:moviee_app/components/name_and_email_profile.dart';
 import 'package:moviee_app/components/profile_menu.dart';
@@ -33,7 +33,7 @@ class _ProfileContentState extends State<ProfileContent> {
   Future<void> _uploadImage() async {
     final user = FirebaseAuth.instance.currentUser;
     if (user == null) {
-      showDialog(context: context, builder: (context) => AuthRequiredDialog());
+      showDialog(context: context, builder: (context) => AuthFavoriteDialog());
       return;
     }
 
@@ -169,17 +169,59 @@ class _ProfileContentState extends State<ProfileContent> {
             title: "Logout",
             color: Colors.redAccent,
             onTap: () {
-              context.read<AuthCubit>().logout(context);
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: AppText("Logout Successfully", color: Colors.white),
-                  backgroundColor: Colors.black,
-                ),
+              showDialog(
+                context: context,
+                builder: (context) {
+                  return AlertDialog(
+                    contentPadding: EdgeInsets.symmetric(
+                      horizontal: 20,
+                      vertical: 10,
+                    ),
+                    backgroundColor: Colors.black,
+                    title: AppText(
+                      "Are you sure you want to log out ?",
+                      color: Colors.white,
+                      fontSize: 18,
+                    ),
+                    actions: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          TextButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            child: AppText("Cancel", color: Colors.white),
+                          ),
+                          TextButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                              context.read<AuthCubit>().logout(context);
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: AppText(
+                                    "Logout Successfully",
+                                    color: Colors.white,
+                                  ),
+                                  backgroundColor: Colors.black,
+                                ),
+                              );
+                              context.read<BottomNavCubit>().changeTab(0);
+                              setState(() {
+                                selectedImage = null;
+                              });
+                            },
+                            child: AppText(
+                              "Log Out",
+                              color: AppColors.kLogoColor,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  );
+                },
               );
-              context.read<BottomNavCubit>().changeTab(0);
-              setState(() {
-                selectedImage = null;
-              });
             },
           ),
         ],

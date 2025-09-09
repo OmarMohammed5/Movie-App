@@ -1,30 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:moviee_app/screens/login_screen.dart';
-import 'package:moviee_app/screens/signup_screen.dart';
 import 'package:moviee_app/theme/app_colors.dart';
 import 'package:moviee_app/theme/app_text_style.dart';
+import 'package:moviee_app/screens/login_screen.dart';
+import 'package:moviee_app/screens/signup_screen.dart';
 
-class AuthRequiredDialog extends StatelessWidget {
-  const AuthRequiredDialog({super.key});
+class AuthFavoriteDialog extends StatelessWidget {
+  const AuthFavoriteDialog({super.key});
 
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      backgroundColor: Colors.grey.shade900,
-      title: Text(
-        "Authentication Required",
-        style: TextStyle(
-          fontFamily: GoogleFonts.acme().fontFamily,
-          color: Colors.white,
-        ),
+      backgroundColor: Colors.black,
+      title: AppText(
+        "Login Required",
+        fontWeight: FontWeight.bold,
+        fontSize: 18,
+        color: Colors.white,
       ),
-      content: Text(
-        "You need to log in / sign up to access the Profile section.",
-        style: TextStyle(
-          fontFamily: GoogleFonts.acme().fontFamily,
-          color: Colors.grey,
-        ),
+      content: AppText(
+        "Create an account to add favorites.",
+        maxLines: 3,
+        fontSize: 14,
+        color: Colors.grey,
+        fontWeight: FontWeight.w500,
       ),
       actions: [
         Row(

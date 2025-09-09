@@ -3,12 +3,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hugeicons/hugeicons.dart';
+import 'package:moviee_app/components/auth_favorite_dialog.dart';
 import 'package:moviee_app/components/auth_required_dialog.dart';
 import 'package:moviee_app/core/cubit/cubit/bottom_nav_cubit.dart';
 import 'package:moviee_app/screens/favourite_screen.dart';
 import 'package:moviee_app/screens/home_screen.dart';
+import 'package:moviee_app/screens/login_screen.dart';
 import 'package:moviee_app/screens/profile_screen.dart';
 import 'package:moviee_app/screens/search_screen.dart';
+import 'package:moviee_app/screens/signup_screen.dart';
+import 'package:moviee_app/theme/app_colors.dart';
+import 'package:moviee_app/theme/app_text_style.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 
 class BottomNavBar extends StatefulWidget {
@@ -140,7 +145,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
           resizeToAvoidBottomInset: true,
           stateManagement: true,
           decoration: NavBarDecoration(
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: BorderRadius.zero,
             colorBehindNavBar: Colors.black,
           ),
 

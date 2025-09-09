@@ -40,7 +40,7 @@ class MovieTrailerCubit extends Cubit<MovieTrailerState> {
     } catch (e) {
       // print("Error in fetchTrailer: $e");
       // print(stack);
-      emit(MovieTrailerError("Unexpected error: $e"));
+      emit(MovieTrailerError("Network Connection Error"));
     }
   }
 }

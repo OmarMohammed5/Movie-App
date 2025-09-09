@@ -14,6 +14,7 @@ class AuthCubit extends Cubit<AuthState> {
     _checkCurrentUser();
   }
 
+  //// Check user
   void _checkCurrentUser() {
     final user = FirebaseAuth.instance.currentUser;
     if (user != null) {
@@ -27,6 +28,7 @@ class AuthCubit extends Cubit<AuthState> {
     }
   }
 
+  ///// Sign up
   Future<void> signUp({
     required String name,
     required String email,
@@ -66,6 +68,46 @@ class AuthCubit extends Cubit<AuthState> {
       emit(AuthError(e.message ?? "Auth error"));
     } catch (e) {
       emit(AuthError("Network Connection Error"));
+    }
+  }
+
+  //// Login
+  Future<void> logIn({
+    required String email,
+    required String password,
+    required BuildContext context,
+  }) async {
+    emit(AuthLoading());
+
+    try {
+      UserCredential userCredential = await FirebaseAuth.instance
+          .signInWithEmailAndPassword(
+            email: email.trim(),
+            password: password.trim(),
+          );
+
+      final user = userCredential.user;
+      if (user != null) {
+        final doc = await FirebaseFirestore.instance
+            .collection("users")
+            .doc(user.uid)
+            .get();
+
+        String name = "";
+        if (doc.exists) {
+          name = doc.data()?["name"] ?? "";
+        }
+
+        emit(AuthLoaded(uid: user.uid, name: name, email: user.email ?? ''));
+
+        await context.read<FavoritesCubit>().fetchFavorites();
+      } else {
+        emit(AuthError("User not found"));
+      }
+    } on FirebaseAuthException catch (e) {
+      emit(AuthError(e.message ?? "Login failed"));
+    } catch (e) {
+      emit(AuthError("Unexpected error, check your connection"));
     }
   }
 
