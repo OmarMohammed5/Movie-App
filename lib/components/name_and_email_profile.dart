@@ -47,7 +47,7 @@ class NameAndEmailProfile extends StatelessWidget {
                   children: [
                     Icon(Icons.email_outlined, color: Colors.white, size: 25),
                     AppText(
-                      "Email   :  ${state.email}",
+                      "Email   :    ${state.email}",
                       fontSize: 16,
                       color: Colors.white,
                     ),

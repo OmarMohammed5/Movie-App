@@ -36,6 +36,7 @@ class AboutAppScreen extends StatelessWidget {
                 child: AppText("About App", color: Colors.white, fontSize: 24),
               ),
             ),
+            Gap(30),
           ],
         ),
 

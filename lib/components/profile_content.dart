@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gap/flutter_gap.dart';
@@ -6,6 +7,7 @@ import 'package:hugeicons/hugeicons.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:moviee_app/components/auth_favorite_dialog.dart';
 import 'package:moviee_app/components/image_profile.dart';
+import 'package:moviee_app/components/logout_button.dart';
 import 'package:moviee_app/components/name_and_email_profile.dart';
 import 'package:moviee_app/components/profile_menu.dart';
 import 'package:moviee_app/core/cubit/cubit/auth_cubit.dart';
@@ -97,44 +99,39 @@ class _ProfileContentState extends State<ProfileContent> {
       child: Column(
         children: [
           Gap(20),
+
           // Image profile
-          ImageProfile(selectedImage: selectedImage),
-          Gap(10),
-          // upload image
-          GestureDetector(
-            onTap: _uploadImage,
+          Stack(
+            children: [
+              /// image
+              ImageProfile(selectedImage: selectedImage),
 
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 110),
-              child: Container(
-                padding: EdgeInsets.all(6),
-
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  spacing: 8,
-                  children: [
-                    AppText(
-                      selectedImage == null ? "Upload Image" : "Change Image",
+              /// upload or change
+              Positioned(
+                bottom: 10,
+                right: 120,
+                child: GestureDetector(
+                  onTap: _uploadImage,
+                  child: Container(
+                    padding: EdgeInsets.all(8),
+                    decoration: BoxDecoration(
                       color: AppColors.kLogoColor,
-                      fontSize: 14,
+                      shape: BoxShape.circle,
                     ),
-                    Icon(
-                      //// Upload or change photo
+                    child: Icon(
                       selectedImage == null
-                          ? Icons.add_photo_alternate_outlined
-                          : Icons.edit,
-                      color: AppColors.kLogoColor,
+                          ? CupertinoIcons.photo
+                          : Icons.edit_outlined,
+                      color: Colors.white,
+                      size: 25,
                     ),
-                  ],
+                  ),
                 ),
               ),
-            ),
+            ],
           ),
 
-          Gap(70),
+          Gap(80),
 
           //// Name && Email
           NameAndEmailProfile(),
@@ -164,66 +161,8 @@ class _ProfileContentState extends State<ProfileContent> {
               );
             },
           ),
-          ProfileMenu(
-            icon: HugeIcons.strokeRoundedLogout02,
-            title: "Logout",
-            color: Colors.redAccent,
-            onTap: () {
-              showDialog(
-                context: context,
-                builder: (context) {
-                  return AlertDialog(
-                    contentPadding: EdgeInsets.symmetric(
-                      horizontal: 20,
-                      vertical: 10,
-                    ),
-                    backgroundColor: Colors.grey.shade900,
-                    title: AppText(
-                      "Are you sure you want to log out ?",
-                      color: Colors.white,
-                      fontSize: 18,
-                    ),
-                    actions: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          TextButton(
-                            onPressed: () {
-                              Navigator.pop(context);
-                            },
-                            child: AppText("Cancel", color: Colors.white),
-                          ),
-                          TextButton(
-                            onPressed: () {
-                              Navigator.pop(context);
-                              context.read<AuthCubit>().logout(context);
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
-                                  content: AppText(
-                                    "Logout Successfully",
-                                    color: Colors.white,
-                                  ),
-                                  backgroundColor: Colors.grey.shade800,
-                                ),
-                              );
-                              context.read<BottomNavCubit>().changeTab(0);
-                              setState(() {
-                                selectedImage = null;
-                              });
-                            },
-                            child: AppText(
-                              "Log Out",
-                              color: AppColors.kLogoColor,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  );
-                },
-              );
-            },
-          ),
+          //// Log out Button
+          LogoutButton(),
         ],
       ),
     );
