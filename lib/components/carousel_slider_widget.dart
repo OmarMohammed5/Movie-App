@@ -33,7 +33,7 @@ class CarouselSliderWidget extends StatelessWidget {
                         children: [
                           /// image
                           ClipRRect(
-                            borderRadius: BorderRadius.circular(16),
+                            borderRadius: BorderRadius.circular(10),
                             child: CachedNetworkImage(
                               imageUrl: state.banners[itemIndex].banner,
                               fit: BoxFit.cover,
@@ -53,23 +53,6 @@ class CarouselSliderWidget extends StatelessWidget {
                             ),
                           ),
 
-                          /// Gredient
-                          Positioned.fill(
-                            child: Container(
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(16),
-                                gradient: LinearGradient(
-                                  begin: Alignment.bottomCenter,
-                                  end: Alignment.topCenter,
-                                  colors: [
-                                    Colors.black.withValues(alpha: 0.7),
-                                    Colors.transparent,
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-
                           /// Coming Soon
                           Positioned(
                             top: 16,
@@ -80,7 +63,7 @@ class CarouselSliderWidget extends StatelessWidget {
                                 horizontal: 10,
                               ),
                               decoration: BoxDecoration(
-                                color: Colors.redAccent.withValues(alpha: 0.6),
+                                color: Colors.redAccent.withValues(alpha: 0.7),
                                 borderRadius: BorderRadius.circular(8),
                               ),
                               child: AppText(
@@ -94,7 +77,7 @@ class CarouselSliderWidget extends StatelessWidget {
 
                           //// Title
                           Positioned(
-                            bottom: 20,
+                            bottom: 35,
                             left: 20,
                             right: 20,
                             child: AppText(
@@ -107,9 +90,9 @@ class CarouselSliderWidget extends StatelessWidget {
 
               options: CarouselOptions(
                 height: 222,
-                aspectRatio: 1,
+                aspectRatio: 2,
                 autoPlay: true,
-                viewportFraction: 0.8,
+                viewportFraction: 0.9,
                 autoPlayInterval: const Duration(seconds: 2),
                 autoPlayAnimationDuration: const Duration(seconds: 2),
                 enlargeCenterPage: true,
