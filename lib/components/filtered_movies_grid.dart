@@ -18,7 +18,7 @@ class FilteredMoviesGrid extends StatelessWidget {
           if (movies.isEmpty) {
             return Center(
               child: Lottie.asset(
-                "assets/Search.json",
+                "assets/Eye Searching.json",
                 height: 300,
                 width: 300,
               ),
