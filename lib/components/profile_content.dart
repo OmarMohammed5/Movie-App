@@ -10,8 +10,6 @@ import 'package:moviee_app/components/image_profile.dart';
 import 'package:moviee_app/components/logout_button.dart';
 import 'package:moviee_app/components/name_and_email_profile.dart';
 import 'package:moviee_app/components/profile_menu.dart';
-import 'package:moviee_app/core/cubit/cubit/auth_cubit.dart';
-import 'package:moviee_app/core/cubit/cubit/bottom_nav_cubit.dart';
 import 'package:moviee_app/core/cubit/cubit/profile_cubit.dart';
 import 'package:moviee_app/core/cubit/cubit/theme_cubit.dart';
 import 'package:moviee_app/screens/about_app_screen.dart';
