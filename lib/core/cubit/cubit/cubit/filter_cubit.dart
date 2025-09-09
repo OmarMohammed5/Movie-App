@@ -32,5 +32,7 @@ class FilterCubit extends Cubit<FilterState> {
   //// Clear Filter
   void reset() {
     emit(FilterLoaded(allMovies));
+
+    /// or emit(FilterInitial());
   }
 }
