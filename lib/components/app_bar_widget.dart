@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:moviee_app/theme/app_colors.dart';
 import 'package:moviee_app/theme/app_text_style.dart';
 
@@ -24,6 +25,19 @@ class AppBarWidget extends StatelessWidget implements PreferredSize {
         mainAxisAlignment: MainAxisAlignment.center,
         spacing: 10,
         children: [
+          Container(
+            height: kToolbarHeight * 0.7,
+            width: kToolbarHeight * 0.7,
+            padding: EdgeInsets.all(8),
+            decoration: BoxDecoration(
+              color: AppColors.kLogoColor,
+              shape: BoxShape.circle,
+            ),
+            child: SvgPicture.asset(
+              "assets/svg/play_circle_outline.svg",
+              fit: BoxFit.contain,
+            ),
+          ),
           AppText(
             "Movie",
             fontSize: 28,
