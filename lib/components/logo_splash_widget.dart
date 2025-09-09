@@ -7,33 +7,15 @@ class LogoSplashWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
+    return Column(
       children: [
-        Align(
-          alignment: Alignment.center,
-          child: SvgPicture.asset(
-            "assets/svg/Rectangle 28.svg",
-            width: 290,
+        Container(
+          height: 160,
+          width: 160,
+          decoration: BoxDecoration(
+            color: AppColors.kLogoColor,
+            shape: BoxShape.circle,
           ),
-        ),
-        Positioned(
-          top: 70,
-          left: 20,
-          right: 30,
-          child: Container(
-            height: 160,
-            width: 160,
-            decoration: BoxDecoration(
-              color: AppColors.kLogoColor,
-              shape: BoxShape.circle,
-            ),
-          ),
-        ),
-        Positioned(
-          top: 90,
-          left: 20,
-          right: 30,
-
           child: Center(
             child: SvgPicture.asset(
               "assets/svg/play_circle_outline.svg",

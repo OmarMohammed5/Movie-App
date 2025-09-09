@@ -77,7 +77,7 @@ class _SplashScreenState extends State<SplashScreen>
                 child: const LogoSplashWidget(),
               ),
             ),
-            const Gap(20),
+            const Gap(40),
             SlideTransition(
               position: _textSlideAnimation,
               child: const TextSplashWidget(),
