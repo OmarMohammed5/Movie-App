@@ -10,7 +10,7 @@ class AuthFavoriteDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.grey.shade900,
       title: AppText(
         "Login Required",
         fontWeight: FontWeight.bold,

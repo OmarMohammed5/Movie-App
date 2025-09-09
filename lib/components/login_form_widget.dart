@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gap/flutter_gap.dart';
@@ -9,7 +8,6 @@ import 'package:moviee_app/components/bottom_nav_bar_widget.dart';
 import 'package:moviee_app/components/forgot_password_widget.dart';
 import 'package:moviee_app/components/text_field_widget.dart';
 import 'package:moviee_app/core/cubit/cubit/auth_cubit.dart';
-import 'package:moviee_app/screens/home_screen.dart';
 import 'package:moviee_app/screens/signup_screen.dart';
 import 'package:moviee_app/theme/app_colors.dart';
 import 'package:moviee_app/theme/app_text_style.dart';
@@ -25,59 +23,6 @@ class _LoginFormWidgetState extends State<LoginFormWidget> {
   final TextEditingController _email = TextEditingController();
   final TextEditingController _password = TextEditingController();
   final _formKey = GlobalKey<FormState>();
-  bool isLoading = false;
-
-  // Log-in
-  Future logIn() async {
-    isLoading = true;
-    setState(() {});
-
-    try {
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: _email.text.trim(),
-        password: _password.text.trim(),
-      );
-
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          backgroundColor: Colors.black,
-          content: AppText("Logged in successfully ", fontSize: 15),
-        ),
-      );
-
-      Navigator.of(
-        context,
-      ).push(MaterialPageRoute(builder: (context) => BottomNavBar()));
-    } on FirebaseAuthException catch (e) {
-      String message = "";
-
-      if (e.code == 'user-not-found') {
-        message = "This email is not registered ";
-      } else if (e.code == 'wrong-password') {
-        message = "Incorrect password ";
-      } else {
-        message = "Login failed ";
-      }
-
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          backgroundColor: Colors.black,
-          content: AppText(message, fontSize: 15),
-        ),
-      );
-    } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          backgroundColor: Colors.black,
-
-          content: AppText("Unexpected error"),
-        ),
-      );
-    }
-
-    isLoading = false;
-    setState(() {});
-  }
 
   @override
   void dispose() {
@@ -91,21 +36,24 @@ class _LoginFormWidgetState extends State<LoginFormWidget> {
     return BlocConsumer<AuthCubit, AuthState>(
       listener: (context, state) {
         if (state is AuthLoaded) {
-          /// if Login success
           ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              backgroundColor: Colors.black,
+            SnackBar(
+              backgroundColor: Colors.grey.shade900,
               content: AppText("Logged in successfully ", fontSize: 15),
             ),
           );
-          Navigator.of(context).pushReplacement(
-            MaterialPageRoute(builder: (context) => HomeScreen()),
+
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              /// default of bottom nav bar >> Home Screen
+              builder: (context) => BottomNavBar(),
+            ),
           );
         } else if (state is AuthError) {
-          // if there erro
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              backgroundColor: Colors.black,
+              backgroundColor: Colors.grey.shade900,
               content: AppText(state.errorMessage, fontSize: 15),
             ),
           );
@@ -118,7 +66,7 @@ class _LoginFormWidgetState extends State<LoginFormWidget> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Gap(160),
-              //// image
+              //// Headtr
               AuthHeaderSection(),
               Gap(40),
 
@@ -127,7 +75,6 @@ class _LoginFormWidgetState extends State<LoginFormWidget> {
                 hint: 'Email',
                 obscureText: false,
                 prefixIcon: Icons.email_outlined,
-
                 controller: _email,
                 validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -148,7 +95,6 @@ class _LoginFormWidgetState extends State<LoginFormWidget> {
                 obscureText: true,
                 prefixIcon: Icons.lock_outline,
                 suffixIcon: Icons.visibility_outlined,
-
                 controller: _password,
                 validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -163,41 +109,33 @@ class _LoginFormWidgetState extends State<LoginFormWidget> {
 
               Gap(40),
 
-              //// Login Button
-              isLoading
-                  ? Center(
-                      child: CircularProgressIndicator(
-                        strokeWidth: 2,
-                        color: AppColors.kLogoColor,
-                      ),
-                    )
-                  : AuthButtonWidget(
-                      text: 'Log in',
-                      onTap: () {
-                        if (_formKey.currentState!.validate()) {
-                          context.read<AuthCubit>().logIn(
-                            email: _email.text,
-                            password: _password.text,
-                            context: context,
-                          );
-                        } else {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                              content: AppText("User not found", fontSize: 15),
-                            ),
-                          );
-                        }
-                      },
-                    ),
+              /// Login Button
+              if (state is AuthLoading)
+                Center(
+                  child: CircularProgressIndicator(
+                    color: AppColors.kLogoColor,
+                    strokeWidth: 2,
+                  ),
+                )
+              else
+                AuthButtonWidget(
+                  text: 'Log in',
+                  onTap: () {
+                    if (_formKey.currentState!.validate()) {
+                      context.read<AuthCubit>().logIn(
+                        email: _email.text,
+                        password: _password.text,
+                        context: context,
+                      );
+                    }
+                  },
+                ),
 
               Gap(10),
-
-              /// Forgot Password
+              //// Forget Password
               ForgotPasswordWidget(),
-
               Gap(60),
-
-              /// Sign up now
+              //// if you new >>> Sign up
               AuthTextRowWidget(
                 title: 'New to Movie saga ?',
                 textAuth: 'Sign up now.',

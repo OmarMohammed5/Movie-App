@@ -177,7 +177,7 @@ class _ProfileContentState extends State<ProfileContent> {
                       horizontal: 20,
                       vertical: 10,
                     ),
-                    backgroundColor: Colors.black,
+                    backgroundColor: Colors.grey.shade900,
                     title: AppText(
                       "Are you sure you want to log out ?",
                       color: Colors.white,
@@ -203,7 +203,7 @@ class _ProfileContentState extends State<ProfileContent> {
                                     "Logout Successfully",
                                     color: Colors.white,
                                   ),
-                                  backgroundColor: Colors.black,
+                                  backgroundColor: Colors.grey.shade900,
                                 ),
                               );
                               context.read<BottomNavCubit>().changeTab(0);

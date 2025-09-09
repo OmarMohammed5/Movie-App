@@ -17,7 +17,7 @@ class AuthCubit extends Cubit<AuthState> {
   //// Check user
   void _checkCurrentUser() {
     final user = FirebaseAuth.instance.currentUser;
-    if (user != null) {
+    if (user != null && !isClosed) {
       emit(
         AuthLoaded(
           uid: user.uid,
@@ -35,7 +35,7 @@ class AuthCubit extends Cubit<AuthState> {
     required String password,
     required BuildContext context,
   }) async {
-    emit(AuthLoading());
+    if (!isClosed) emit(AuthLoading());
 
     try {
       // Create an Account
@@ -56,18 +56,20 @@ class AuthCubit extends Cubit<AuthState> {
           });
 
       //return the data success
-      emit(
-        AuthLoaded(
-          uid: userCredential.user!.uid,
-          name: name.trim(),
-          email: email.trim(),
-        ),
-      );
+      if (!isClosed) {
+        emit(
+          AuthLoaded(
+            uid: userCredential.user!.uid,
+            name: name.trim(),
+            email: email.trim(),
+          ),
+        );
+      }
       await context.read<FavoritesCubit>().fetchFavorites();
     } on FirebaseAuthException catch (e) {
-      emit(AuthError(e.message ?? "Auth error"));
+      if (!isClosed) emit(AuthError(e.message ?? "Auth error"));
     } catch (e) {
-      emit(AuthError("Network Connection Error"));
+      if (!isClosed) emit(AuthError("Network Connection Error"));
     }
   }
 
@@ -77,7 +79,7 @@ class AuthCubit extends Cubit<AuthState> {
     required String password,
     required BuildContext context,
   }) async {
-    emit(AuthLoading());
+    if (!isClosed) emit(AuthLoading());
 
     try {
       UserCredential userCredential = await FirebaseAuth.instance
@@ -98,16 +100,17 @@ class AuthCubit extends Cubit<AuthState> {
           name = doc.data()?["name"] ?? "";
         }
 
-        emit(AuthLoaded(uid: user.uid, name: name, email: user.email ?? ''));
-
+        if (!isClosed) {
+          emit(AuthLoaded(uid: user.uid, name: name, email: user.email ?? ''));
+        }
         await context.read<FavoritesCubit>().fetchFavorites();
       } else {
-        emit(AuthError("User not found"));
+        if (!isClosed) emit(AuthError("User not found"));
       }
     } on FirebaseAuthException catch (e) {
-      emit(AuthError(e.message ?? "Login failed"));
+      if (!isClosed) emit(AuthError(e.message ?? "Login failed"));
     } catch (e) {
-      emit(AuthError("Unexpected error, check your connection"));
+      if (!isClosed) emit(AuthError("Unexpected error, check your connection"));
     }
   }
 
@@ -117,6 +120,6 @@ class AuthCubit extends Cubit<AuthState> {
 
     /// clear profile data
     context.read<ProfileCubit>().clearUserProfile();
-    emit(AuthLoggedOut());
+    if (!isClosed) emit(AuthLoggedOut());
   }
 }
