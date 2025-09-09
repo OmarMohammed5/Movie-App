@@ -38,6 +38,7 @@ class _LogoutButtonState extends State<LogoutButton> {
                 "Are you sure you want to log out ?",
                 color: Colors.white,
                 fontSize: 18,
+                maxLines: 2,
               ),
               actions: [
                 Row(
