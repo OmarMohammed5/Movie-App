@@ -95,6 +95,8 @@ class _ProfileContentState extends State<ProfileContent> {
   Widget build(BuildContext context) {
     final themeCubit = context.watch<ThemeCubit>();
     final isDarkMode = themeCubit.state == ThemeMode.dark;
+    final screenHight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
     return SingleChildScrollView(
       child: Column(
         children: [
@@ -108,8 +110,8 @@ class _ProfileContentState extends State<ProfileContent> {
 
               /// upload or change
               Positioned(
-                bottom: 10,
-                right: 120,
+                bottom: screenHight * 0.01,
+                right: screenWidth * 0.31,
                 child: GestureDetector(
                   onTap: _uploadImage,
                   child: Container(
