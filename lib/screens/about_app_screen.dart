@@ -12,7 +12,9 @@ class AboutAppScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.kPrimaryColor,
       appBar: AppBar(
+        backgroundColor: AppColors.kPrimaryColor,
         automaticallyImplyLeading: false,
         elevation: 0,
         scrolledUnderElevation: 0,
