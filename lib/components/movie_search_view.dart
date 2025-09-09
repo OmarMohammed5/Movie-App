@@ -38,6 +38,7 @@ class _MovieSearchViewState extends State<MovieSearchView> {
               ///// Search Field
               child: TextFormField(
                 onChanged: (v) {
+                  setState(() {});
                   if (v.isNotEmpty) {
                     context.read<SearchMovieCubit>().getSearchMovie(v);
                   }
@@ -52,23 +53,29 @@ class _MovieSearchViewState extends State<MovieSearchView> {
                     icon: HugeIcons.strokeRoundedSearch01,
                     color: Colors.white,
                   ),
-                  suffixIcon: GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        controller.clear();
-                        context.read<SearchMovieCubit>().clearSearchText();
-                        context.read<SearchMovieCubit>().setSearchText("");
-                        context.read<FilterCubit>().setMovies([]);
-                      });
-                    },
+                  suffixIcon:
+                      /// Clear Text Button >> only show when the search text field is not empty
+                      controller.text.isNotEmpty
+                      ? GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              controller.clear();
+                              context
+                                  .read<SearchMovieCubit>()
+                                  .clearSearchText();
+                              context.read<SearchMovieCubit>().setSearchText(
+                                "",
+                              );
+                              context.read<FilterCubit>().setMovies([]);
+                            });
+                          },
 
-                    child: controller.text.isNotEmpty
-                        ? HugeIcon(
+                          child: HugeIcon(
                             icon: HugeIcons.strokeRoundedTextClear,
                             color: Colors.white,
-                          )
-                        : SizedBox.shrink(),
-                  ),
+                          ),
+                        )
+                      : null,
                   filled: true,
                   fillColor: AppColors.kTextFieldColor,
                   focusedBorder: OutlineInputBorder(
