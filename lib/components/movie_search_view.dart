@@ -47,14 +47,10 @@ class _MovieSearchViewState extends State<MovieSearchView> {
                 cursorColor: Colors.white,
                 cursorHeight: 20,
                 decoration: InputDecoration(
-                  hint: AppText(
-                    "Search",
-                    fontSize: 16,
-                    color: AppColors.kIconColor,
-                  ),
+                  hint: AppText("Search", fontSize: 16, color: Colors.white),
                   prefixIcon: HugeIcon(
                     icon: HugeIcons.strokeRoundedSearch01,
-                    color: AppColors.kIconColor,
+                    color: Colors.white,
                   ),
                   suffixIcon: GestureDetector(
                     onTap: () {
@@ -69,7 +65,7 @@ class _MovieSearchViewState extends State<MovieSearchView> {
                     child: controller.text.isNotEmpty
                         ? HugeIcon(
                             icon: HugeIcons.strokeRoundedTextClear,
-                            color: AppColors.kIconColor,
+                            color: Colors.white,
                           )
                         : SizedBox.shrink(),
                   ),
