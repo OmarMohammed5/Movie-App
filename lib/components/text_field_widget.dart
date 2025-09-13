@@ -18,7 +18,7 @@ class TextFieldWidget extends StatelessWidget {
   final String hint;
   final bool obscureText;
   final IconData prefixIcon;
-  final IconData? suffixIcon;
+  final Widget? suffixIcon;
   final void Function(String)? onChanged;
   final TextEditingController? controller;
   final String? Function(String?)? validator;
@@ -48,10 +48,8 @@ class TextFieldWidget extends StatelessWidget {
               borderSide: BorderSide(color: AppColors.kLogoColor),
             ),
             errorStyle: TextStyle(height: 0),
-            prefixIcon: Icon(prefixIcon, color: Colors.grey),
-            suffixIcon: suffixIcon != null
-                ? Icon(suffixIcon, color: Colors.grey)
-                : null,
+            prefixIcon: Icon(prefixIcon, color: Colors.grey, size: 20),
+            suffixIcon: suffixIcon,
             hint: AppText(hint, color: Colors.grey),
             filled: true,
             fillColor: Colors.white,

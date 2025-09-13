@@ -24,6 +24,7 @@ class _LoginFormWidgetState extends State<LoginFormWidget> {
   final TextEditingController _password = TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
+  bool isPasswordVisible = false;
   @override
   void dispose() {
     _email.dispose();
@@ -92,9 +93,21 @@ class _LoginFormWidgetState extends State<LoginFormWidget> {
               TextFieldWidget(
                 maxLength: 6,
                 hint: 'Password',
-                obscureText: true,
+                obscureText: !isPasswordVisible,
                 prefixIcon: Icons.lock_outline,
-                suffixIcon: Icons.visibility_outlined,
+                suffixIcon: IconButton(
+                  onPressed: () {
+                    setState(() {
+                      isPasswordVisible = !isPasswordVisible;
+                    });
+                  },
+                  icon: Icon(
+                    isPasswordVisible
+                        ? Icons.visibility_outlined
+                        : Icons.visibility_off_outlined,
+                    size: 20,
+                  ),
+                ),
                 controller: _password,
                 validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -105,6 +118,7 @@ class _LoginFormWidgetState extends State<LoginFormWidget> {
                   }
                   return null;
                 },
+                // If you want the toggle functionality, update your TextFieldWidget to accept a Widget for suffixIcon.
               ),
 
               Gap(40),

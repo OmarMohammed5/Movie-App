@@ -11,7 +11,7 @@ import 'package:moviee_app/core/cubit/cubit/auth_cubit.dart';
 import 'package:moviee_app/theme/app_colors.dart';
 import 'package:moviee_app/theme/app_text_style.dart';
 
-class SignupFormWidget extends StatelessWidget {
+class SignupFormWidget extends StatefulWidget {
   const SignupFormWidget({
     super.key,
     required TextEditingController name,
@@ -32,6 +32,13 @@ class SignupFormWidget extends StatelessWidget {
   final GlobalKey<FormState> _formkey;
 
   @override
+  State<SignupFormWidget> createState() => _SignupFormWidgetState();
+}
+
+class _SignupFormWidgetState extends State<SignupFormWidget> {
+  bool isPasswordVisible = false;
+  bool isConfirmPasswordVisible = false;
+  @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -43,7 +50,7 @@ class SignupFormWidget extends StatelessWidget {
 
         //// Name
         TextFieldWidget(
-          controller: _name,
+          controller: widget._name,
           hint: 'Name',
           obscureText: false,
           prefixIcon: CupertinoIcons.person,
@@ -58,7 +65,7 @@ class SignupFormWidget extends StatelessWidget {
 
         /// Email
         TextFieldWidget(
-          controller: _email,
+          controller: widget._email,
           hint: 'Email',
           obscureText: false,
           prefixIcon: Icons.email_outlined,
@@ -78,11 +85,23 @@ class SignupFormWidget extends StatelessWidget {
         /// Password
         TextFieldWidget(
           maxLength: 6,
-          controller: _password,
+          controller: widget._password,
           hint: 'Password',
-          obscureText: true,
+          obscureText: !isPasswordVisible,
           prefixIcon: Icons.lock_outline,
-          suffixIcon: Icons.visibility_outlined,
+          suffixIcon: IconButton(
+            onPressed: () {
+              setState(() {
+                isPasswordVisible = !isPasswordVisible;
+              });
+            },
+            icon: Icon(
+              isPasswordVisible
+                  ? Icons.visibility_outlined
+                  : Icons.visibility_off_outlined,
+              size: 20,
+            ),
+          ),
           validator: (value) {
             if (value == null || value.isEmpty) {
               return "Field is Required";
@@ -98,11 +117,23 @@ class SignupFormWidget extends StatelessWidget {
         //// Confirm Password
         TextFieldWidget(
           maxLength: 6,
-          controller: _confirmPassword,
+          controller: widget._confirmPassword,
           hint: 'Confirm Password',
-          obscureText: true,
+          obscureText: !isConfirmPasswordVisible,
           prefixIcon: Icons.lock_outline,
-          suffixIcon: Icons.visibility_outlined,
+          suffixIcon: IconButton(
+            onPressed: () {
+              setState(() {
+                isConfirmPasswordVisible = !isConfirmPasswordVisible;
+              });
+            },
+            icon: Icon(
+              isConfirmPasswordVisible
+                  ? Icons.visibility_outlined
+                  : Icons.visibility_off_outlined,
+              size: 20,
+            ),
+          ),
           validator: (value) {
             if (value == null || value.isEmpty) {
               return "Field is Required";
@@ -141,11 +172,11 @@ class SignupFormWidget extends StatelessWidget {
             return AuthButtonWidget(
               text: 'Sign up',
               onTap: () {
-                if (_formkey.currentState!.validate()) {
+                if (widget._formkey.currentState!.validate()) {
                   context.read<AuthCubit>().signUp(
-                    name: _name.text.trim(),
-                    email: _email.text.trim(),
-                    password: _password.text.trim(),
+                    name: widget._name.text.trim(),
+                    email: widget._email.text.trim(),
+                    password: widget._password.text.trim(),
                     context: context,
                   );
                   ScaffoldMessenger.of(context).showSnackBar(
