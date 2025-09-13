@@ -10,6 +10,8 @@ class FavoritesCubit extends Cubit<FavoritesState> {
 
   User? get user => FirebaseAuth.instance.currentUser;
 
+  List<Map<String, dynamic>> favorites = [];
+
   /// Coming data from Firestore
   Future<void> fetchFavorites() async {
     if (user == null) {
@@ -123,5 +125,11 @@ class FavoritesCubit extends Cubit<FavoritesState> {
     } catch (e) {
       emit(FavoritesError(e.toString()));
     }
+  }
+
+  //// Clear Favourites after Logout
+  void clearFavorites() {
+    favorites.clear();
+    emit(FavoritesLoaded(List.from(favorites)));
   }
 }

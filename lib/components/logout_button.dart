@@ -5,6 +5,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:moviee_app/components/profile_menu.dart';
 import 'package:moviee_app/core/cubit/cubit/auth_cubit.dart';
 import 'package:moviee_app/core/cubit/cubit/bottom_nav_cubit.dart';
+import 'package:moviee_app/core/cubit/cubit/favorites_cubit.dart';
 import 'package:moviee_app/theme/app_colors.dart';
 import 'package:moviee_app/theme/app_text_style.dart';
 
@@ -50,25 +51,34 @@ class _LogoutButtonState extends State<LogoutButton> {
                       },
                       child: AppText("Cancel", color: Colors.white),
                     ),
-                    TextButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                        context.read<AuthCubit>().logout(context);
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: AppText(
-                              "Logout Successfully",
-                              color: Colors.white,
-                            ),
-                            backgroundColor: Colors.grey.shade800,
+                    BlocBuilder<AuthCubit, AuthState>(
+                      builder: (context, state) {
+                        return TextButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                            context.read<AuthCubit>().logout(context);
+                            // Clear Favorites after logout
+                            context.read<FavoritesCubit>().clearFavorites();
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: AppText(
+                                  "Logout Successfully",
+                                  color: Colors.white,
+                                ),
+                                backgroundColor: Colors.grey.shade800,
+                              ),
+                            );
+                            context.read<BottomNavCubit>().changeTab(0);
+                            setState(() {
+                              selectedImage = null;
+                            });
+                          },
+                          child: AppText(
+                            "Log Out",
+                            color: AppColors.kLogoColor,
                           ),
                         );
-                        context.read<BottomNavCubit>().changeTab(0);
-                        setState(() {
-                          selectedImage = null;
-                        });
                       },
-                      child: AppText("Log Out", color: AppColors.kLogoColor),
                     ),
                   ],
                 ),

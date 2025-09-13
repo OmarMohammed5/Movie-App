@@ -137,7 +137,7 @@ class _ProfileContentState extends State<ProfileContent> {
           NameAndEmailProfile(),
           Gap(10),
 
-          // Profile Menu Section
+          // Profile Menu
           ProfileMenu(
             icon: isDarkMode
                 ? HugeIcons.strokeRoundedSun02
