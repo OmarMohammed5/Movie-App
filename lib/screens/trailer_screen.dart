@@ -36,9 +36,16 @@ class _TrailerScreenState extends State<TrailerScreen> {
         // backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
         backgroundColor: AppColors.kPrimaryColor,
         centerTitle: true,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back_ios),
+          color: Colors.white,
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
         title: Row(
           spacing: 6,
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
           children: [
             AppText(
               "Trailer",
@@ -54,6 +61,7 @@ class _TrailerScreenState extends State<TrailerScreen> {
           ],
         ),
       ),
+
       body: Column(
         children: [
           YoutubePlayer(
