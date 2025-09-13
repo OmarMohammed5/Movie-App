@@ -32,6 +32,7 @@ class _TrailerScreenState extends State<TrailerScreen> {
       // backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       backgroundColor: AppColors.kPrimaryColor,
       appBar: AppBar(
+        scrolledUnderElevation: 0,
         automaticallyImplyLeading: false,
         // backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
         backgroundColor: AppColors.kPrimaryColor,
@@ -62,66 +63,68 @@ class _TrailerScreenState extends State<TrailerScreen> {
         ),
       ),
 
-      body: Column(
-        children: [
-          YoutubePlayer(
-            controller: _controller,
-            progressIndicatorColor: AppColors.kLogoColor,
-            showVideoProgressIndicator: true,
-          ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            YoutubePlayer(
+              controller: _controller,
+              progressIndicatorColor: AppColors.kLogoColor,
+              showVideoProgressIndicator: true,
+            ),
 
-          // Gap(12),
-          // //// Movie Title & Year & Favorite
-          // Padding(
-          //   padding: const EdgeInsets.symmetric(horizontal: 16),
-          //   child: Row(
-          //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          //     children: [
-          //       AppText(
-          //         "Movie Title (year)",
-          //         fontSize: 18,
-          //         fontWeight: FontWeight.bold,
-          //         color: Colors.white,
-          //       ),
-          //       IconButton(
-          //         onPressed: () {},
-          //         icon: Icon(CupertinoIcons.heart_solid, color: Colors.red),
-          //       ),
-          //     ],
-          //   ),
-          // ),
+            // Gap(12),
+            // //// Movie Title & Year & Favorite
+            // Padding(
+            //   padding: const EdgeInsets.symmetric(horizontal: 16),
+            //   child: Row(
+            //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            //     children: [
+            //       AppText(
+            //         "Movie Title (year)",
+            //         fontSize: 18,
+            //         fontWeight: FontWeight.bold,
+            //         color: Colors.white,
+            //       ),
+            //       IconButton(
+            //         onPressed: () {},
+            //         icon: Icon(CupertinoIcons.heart_solid, color: Colors.red),
+            //       ),
+            //     ],
+            //   ),
+            // ),
 
-          // Gap(8),
-          // //// Type of Movie
-          // Padding(
-          //   padding: const EdgeInsets.symmetric(horizontal: 16),
-          //   child: Row(
-          //     children: [
-          //       Chip(
-          //         label: AppText("Type of Movie", fontSize: 14),
-          //         backgroundColor: Colors.grey[800],
-          //       ),
-          //     ],
-          //   ),
-          // ),
+            // Gap(8),
+            // //// Type of Movie
+            // Padding(
+            //   padding: const EdgeInsets.symmetric(horizontal: 16),
+            //   child: Row(
+            //     children: [
+            //       Chip(
+            //         label: AppText("Type of Movie", fontSize: 14),
+            //         backgroundColor: Colors.grey[800],
+            //       ),
+            //     ],
+            //   ),
+            // ),
 
-          // Gap(16),
-          // ///// Overview
-          // Padding(
-          //   padding: const EdgeInsets.symmetric(horizontal: 16),
-          //   child: Row(
-          //     mainAxisAlignment: MainAxisAlignment.start,
-          //     children: [
-          //       AppText(
-          //         "Overview.............................",
-          //         color: Colors.white70,
-          //         fontSize: 14,
-          //         maxLines: 7,
-          //       ),
-          //     ],
-          //   ),
-          // ),
-        ],
+            // Gap(16),
+            // ///// Overview
+            // Padding(
+            //   padding: const EdgeInsets.symmetric(horizontal: 16),
+            //   child: Row(
+            //     mainAxisAlignment: MainAxisAlignment.start,
+            //     children: [
+            //       AppText(
+            //         "Overview.............................",
+            //         color: Colors.white70,
+            //         fontSize: 14,
+            //         maxLines: 7,
+            //       ),
+            //     ],
+            //   ),
+            // ),
+          ],
+        ),
       ),
     );
   }
