@@ -70,8 +70,20 @@ class _SimilarMoviesSectionState extends State<SimilarMoviesSection> {
                     final similarMovies = state.similarMovies[index];
                     return GestureDetector(
                       onTap: () {
-                        Navigator.push(
-                          context,
+                        // Navigator.push(
+                        //   context,
+                        //   MaterialPageRoute(
+                        //     builder: (context) => BlocProvider(
+                        //       create: (_) =>
+                        //           MovieDetailsCubit(DioConsumer(dio: Dio()))
+                        //             ..getDetailsMovie(similarMovies.id),
+                        //       child: DetailsMovieScreen(
+                        //         movieId: similarMovies.id,
+                        //       ),
+                        //     ),
+                        //   ),
+                        // );
+                        Navigator.of(context, rootNavigator: true).push(
                           MaterialPageRoute(
                             builder: (context) => BlocProvider(
                               create: (_) =>
