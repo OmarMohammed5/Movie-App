@@ -35,7 +35,6 @@ class NameAndEmailProfile extends StatelessWidget {
                     AppText(
                       "Name   :    ${state.name}",
                       fontSize: 16,
-                      fontWeight: FontWeight.bold,
                       maxLines: 2,
                     ),
                   ],

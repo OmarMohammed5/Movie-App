@@ -11,6 +11,7 @@ class ImageProfile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Center(
       child: Container(
         padding: EdgeInsets.all(3),
@@ -31,7 +32,7 @@ class ImageProfile extends StatelessWidget {
         ),
         child: CircleAvatar(
           radius: 70,
-          backgroundColor: Colors.black,
+          backgroundColor: isDark ? Colors.black : Colors.white,
           child: ClipOval(
             child: selectedImage == null
                 ? null
