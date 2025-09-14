@@ -89,6 +89,7 @@ class _SimilarMoviesSectionState extends State<SimilarMoviesSection> {
                         width: 160,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(16),
+                          color: Colors.black,
                         ),
                         child: Stack(
                           children: [
