@@ -9,19 +9,20 @@ class AuthFavoriteDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return AlertDialog(
-      backgroundColor: Colors.grey.shade900,
+      backgroundColor: isDark ? Colors.grey.shade900 : Colors.white,
       title: AppText(
         "Login Required",
         fontWeight: FontWeight.bold,
         fontSize: 18,
-        color: Colors.white,
+        // color: Colors.white,
       ),
       content: AppText(
         "Create an account to add favorites.",
         maxLines: 3,
         fontSize: 14,
-        color: Colors.grey,
+        color: Colors.grey.shade600,
         fontWeight: FontWeight.w500,
       ),
       actions: [
@@ -48,7 +49,7 @@ class AuthFavoriteDialog extends StatelessWidget {
                       ),
                     );
                   },
-                  child: AppText("Log in  / ", color: Colors.white),
+                  child: AppText("Log in  / "),
                 ),
                 GestureDetector(
                   onTap: () {
@@ -62,7 +63,7 @@ class AuthFavoriteDialog extends StatelessWidget {
                       ),
                     );
                   },
-                  child: AppText("Sign up", color: Colors.white),
+                  child: AppText("Sign up"),
                 ),
               ],
             ),

@@ -5,7 +5,7 @@ class AppText extends StatelessWidget {
   final String text;
   final double fontSize;
   final FontWeight fontWeight;
-  final Color color;
+  final Color? color;
   final double maxLines;
 
   const AppText(
@@ -13,7 +13,7 @@ class AppText extends StatelessWidget {
     super.key,
     this.fontSize = 16,
     this.fontWeight = FontWeight.normal,
-    this.color = Colors.white,
+    this.color,
     this.maxLines = 1,
   });
 
@@ -27,7 +27,7 @@ class AppText extends StatelessWidget {
         fontFamily: GoogleFonts.acme().fontFamily,
         fontSize: fontSize,
         fontWeight: fontWeight,
-        color: color,
+        color: color ?? Theme.of(context).textTheme.bodyMedium?.color,
       ),
     );
   }

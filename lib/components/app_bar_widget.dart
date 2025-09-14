@@ -16,7 +16,6 @@ class AppBarWidget extends StatelessWidget implements PreferredSize {
   Widget build(BuildContext context) {
     return AppBar(
       automaticallyImplyLeading: false,
-      backgroundColor: AppColors.kPrimaryColor,
       scrolledUnderElevation: 0,
       leadingWidth: 0,
       elevation: 0,
@@ -42,7 +41,7 @@ class AppBarWidget extends StatelessWidget implements PreferredSize {
             "Movie",
             fontSize: 28,
             fontWeight: FontWeight.bold,
-            color: Colors.white,
+            // color: Colors.black,
           ),
 
           AppText(

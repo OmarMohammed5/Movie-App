@@ -14,6 +14,7 @@ class MovieCardWidget extends StatefulWidget {
 }
 
 class _MovieCardWidgetState extends State<MovieCardWidget> {
+  final ScrollController controller = ScrollController();
   @override
   Widget build(BuildContext context) {
     if (widget.movie != null) {
@@ -37,6 +38,7 @@ class _MovieCardWidgetState extends State<MovieCardWidget> {
             );
           } else if (state is MovieLoaded) {
             return GridView.builder(
+              controller: controller,
               itemCount: state.movies.length,
               physics: const NeverScrollableScrollPhysics(),
               shrinkWrap: true,

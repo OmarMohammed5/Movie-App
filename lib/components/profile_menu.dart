@@ -4,15 +4,15 @@ import 'package:moviee_app/theme/app_text_style.dart';
 // ignore: unused_element
 class ProfileMenu extends StatelessWidget {
   final IconData icon;
-  final String title;
-  final Color color;
+  final AppText title;
   final void Function()? onTap;
-
+  final Color color;
   const ProfileMenu({
+    super.key,
     required this.icon,
     required this.title,
-    // ignore: unused_element_parameter
     this.color = Colors.white,
+    // ignore: unused_element_parameter
     // ignore: unused_element_parameter
     this.onTap,
   });
@@ -21,7 +21,7 @@ class ProfileMenu extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       leading: Icon(icon, color: color),
-      title: AppText(title, color: color, fontSize: 16),
+      title: title,
       onTap: onTap,
     );
   }

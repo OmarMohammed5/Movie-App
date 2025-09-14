@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:moviee_app/components/movie_search_view.dart';
-import 'package:moviee_app/theme/app_colors.dart';
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({super.key});
@@ -25,9 +24,6 @@ class _SearchScreenState extends State<SearchScreen> {
         FocusScope.of(context).unfocus();
       },
       child: Scaffold(
-        // backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-        backgroundColor: AppColors.kPrimaryColor,
-
         body: Column(
           children: [
             Expanded(

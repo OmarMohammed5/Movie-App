@@ -15,7 +15,7 @@ class MovieCubit extends Cubit<MovieState> {
 
   /// get movie for Categories [ Action , Adventure , comedy , drama , ......]
   getMoviesByCategory(int genreId) async {
-    // emit(MovieLoading());
+    emit(MovieLoading());
     try {
       final response = await api.get(
         "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&api_key=$apiKey&with_genres=$genreId",

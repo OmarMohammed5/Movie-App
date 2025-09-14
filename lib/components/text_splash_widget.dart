@@ -13,12 +13,7 @@ class TextSplashWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         spacing: 15,
         children: [
-          AppText(
-            "Movie",
-            color: Colors.white,
-            fontSize: 50,
-            fontWeight: FontWeight.bold,
-          ),
+          AppText("Movie", fontSize: 50, fontWeight: FontWeight.bold),
           AppText(
             "saga",
             color: AppColors.kLogoColor,

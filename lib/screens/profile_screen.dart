@@ -55,19 +55,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
         }
       },
       child: Scaffold(
-        backgroundColor: AppColors.kPrimaryColor,
         appBar: AppBar(
-          title: AppText(
-            "Profile",
-            fontSize: 22,
-            fontWeight: FontWeight.bold,
-            color: Colors.white,
-          ),
-          actions: [
-            HugeIcon(icon: HugeIcons.strokeRoundedUser, color: Colors.white),
-            Gap(10),
-          ],
-          backgroundColor: AppColors.kPrimaryColor,
+          title: AppText("Profile", fontSize: 22, fontWeight: FontWeight.bold),
+          actions: [Icon(HugeIcons.strokeRoundedUser), Gap(10)],
         ),
         body: BlocBuilder<AuthCubit, AuthState>(
           builder: (context, state) {
@@ -85,12 +75,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Icon(Icons.lock_outline, size: 60, color: Colors.grey),
+                    Icon(Icons.lock_outline, size: 60),
                     SizedBox(height: 16),
                     AppText(
                       "You need to login to view your profile",
                       fontSize: 16,
-                      color: Colors.white,
                     ),
                   ],
                 ),

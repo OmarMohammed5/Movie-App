@@ -27,8 +27,21 @@ class _ActorProfileScreenState extends State<ActorProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-      backgroundColor: AppColors.kPrimaryColor,
+      appBar: AppBar(
+        scrolledUnderElevation: 0,
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: Icon(Icons.arrow_back_ios, size: 20),
+        ),
+        centerTitle: true,
+        title: AppText(
+          "Actor Profile",
+          fontSize: 24,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
       body: SingleChildScrollView(
         child: BlocBuilder<ActorCubit, ActorState>(
           builder: (context, state) {
@@ -44,7 +57,7 @@ class _ActorProfileScreenState extends State<ActorProfileScreen> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   /// ===== Header Section =====
-                  const Gap(80),
+                  const Gap(20),
                   //// image profile
                   ActorProfileImage(actorModel: state.actors),
 
@@ -61,7 +74,6 @@ class _ActorProfileScreenState extends State<ActorProfileScreen> {
                       alignment: Alignment.centerLeft,
                       child: AppText(
                         "His Works",
-                        color: Colors.white,
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
                       ),

@@ -21,10 +21,11 @@ class _LogoutButtonState extends State<LogoutButton> {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return ProfileMenu(
       icon: HugeIcons.strokeRoundedLogout02,
-      title: "Log out",
-      color: Colors.redAccent,
+      color: AppColors.kLogoColor,
+      title: AppText("Log Out", fontSize: 16, color: AppColors.kLogoColor),
       onTap: () {
         showDialog(
           context: context,
@@ -34,10 +35,9 @@ class _LogoutButtonState extends State<LogoutButton> {
                 horizontal: 20,
                 vertical: 10,
               ),
-              backgroundColor: Colors.grey.shade900,
+              backgroundColor: isDark ? Colors.grey.shade900 : Colors.white,
               title: AppText(
                 "Are you sure you want to log out ?",
-                color: Colors.white,
                 fontSize: 18,
                 maxLines: 2,
               ),
@@ -49,7 +49,7 @@ class _LogoutButtonState extends State<LogoutButton> {
                       onPressed: () {
                         Navigator.pop(context);
                       },
-                      child: AppText("Cancel", color: Colors.white),
+                      child: AppText("Cancel"),
                     ),
                     BlocBuilder<AuthCubit, AuthState>(
                       builder: (context, state) {

@@ -29,16 +29,7 @@ class MovieCard extends StatelessWidget {
       },
       child: Container(
         width: 160,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(16),
-          boxShadow: [
-            BoxShadow(
-              color: AppColors.kPrimaryColor,
-              blurRadius: 12,
-              offset: Offset(0, 9),
-            ),
-          ],
-        ),
+        decoration: BoxDecoration(borderRadius: BorderRadius.circular(16)),
         child: Column(
           children: [
             Stack(

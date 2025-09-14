@@ -21,7 +21,6 @@ class TopTenMovies extends StatelessWidget {
                 "Top Ten Movies",
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
-                color: Colors.white,
               ),
             ],
           ),

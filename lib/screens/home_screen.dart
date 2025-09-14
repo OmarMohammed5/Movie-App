@@ -6,7 +6,6 @@ import 'package:moviee_app/components/categories_list_widget.dart';
 import 'package:moviee_app/components/movie_card_widget.dart';
 import 'package:moviee_app/components/top_ten_movies.dart';
 import 'package:moviee_app/models/movie_model.dart';
-import 'package:moviee_app/theme/app_colors.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key, this.movieModel});
@@ -20,8 +19,6 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-      backgroundColor: AppColors.kPrimaryColor,
       appBar: AppBarWidget(),
       body: CustomScrollView(
         physics: BouncingScrollPhysics(),
@@ -30,7 +27,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
           /// Banners
           SliverToBoxAdapter(child: CarouselSliderWidget()),
-          SliverToBoxAdapter(child: Gap(50)),
+          SliverToBoxAdapter(child: Gap(30)),
 
           /// Top 10 Movies
           SliverToBoxAdapter(child: TopTenMovies()),
@@ -39,10 +36,6 @@ class _HomeScreenState extends State<HomeScreen> {
           /// Categories
           SliverToBoxAdapter(child: CategoriesListWidget()),
           SliverToBoxAdapter(child: Gap(30)),
-
-          // /// Filter
-          // SliverToBoxAdapter(child: FilterWidget()),
-          // SliverToBoxAdapter(child: Gap(30)),
 
           /// Movie Cards
           SliverToBoxAdapter(child: MovieCardWidget(movie: widget.movieModel)),

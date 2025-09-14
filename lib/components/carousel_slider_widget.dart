@@ -80,9 +80,19 @@ class CarouselSliderWidget extends StatelessWidget {
                             bottom: 40,
                             left: 16,
                             right: 20,
-                            child: AppText(
-                              state.banners[itemIndex].title,
-                              fontSize: 20,
+                            child: Container(
+                              padding: EdgeInsets.all(6),
+                              decoration: BoxDecoration(
+                                color: Colors.black.withValues(alpha: 0.6),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: Center(
+                                child: AppText(
+                                  state.banners[itemIndex].title,
+                                  fontSize: 18,
+                                  color: Colors.white,
+                                ),
+                              ),
                             ),
                           ),
                         ],

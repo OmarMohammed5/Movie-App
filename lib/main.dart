@@ -20,7 +20,7 @@ import 'package:moviee_app/core/cubit/cubit/search_movie_cubit.dart';
 import 'package:moviee_app/core/cubit/cubit/theme_cubit.dart';
 import 'package:moviee_app/core/cubit/cubit/top_movies_cubit.dart';
 import 'package:moviee_app/screens/splash_screen.dart';
-import 'package:moviee_app/theme/app_colors.dart';
+import 'package:moviee_app/theme/app_themes.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -65,34 +65,8 @@ class MoviesApp extends StatelessWidget {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           themeMode: themeMode,
-          theme: ThemeData.light().copyWith(
-            scaffoldBackgroundColor: Colors.white,
-            appBarTheme: const AppBarTheme(
-              backgroundColor: Colors.white,
-              iconTheme: IconThemeData(color: Colors.black),
-              titleTextStyle: TextStyle(color: Colors.black, fontSize: 20),
-            ),
-            bottomNavigationBarTheme: BottomNavigationBarThemeData(
-              backgroundColor: Colors.white,
-              selectedItemColor: AppColors.kLogoColor,
-
-              unselectedItemColor: Colors.grey,
-            ),
-          ),
-
-          darkTheme: ThemeData.dark().copyWith(
-            scaffoldBackgroundColor: Colors.black,
-            appBarTheme: const AppBarTheme(
-              backgroundColor: Colors.black,
-              iconTheme: IconThemeData(color: Colors.white),
-              titleTextStyle: TextStyle(color: Colors.white, fontSize: 20),
-            ),
-            bottomNavigationBarTheme: BottomNavigationBarThemeData(
-              backgroundColor: Colors.black,
-              selectedItemColor: AppColors.kLogoColor,
-              unselectedItemColor: Colors.grey,
-            ),
-          ),
+          theme: AppThemes.light,
+          darkTheme: AppThemes.dark,
           home: const SplashScreen(),
         );
       },

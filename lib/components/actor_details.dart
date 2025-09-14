@@ -16,17 +16,12 @@ class ActorDetails extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         /// name of actor
-        AppText(
-          actorModel.name,
-          color: Colors.white,
-          fontSize: 28,
-          fontWeight: FontWeight.bold,
-        ),
+        AppText(actorModel.name, fontSize: 24),
         const Gap(8),
 
         AppText(
           actorModel.knownForDepartment,
-          color: Colors.grey.shade300,
+          color: Colors.grey.shade600,
           fontSize: 16,
         ),
 
@@ -41,14 +36,14 @@ class ActorDetails extends StatelessWidget {
               Row(
                 spacing: 8,
                 children: [
-                  HugeIcon(
-                    icon: HugeIcons.strokeRoundedBirthdayCake,
-                    color: Colors.grey,
+                  Icon(
+                    HugeIcons.strokeRoundedBirthdayCake,
+                    color: Colors.grey.shade600,
                     size: 22,
                   ),
                   AppText(
                     "Born  :  ${actorModel.birthday}",
-                    color: Colors.grey.shade300,
+                    color: Colors.grey.shade600,
                     fontSize: 14,
                   ),
                 ],
@@ -60,12 +55,12 @@ class ActorDetails extends StatelessWidget {
                 children: [
                   HugeIcon(
                     icon: HugeIcons.strokeRoundedGoogleMaps,
-                    color: Colors.grey,
+                    color: Colors.grey.shade600,
                     size: 22,
                   ),
                   AppText(
                     "Place  :   ${actorModel.placeOfBirth}",
-                    color: Colors.grey.shade300,
+                    color: Colors.grey.shade600,
                     fontSize: 14,
                   ),
                 ],
@@ -76,12 +71,12 @@ class ActorDetails extends StatelessWidget {
                 children: [
                   HugeIcon(
                     icon: HugeIcons.strokeRoundedCalendar03,
-                    color: Colors.grey,
+                    color: Colors.grey.shade600,
                     size: 22,
                   ),
                   AppText(
                     "Died  :   ${actorModel.deathday}",
-                    color: Colors.grey.shade300,
+                    color: Colors.grey.shade600,
                     fontSize: 14,
                   ),
                 ],
@@ -97,7 +92,7 @@ class ActorDetails extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
-            children: [AppText("Biography", color: Colors.white, fontSize: 18)],
+            children: [AppText("Biography", fontSize: 18)],
           ),
         ),
 
@@ -109,7 +104,7 @@ class ActorDetails extends StatelessWidget {
             text: actorModel.biography,
             trimLines: 4,
             textStyle: TextStyle(
-              color: Colors.grey.shade400,
+              color: Colors.grey.shade600,
               fontSize: 14,
               fontFamily: GoogleFonts.poppins().fontFamily,
             ),

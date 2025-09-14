@@ -22,7 +22,7 @@ class ActorMovieList extends StatelessWidget {
           );
         } else if (state is ActorMoviesLoaded) {
           return SizedBox(
-            height: 270,
+            height: 290,
             child: ListView.separated(
               scrollDirection: Axis.horizontal,
               padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -59,15 +59,11 @@ class ActorMovieList extends StatelessWidget {
                       ),
 
                       /// Name of Movie
-                      Text(
+                      AppText(
                         actorMovies.title,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500,
-                        ),
+                        maxLines: 2,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w500,
                       ),
 
                       /// Character
@@ -76,14 +72,14 @@ class ActorMovieList extends StatelessWidget {
                         AppText(
                           actorMovies.character!,
                           maxLines: 1,
-                          color: Colors.white70,
+                          color: Colors.grey.shade600,
                           fontSize: 13,
                         ),
 
                       /// Year
                       AppText(
                         actorMovies.year,
-                        color: Colors.grey,
+                        color: Colors.grey.shade600,
                         fontSize: 12,
                       ),
                     ],

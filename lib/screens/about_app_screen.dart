@@ -1,8 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gap/flutter_gap.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:hugeicons/hugeicons.dart';
 import 'package:moviee_app/theme/app_colors.dart';
 import 'package:moviee_app/theme/app_text_style.dart';
 
@@ -12,9 +10,7 @@ class AboutAppScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.kPrimaryColor,
       appBar: AppBar(
-        backgroundColor: AppColors.kPrimaryColor,
         automaticallyImplyLeading: false,
         elevation: 0,
         scrolledUnderElevation: 0,
@@ -25,17 +21,9 @@ class AboutAppScreen extends StatelessWidget {
               onTap: () {
                 Navigator.pop(context);
               },
-              child: HugeIcon(
-                icon: HugeIcons.strokeRoundedArrowLeft01,
-                color: Colors.white,
-                size: 30,
-              ),
+              child: Icon(Icons.arrow_back_ios, size: 20),
             ),
-            Expanded(
-              child: Center(
-                child: AppText("About App", color: Colors.white, fontSize: 24),
-              ),
-            ),
+            Expanded(child: Center(child: AppText("About App", fontSize: 24))),
             Gap(30),
           ],
         ),
@@ -92,7 +80,7 @@ class AboutAppScreen extends StatelessWidget {
               child: const AppText(
                 "Discover movies, watch trailers, and save your favorites in one place.",
                 fontSize: 16,
-                color: Colors.grey,
+                // color: Colors.grey,
                 maxLines: 7,
               ),
             ),
@@ -111,7 +99,6 @@ class AboutAppScreen extends StatelessWidget {
                   "you can easily save movies and revisit them anytime.",
                   fontSize: 16,
                   maxLines: 7,
-                  color: Colors.white,
                 ),
               ),
             ),

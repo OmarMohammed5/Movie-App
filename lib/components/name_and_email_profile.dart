@@ -31,12 +31,11 @@ class NameAndEmailProfile extends StatelessWidget {
                   spacing: 14,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Icon(CupertinoIcons.person, color: Colors.white, size: 25),
+                    Icon(CupertinoIcons.person, size: 25),
                     AppText(
                       "Name   :    ${state.name}",
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
-                      color: Colors.white,
                       maxLines: 2,
                     ),
                   ],
@@ -46,12 +45,8 @@ class NameAndEmailProfile extends StatelessWidget {
                   spacing: 14,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Icon(Icons.email_outlined, color: Colors.white, size: 25),
-                    AppText(
-                      "Email   :    ${state.email}",
-                      fontSize: 16,
-                      color: Colors.white,
-                    ),
+                    Icon(Icons.email_outlined, size: 25),
+                    AppText("Email   :    ${state.email}", fontSize: 16),
                   ],
                 ),
               ],

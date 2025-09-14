@@ -44,16 +44,9 @@ class MoviePosterAppBar extends StatelessWidget {
             /// Gradient Overlay
             Container(
               decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: [
-                    Colors.transparent,
-                    Colors.black.withValues(alpha: 0.2),
-                    Colors.black.withValues(alpha: 0.2),
-                    Colors.black,
-                  ],
-                  stops: const [0.0, 0.4, 0.75, 1.0],
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(25),
+                  topRight: Radius.circular(25),
                 ),
               ),
             ),

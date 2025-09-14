@@ -6,7 +6,6 @@ import 'package:moviee_app/components/filter_widget.dart';
 import 'package:moviee_app/components/filtered_movies_grid.dart';
 import 'package:moviee_app/core/cubit/cubit/cubit/filter_cubit.dart';
 import 'package:moviee_app/core/cubit/cubit/search_movie_cubit.dart';
-import 'package:moviee_app/theme/app_colors.dart';
 import 'package:moviee_app/theme/app_text_style.dart';
 
 class MovieSearchView extends StatefulWidget {
@@ -43,16 +42,12 @@ class _MovieSearchViewState extends State<MovieSearchView> {
                     context.read<SearchMovieCubit>().getSearchMovie(v);
                   }
                 },
-                style: TextStyle(color: Colors.white),
                 controller: controller,
-                cursorColor: Colors.white,
+                cursorColor: Colors.black,
                 cursorHeight: 20,
                 decoration: InputDecoration(
-                  hint: AppText("Search", fontSize: 16, color: Colors.white),
-                  prefixIcon: HugeIcon(
-                    icon: HugeIcons.strokeRoundedSearch01,
-                    color: Colors.white,
-                  ),
+                  hint: AppText("Search", fontSize: 16),
+                  prefixIcon: Icon(HugeIcons.strokeRoundedSearch01),
                   suffixIcon:
                       /// Clear Text Button >> only show when the search text field is not empty
                       controller.text.isNotEmpty
@@ -70,21 +65,17 @@ class _MovieSearchViewState extends State<MovieSearchView> {
                             });
                           },
 
-                          child: HugeIcon(
-                            icon: HugeIcons.strokeRoundedTextClear,
-                            color: Colors.white,
-                          ),
+                          child: Icon(HugeIcons.strokeRoundedTextClear),
                         )
                       : null,
                   filled: true,
-                  fillColor: AppColors.kTextFieldColor,
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
-                    borderSide: BorderSide(color: AppColors.kTextFieldColor),
+                    // borderSide: BorderSide(color: AppColors.kTextFieldColor),
                   ),
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
-                    borderSide: BorderSide(color: AppColors.kTextFieldColor),
+                    // borderSide: BorderSide(color: AppColors.kTextFieldColor),
                   ),
                 ),
               ),

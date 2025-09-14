@@ -37,7 +37,6 @@ class _CategoriesListWidgetState extends State<CategoriesListWidget> {
                   "Categories",
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
-                  color: Colors.white,
                 ),
               ],
             ),
@@ -82,7 +81,7 @@ class _CategoriesListWidgetState extends State<CategoriesListWidget> {
                                 (state is GenersLoaded &&
                                     state.selectedIndex == index)
                                 ? AppColors.kLogoColor
-                                : Colors.grey.withValues(alpha: 0.4),
+                                : Colors.grey.withValues(alpha: 0.6),
                             shape: BoxShape.rectangle,
                             borderRadius: BorderRadius.circular(8),
                           ),

@@ -29,17 +29,12 @@ class _TrailerScreenState extends State<TrailerScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-      backgroundColor: AppColors.kPrimaryColor,
       appBar: AppBar(
         scrolledUnderElevation: 0,
         automaticallyImplyLeading: false,
-        // backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
-        backgroundColor: AppColors.kPrimaryColor,
         centerTitle: true,
         leading: IconButton(
           icon: Icon(Icons.arrow_back_ios),
-          color: Colors.white,
           onPressed: () {
             Navigator.pop(context);
           },
@@ -48,12 +43,7 @@ class _TrailerScreenState extends State<TrailerScreen> {
           spacing: 6,
           mainAxisSize: MainAxisSize.min,
           children: [
-            AppText(
-              "Trailer",
-              color: Colors.white,
-              fontSize: 22,
-              fontWeight: FontWeight.bold,
-            ),
+            AppText("Trailer", fontSize: 22, fontWeight: FontWeight.bold),
             HugeIcon(
               icon: HugeIcons.strokeRoundedYoutube,
               color: AppColors.kLogoColor,

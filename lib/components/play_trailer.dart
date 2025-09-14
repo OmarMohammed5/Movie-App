@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hugeicons/hugeicons.dart';
 import 'package:moviee_app/core/cubit/cubit/movie_trailer_cubit.dart';
 import 'package:moviee_app/screens/trailer_screen.dart';
+import 'package:moviee_app/theme/app_colors.dart';
 import 'package:moviee_app/theme/app_text_style.dart';
 
 class PlayTrailer extends StatelessWidget {
@@ -42,8 +43,8 @@ class PlayTrailer extends StatelessWidget {
         },
         child: Container(
           padding: const EdgeInsets.all(16),
-          decoration: const BoxDecoration(
-            color: Colors.red,
+          decoration: BoxDecoration(
+            color: AppColors.kLogoColor,
             shape: BoxShape.circle,
           ),
           child: const HugeIcon(

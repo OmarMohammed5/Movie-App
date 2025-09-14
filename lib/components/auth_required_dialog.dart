@@ -10,20 +10,18 @@ class AuthRequiredDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return AlertDialog(
-      backgroundColor: Colors.grey.shade900,
+      backgroundColor: isDark ? Colors.grey.shade900 : Colors.white,
       title: Text(
         "Authentication Required",
-        style: TextStyle(
-          fontFamily: GoogleFonts.acme().fontFamily,
-          color: Colors.white,
-        ),
+        style: TextStyle(fontFamily: GoogleFonts.acme().fontFamily),
       ),
       content: Text(
         "You need to log in / sign up to access the Profile section.",
         style: TextStyle(
           fontFamily: GoogleFonts.acme().fontFamily,
-          color: Colors.grey,
+          color: Colors.grey.shade600,
         ),
       ),
       actions: [
@@ -50,7 +48,7 @@ class AuthRequiredDialog extends StatelessWidget {
                       ),
                     );
                   },
-                  child: AppText("Log in  / ", color: Colors.white),
+                  child: AppText("Log in  / "),
                 ),
                 GestureDetector(
                   onTap: () {
@@ -64,7 +62,7 @@ class AuthRequiredDialog extends StatelessWidget {
                       ),
                     );
                   },
-                  child: AppText("Sign up", color: Colors.white),
+                  child: AppText("Sign up"),
                 ),
               ],
             ),

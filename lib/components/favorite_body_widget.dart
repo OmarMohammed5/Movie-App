@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -62,96 +63,110 @@ class FavoriteBodyWidget extends StatelessWidget {
                     borderRadius: BorderRadius.circular(16),
                     boxShadow: const [
                       BoxShadow(
-                        color: Colors.black26,
+                        color: Colors.black,
                         blurRadius: 6,
                         offset: Offset(0, 4),
                       ),
                     ],
                   ),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(16),
-                    child: Stack(
-                      children: [
-                        Image.network(
-                          movie["poster"],
+                  child: Stack(
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(16),
+                        child: CachedNetworkImage(
+                          imageUrl: movie["poster"],
                           fit: BoxFit.cover,
-                          height: double.infinity,
                           width: double.infinity,
-                        ),
-                        Positioned(
-                          right: 10,
-                          top: 10,
-                          child: SizedBox(
-                            height: 30,
-                            width: 30,
-                            child: GestureDetector(
-                              onTap: () {
-                                context.read<FavoritesCubit>().removeFavorite(
-                                  movie['id'].toString(),
-                                );
-                              },
-                              child: Icon(
-                                color: AppColors.kLogoColor,
-                                CupertinoIcons.heart_solid,
-                              ),
+                          placeholder: (context, url) => Center(
+                            child: CircularProgressIndicator(
+                              color: AppColors.kLogoColor,
+                              strokeWidth: 2,
+                            ),
+                          ),
+                          errorWidget: (context, url, error) => Center(
+                            child: Icon(
+                              Icons.error,
+                              color: AppColors.kLogoColor,
                             ),
                           ),
                         ),
-                        Positioned(
-                          bottom: 0,
-                          left: 0,
-                          right: 0,
-                          child: Container(
-                            padding: const EdgeInsets.all(10),
+                      ),
+                      Positioned(
+                        right: 10,
+                        top: 10,
+                        child: SizedBox(
+                          height: 30,
+                          width: 30,
+                          child: GestureDetector(
+                            onTap: () {
+                              context.read<FavoritesCubit>().removeFavorite(
+                                movie['id'].toString(),
+                              );
+                            },
+                            child: Icon(
+                              color: AppColors.kLogoColor,
+                              CupertinoIcons.heart_solid,
+                            ),
+                          ),
+                        ),
+                      ),
+                      Positioned(
+                        bottom: 0,
+                        left: 0,
+                        right: 0,
+                        child: Container(
+                          padding: EdgeInsets.all(12),
+                          decoration: BoxDecoration(
                             color: Colors.black.withValues(alpha: 0.6),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                AppText(
-                                  movie['title'],
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white,
-                                ),
-                                const Gap(8),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Row(
-                                      children: [
-                                        const Icon(
-                                          Icons.star,
-                                          color: Colors.orangeAccent,
-                                          size: 16,
-                                        ),
-                                        const SizedBox(width: 4),
-                                        AppText(
-                                          (movie['vote_average'] as num)
-                                              .toStringAsFixed(1),
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.white,
-                                        ),
-                                      ],
-                                    ),
-                                    AppText(
-                                      DateTime.parse(
-                                        movie['release_date'],
-                                      ).year.toString(),
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.white,
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
+                            borderRadius: BorderRadius.circular(16),
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              AppText(
+                                movie['title'],
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
+                              ),
+                              const Gap(8),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Row(
+                                    children: [
+                                      const Icon(
+                                        Icons.star,
+                                        color: Colors.orangeAccent,
+                                        size: 16,
+                                      ),
+                                      const SizedBox(width: 4),
+                                      AppText(
+                                        (movie['vote_average'] as num)
+                                            .toStringAsFixed(1),
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white,
+                                      ),
+                                    ],
+                                  ),
+                                  AppText(
+                                    DateTime.parse(
+                                      movie['release_date'],
+                                    ).year.toString(),
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white,
+                                  ),
+                                ],
+                              ),
+                            ],
                           ),
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
               );

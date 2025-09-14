@@ -28,12 +28,7 @@ class MovieDetailsBody extends StatelessWidget {
 
               Gap(20),
               //// Name of Movie
-              AppText(
-                movie.title,
-                color: Colors.white,
-                fontSize: 26,
-                fontWeight: FontWeight.bold,
-              ),
+              AppText(movie.title, fontSize: 26, fontWeight: FontWeight.bold),
               Gap(10),
 
               /// Year + Rate
@@ -45,19 +40,18 @@ class MovieDetailsBody extends StatelessWidget {
                     children: [
                       HugeIcon(
                         icon: HugeIcons.strokeRoundedStar,
-                        color: Colors.orangeAccent,
+                        color: Colors.orangeAccent.shade700,
                         size: 20,
                       ),
                       Gap(4),
                       AppText(
                         (movie.voteAverage as num).toStringAsFixed(1),
                         fontSize: 16,
-                        color: Colors.grey,
                       ),
                     ],
                   ),
-                  AppText("||", color: Colors.grey),
-                  AppText(movie.year, fontSize: 16, color: Colors.grey),
+                  AppText("||"),
+                  AppText(movie.year, fontSize: 16),
                 ],
               ),
 
@@ -75,7 +69,6 @@ class MovieDetailsBody extends StatelessWidget {
                         AppText(
                           "The Story",
                           fontSize: 20,
-                          color: Colors.white,
                           fontWeight: FontWeight.w700,
                         ),
                       ],
@@ -86,8 +79,8 @@ class MovieDetailsBody extends StatelessWidget {
                       text: movie.overview,
                       trimLines: 4,
                       textStyle: TextStyle(
-                        color: Colors.grey,
-                        fontSize: 13,
+                        color: Colors.grey.shade600,
+                        fontSize: 14,
                         fontFamily: GoogleFonts.poppins().fontFamily,
                       ),
                       linkStyle: TextStyle(

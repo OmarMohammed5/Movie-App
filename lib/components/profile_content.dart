@@ -142,14 +142,20 @@ class _ProfileContentState extends State<ProfileContent> {
             icon: isDarkMode
                 ? HugeIcons.strokeRoundedSun02
                 : HugeIcons.strokeRoundedMoon02,
-            title: isDarkMode ? "Light Mode" : "Dark Mode",
+            color: isDarkMode ? Colors.white : Colors.black,
+
+            title: AppText(
+              isDarkMode ? "Light Mode" : "Dark Mode",
+              fontSize: 16,
+            ),
             onTap: () {
               context.read<ThemeCubit>().toggleTheme();
             },
           ),
           ProfileMenu(
             icon: HugeIcons.strokeRoundedInformationCircle,
-            title: "About App",
+            color: isDarkMode ? Colors.white : Colors.black,
+            title: AppText("About App", fontSize: 16),
             onTap: () {
               Navigator.push(
                 context,

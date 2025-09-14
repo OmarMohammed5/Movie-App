@@ -38,12 +38,7 @@ class _MovieCastSectionState extends State<MovieCastSection> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              AppText(
-                "Casts",
-                color: Colors.white,
-                fontSize: 18,
-                fontWeight: FontWeight.w700,
-              ),
+              AppText("Casts", fontSize: 18, fontWeight: FontWeight.w700),
             ],
           ),
         ),
@@ -114,7 +109,6 @@ class _MovieCastSectionState extends State<MovieCastSection> {
                             ///  Name of Actor
                             AppText(
                               _getFirstTwoWords(actor.name),
-                              color: Colors.white,
                               fontSize: 13,
                               fontWeight: FontWeight.w600,
                               maxLines: 1,
@@ -122,8 +116,8 @@ class _MovieCastSectionState extends State<MovieCastSection> {
 
                             /// Character
                             AppText(
-                              _getFirstTwoWords(actor.character ?? "-"),
-                              color: Colors.grey,
+                              _getFirstTwoWords(actor.character),
+                              color: Colors.grey.shade600,
                               fontSize: 12,
                               maxLines: 1,
                             ),

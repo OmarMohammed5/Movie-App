@@ -30,11 +30,7 @@ class _FilterWidgetState extends State<FilterWidget> {
                     onTap: () {
                       context.read<FilterCubit>().filterRate();
                     },
-                    child: HugeIcon(
-                      icon: HugeIcons.strokeRoundedFilter,
-                      color: Colors.white,
-                      size: 20.0,
-                    ),
+                    child: Icon(HugeIcons.strokeRoundedFilter, size: 20.0),
                   ),
                   AppText("Highest to Lowest", fontSize: 12),
                 ],
@@ -48,9 +44,8 @@ class _FilterWidgetState extends State<FilterWidget> {
                     onTap: () {
                       context.read<FilterCubit>().filterTitle();
                     },
-                    child: HugeIcon(
-                      icon: HugeIcons.strokeRoundedFilterVertical,
-                      color: Colors.white,
+                    child: Icon(
+                      HugeIcons.strokeRoundedFilterVertical,
                       size: 25.0,
                     ),
                   ),
