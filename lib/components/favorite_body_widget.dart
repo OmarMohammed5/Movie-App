@@ -53,13 +53,24 @@ class FavoriteBodyWidget extends StatelessWidget {
               return GestureDetector(
                 onTap: () {
                   // print("Movie tapped: ${movie['id']}, ${movie['title']}");
-                  Navigator.push(
-                    context,
+                  // Navigator.push(
+                  //   context,
+                  //   MaterialPageRoute(
+                  //     builder: (_) =>
+                  // DetailsMovieScreen(
+                  //       key: ValueKey(movie['id']),
+                  //       movieId: movie['id'] as int,
+                  //     ),
+                  //   ),
+                  // );
+                  Navigator.of(context, rootNavigator: true).push(
                     MaterialPageRoute(
-                      builder: (_) => DetailsMovieScreen(
-                        key: ValueKey(movie['id']),
-                        movieId: movie['id'] as int,
-                      ),
+                      builder: (context) {
+                        return DetailsMovieScreen(
+                          key: ValueKey(movie['id']),
+                          movieId: movie['id'] as int,
+                        );
+                      },
                     ),
                   );
                 },
