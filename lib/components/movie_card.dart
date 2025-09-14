@@ -20,9 +20,9 @@ class MovieCard extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         context.read<MovieDetailsCubit>().getDetailsMovie(movie.id);
-        Navigator.push(
-          context,
+        Navigator.of(context, rootNavigator: true).push(
           MaterialPageRoute(
+            fullscreenDialog: true,
             builder: (context) => DetailsMovieScreen(movieId: movie.id),
           ),
         );
