@@ -81,23 +81,36 @@ class CarouselSliderWidget extends StatelessWidget {
 
                             //// Title
                             Positioned(
-                              bottom: 40,
+                              bottom: MediaQuery.of(context).size.height * 0.05,
                               left: 0,
                               right: 0,
                               child: Container(
-                                padding: EdgeInsets.all(6),
+                                padding: const EdgeInsets.all(6),
                                 decoration: BoxDecoration(
                                   color: Colors.black.withValues(alpha: 0.6),
-                                  borderRadius: BorderRadius.only(
+                                  borderRadius: const BorderRadius.only(
                                     bottomLeft: Radius.circular(10),
                                     bottomRight: Radius.circular(10),
                                   ),
                                 ),
                                 child: Center(
-                                  child: AppText(
-                                    state.banners[itemIndex].title,
-                                    fontSize: 18,
-                                    color: Colors.white,
+                                  child: LayoutBuilder(
+                                    builder: (context, constraints) {
+                                      return ConstrainedBox(
+                                        constraints: BoxConstraints(
+                                          maxWidth: constraints.maxWidth * 0.9,
+                                        ),
+                                        child: FittedBox(
+                                          fit: BoxFit.scaleDown,
+                                          child: AppText(
+                                            state.banners[itemIndex].title,
+                                            fontSize: 18,
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      );
+                                    },
                                   ),
                                 ),
                               ),
