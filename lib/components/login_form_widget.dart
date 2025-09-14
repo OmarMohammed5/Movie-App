@@ -40,7 +40,11 @@ class _LoginFormWidgetState extends State<LoginFormWidget> {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               backgroundColor: Colors.grey.shade800,
-              content: AppText("Logged in successfully ", fontSize: 15),
+              content: AppText(
+                "Logged in successfully ",
+                fontSize: 15,
+                color: Colors.white,
+              ),
             ),
           );
 
@@ -55,7 +59,11 @@ class _LoginFormWidgetState extends State<LoginFormWidget> {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               backgroundColor: Colors.grey.shade800,
-              content: AppText(state.errorMessage, fontSize: 15),
+              content: AppText(
+                state.errorMessage,
+                fontSize: 15,
+                color: Colors.white,
+              ),
             ),
           );
         }
