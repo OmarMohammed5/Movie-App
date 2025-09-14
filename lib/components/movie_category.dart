@@ -22,12 +22,10 @@ class MovieCategory extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         context.read<MovieDetailsCubit>().getDetailsMovie(movie.id);
-        Navigator.push(
-          context,
+        Navigator.of(context, rootNavigator: true).push(
           MaterialPageRoute(
-            builder: (context) {
-              return DetailsMovieScreen(movieId: movie.id);
-            },
+            fullscreenDialog: true,
+            builder: (context) => DetailsMovieScreen(movieId: movie.id),
           ),
         );
       },
