@@ -84,7 +84,6 @@ class CarouselSliderWidget extends StatelessWidget {
                               padding: EdgeInsets.all(6),
                               decoration: BoxDecoration(
                                 color: Colors.black.withValues(alpha: 0.5),
-                                // borderRadius: BorderRadius.circular(10),
                               ),
                               child: Center(
                                 child: AppText(
