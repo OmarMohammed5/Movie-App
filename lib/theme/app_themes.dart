@@ -138,16 +138,16 @@ class AppThemes {
       fillColor: Colors.grey[850],
       border: OutlineInputBorder(
         borderRadius: BorderRadius.all(Radius.circular(12)),
-        borderSide: BorderSide(color: Colors.white30),
+        borderSide: BorderSide(color: Colors.grey.shade800),
       ),
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.all(Radius.circular(12)),
-        borderSide: BorderSide(color: Colors.white30),
+        borderSide: BorderSide(color: Colors.grey.shade800),
       ),
       focusColor: Colors.white30,
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.all(Radius.circular(12)),
-        borderSide: BorderSide(color: Colors.white30, width: 2),
+        borderSide: BorderSide(color: Colors.grey.shade800, width: 2),
       ),
       errorBorder: OutlineInputBorder(
         borderRadius: BorderRadius.all(Radius.circular(12)),
