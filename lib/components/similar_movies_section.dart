@@ -178,7 +178,7 @@ class _SimilarMoviesSectionState extends State<SimilarMoviesSection> {
                             ),
                             //// Title && Rate && Year
                             Positioned(
-                              bottom: 6,
+                              bottom: 10,
                               left: 0,
                               right: 0,
                               child: Container(
