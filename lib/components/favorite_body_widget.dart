@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -13,6 +14,17 @@ class FavoriteBodyWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    /// Check if user = null >> "User not Logged in" in favorite screen
+    final user = FirebaseAuth.instance.currentUser;
+    if (user == null) {
+      return Center(
+        child: AppText(
+          "User not Logged in",
+          color: AppColors.kLogoColor,
+          fontSize: 18,
+        ),
+      );
+    }
     return BlocConsumer<FavoritesCubit, FavoritesState>(
       listener: (context, state) {},
       builder: (context, state) {
@@ -24,13 +36,7 @@ class FavoriteBodyWidget extends StatelessWidget {
           final favorites = state.favorites;
 
           if (favorites.isEmpty) {
-            return Center(
-              child: AppText(
-                "No favorites yet",
-                color: Colors.white,
-                fontSize: 22,
-              ),
-            );
+            return Center(child: AppText("No favorites yet", fontSize: 22));
           }
 
           return GridView.builder(
