@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_gap/flutter_gap.dart';
 import 'package:hugeicons/hugeicons.dart';
 import 'package:moviee_app/theme/app_colors.dart';
 import 'package:moviee_app/theme/app_text_style.dart';
@@ -28,17 +30,11 @@ class _TrailerScreenState extends State<TrailerScreen> {
 
   @override
   Widget build(BuildContext context) {
+    // bool isLandscape =
+    //     MediaQuery.of(context).orientation == Orientation.landscape;
+
     return Scaffold(
       appBar: AppBar(
-        scrolledUnderElevation: 0,
-        automaticallyImplyLeading: false,
-        centerTitle: true,
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
         title: Row(
           spacing: 6,
           mainAxisSize: MainAxisSize.min,
@@ -51,70 +47,30 @@ class _TrailerScreenState extends State<TrailerScreen> {
             ),
           ],
         ),
-      ),
-
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            YoutubePlayer(
-              controller: _controller,
-              progressIndicatorColor: AppColors.kLogoColor,
-              showVideoProgressIndicator: true,
-            ),
-
-            // Gap(12),
-            // //// Movie Title & Year & Favorite
-            // Padding(
-            //   padding: const EdgeInsets.symmetric(horizontal: 16),
-            //   child: Row(
-            //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            //     children: [
-            //       AppText(
-            //         "Movie Title (year)",
-            //         fontSize: 18,
-            //         fontWeight: FontWeight.bold,
-            //         color: Colors.white,
-            //       ),
-            //       IconButton(
-            //         onPressed: () {},
-            //         icon: Icon(CupertinoIcons.heart_solid, color: Colors.red),
-            //       ),
-            //     ],
-            //   ),
-            // ),
-
-            // Gap(8),
-            // //// Type of Movie
-            // Padding(
-            //   padding: const EdgeInsets.symmetric(horizontal: 16),
-            //   child: Row(
-            //     children: [
-            //       Chip(
-            //         label: AppText("Type of Movie", fontSize: 14),
-            //         backgroundColor: Colors.grey[800],
-            //       ),
-            //     ],
-            //   ),
-            // ),
-
-            // Gap(16),
-            // ///// Overview
-            // Padding(
-            //   padding: const EdgeInsets.symmetric(horizontal: 16),
-            //   child: Row(
-            //     mainAxisAlignment: MainAxisAlignment.start,
-            //     children: [
-            //       AppText(
-            //         "Overview.............................",
-            //         color: Colors.white70,
-            //         fontSize: 14,
-            //         maxLines: 7,
-            //       ),
-            //     ],
-            //   ),
-            // ),
-          ],
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back_ios),
+          onPressed: () {
+            SystemChrome.setPreferredOrientations([
+              DeviceOrientation.portraitUp,
+              DeviceOrientation.portraitDown,
+            ]);
+            Navigator.pop(context);
+          },
         ),
+      ),
+      body: YoutubePlayer(
+        controller: _controller,
+        showVideoProgressIndicator: true,
+        progressIndicatorColor: Colors.red,
+        aspectRatio: 100 / 10000,
+
+        bottomActions: [
+          const Gap(14),
+          CurrentPosition(),
+          ProgressBar(isExpanded: true),
+          const PlaybackSpeedButton(),
+          FullScreenButton(),
+        ],
       ),
     );
   }
