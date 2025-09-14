@@ -29,83 +29,92 @@ class CarouselSliderWidget extends StatelessWidget {
               itemCount: state.banners.length,
               itemBuilder:
                   (BuildContext context, int itemIndex, int pageViewIndex) =>
-                      Stack(
-                        children: [
-                          /// image
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(10),
-                            child: CachedNetworkImage(
-                              imageUrl: state.banners[itemIndex].banner,
-                              fit: BoxFit.cover,
-                              width: double.infinity,
-                              placeholder: (context, url) => Center(
-                                child: CircularProgressIndicator(
-                                  color: AppColors.kLogoColor,
-                                  strokeWidth: 2,
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 16),
+                        child: Stack(
+                          children: [
+                            /// image
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(10),
+                              child: CachedNetworkImage(
+                                imageUrl: state.banners[itemIndex].banner,
+                                fit: BoxFit.cover,
+                                width: double.infinity,
+                                placeholder: (context, url) => Center(
+                                  child: CircularProgressIndicator(
+                                    color: AppColors.kLogoColor,
+                                    strokeWidth: 2,
+                                  ),
                                 ),
-                              ),
-                              errorWidget: (context, url, error) => Center(
-                                child: Icon(
-                                  Icons.error,
-                                  color: AppColors.kLogoColor,
+                                errorWidget: (context, url, error) => Center(
+                                  child: Icon(
+                                    Icons.error,
+                                    color: AppColors.kLogoColor,
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
 
-                          /// Trending Now
-                          Positioned(
-                            top: 16,
-                            left: 16,
-                            child: Container(
-                              padding: const EdgeInsets.symmetric(
-                                vertical: 4,
-                                horizontal: 10,
-                              ),
-                              decoration: BoxDecoration(
-                                color: Colors.redAccent.withValues(alpha: 0.7),
-                                borderRadius: BorderRadius.circular(8),
-                              ),
-                              child: AppText(
-                                "Trending Now",
-                                color: Colors.white,
-                                fontSize: 14,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-
-                          //// Title
-                          Positioned(
-                            bottom: 40,
-                            left: 16,
-                            right: 20,
-                            child: Container(
-                              padding: EdgeInsets.all(6),
-                              decoration: BoxDecoration(
-                                color: Colors.black.withValues(alpha: 0.6),
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              child: Center(
+                            /// Trending Now
+                            Positioned(
+                              top: 16,
+                              left: 16,
+                              child: Container(
+                                padding: const EdgeInsets.symmetric(
+                                  vertical: 4,
+                                  horizontal: 10,
+                                ),
+                                decoration: BoxDecoration(
+                                  color: Colors.redAccent.withValues(
+                                    alpha: 0.7,
+                                  ),
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
                                 child: AppText(
-                                  state.banners[itemIndex].title,
-                                  fontSize: 18,
+                                  "Trending Now",
                                   color: Colors.white,
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.bold,
                                 ),
                               ),
                             ),
-                          ),
-                        ],
+
+                            //// Title
+                            Positioned(
+                              bottom: 40,
+                              left: 0,
+                              right: 0,
+                              child: Container(
+                                padding: EdgeInsets.all(6),
+                                decoration: BoxDecoration(
+                                  color: Colors.black.withValues(alpha: 0.6),
+                                  borderRadius: BorderRadius.only(
+                                    bottomLeft: Radius.circular(10),
+                                    bottomRight: Radius.circular(10),
+                                  ),
+                                ),
+                                child: Center(
+                                  child: AppText(
+                                    state.banners[itemIndex].title,
+                                    fontSize: 18,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
 
               options: CarouselOptions(
                 height: 222,
-                aspectRatio: 2,
+                aspectRatio: 1.5,
+                padEnds: true,
                 autoPlay: true,
                 viewportFraction: 0.9,
                 autoPlayInterval: const Duration(seconds: 2),
                 autoPlayAnimationDuration: const Duration(seconds: 2),
-                enlargeCenterPage: true,
+                enlargeCenterPage: false,
               ),
             );
           } else if (state is BannerError) {
