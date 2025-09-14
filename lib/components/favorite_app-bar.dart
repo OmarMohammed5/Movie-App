@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gap/flutter_gap.dart';
+import 'package:moviee_app/theme/app_colors.dart';
 import 'package:moviee_app/theme/app_text_style.dart';
 
 class FavoriteAppBar extends StatelessWidget implements PreferredSize {
@@ -15,8 +16,16 @@ class FavoriteAppBar extends StatelessWidget implements PreferredSize {
   Widget build(BuildContext context) {
     return AppBar(
       scrolledUnderElevation: 0,
-      title: AppText("My Favorites", fontSize: 22, fontWeight: FontWeight.bold),
-      actions: [Icon(CupertinoIcons.heart), Gap(10)],
+      title: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          AppText("My Favorites", fontSize: 22, fontWeight: FontWeight.bold),
+        ],
+      ),
+      actions: [
+        Icon(CupertinoIcons.heart, color: AppColors.kLogoColor),
+        Gap(10),
+      ],
     );
   }
 }
