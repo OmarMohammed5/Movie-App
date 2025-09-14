@@ -17,10 +17,9 @@ class PlayTrailer extends StatelessWidget {
         if (trailerState is MovieTrailerLoaded) {
           if (trailerState.videos.isNotEmpty) {
             final videoKey = trailerState.videos.first.key;
-            Navigator.push(
-              context,
+            Navigator.of(context, rootNavigator: true).push(
               MaterialPageRoute(
-                builder: (_) => TrailerScreen(videoKey: videoKey),
+                builder: (context) => TrailerScreen(videoKey: videoKey),
               ),
             );
           } else {

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_gap/flutter_gap.dart';
 import 'package:hugeicons/hugeicons.dart';
 import 'package:moviee_app/theme/app_colors.dart';
 import 'package:moviee_app/theme/app_text_style.dart';
@@ -62,13 +61,9 @@ class _TrailerScreenState extends State<TrailerScreen> {
         controller: _controller,
         showVideoProgressIndicator: true,
         progressIndicatorColor: Colors.red,
-        aspectRatio: 100 / 10000,
-
         bottomActions: [
-          const Gap(14),
           CurrentPosition(),
           ProgressBar(isExpanded: true),
-          const PlaybackSpeedButton(),
           FullScreenButton(),
         ],
       ),
