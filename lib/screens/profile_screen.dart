@@ -56,7 +56,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
       },
       child: Scaffold(
         appBar: AppBar(
-          title: AppText("Profile", fontSize: 22, fontWeight: FontWeight.bold),
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              AppText("Profile", fontSize: 22, fontWeight: FontWeight.bold),
+            ],
+          ),
           actions: [Icon(HugeIcons.strokeRoundedUser), Gap(10)],
         ),
         body: BlocBuilder<AuthCubit, AuthState>(
