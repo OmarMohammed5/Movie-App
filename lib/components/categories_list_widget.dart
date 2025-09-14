@@ -44,6 +44,14 @@ class _CategoriesListWidgetState extends State<CategoriesListWidget> {
             BlocConsumer<GenersCubit, GenersState>(
               listener: (context, state) {},
               builder: (context, state) {
+                if (state is GenersLoading) {
+                  return Center(
+                    child: CircularProgressIndicator(
+                      color: AppColors.kLogoColor,
+                      strokeWidth: 2,
+                    ),
+                  );
+                }
                 final List<String> categoriesDynamic = ['All'];
                 if (state is GenersLoaded) {
                   categoriesDynamic.addAll(
@@ -62,6 +70,12 @@ class _CategoriesListWidgetState extends State<CategoriesListWidget> {
                             index,
                           );
                           if (index == 0) {
+                            Center(
+                              child: CircularProgressIndicator(
+                                color: AppColors.kLogoColor,
+                                strokeWidth: 2,
+                              ),
+                            );
                             context.read<MovieCubit>().getAllMovies();
                           } else {
                             final selectedGenre =

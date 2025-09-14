@@ -45,7 +45,7 @@ class _MovieCardWidgetState extends State<MovieCardWidget> {
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
                 crossAxisSpacing: 18,
-                mainAxisSpacing: 20,
+                mainAxisSpacing: 12,
                 childAspectRatio: 0.6,
               ),
               itemBuilder: (context, index) {
