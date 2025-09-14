@@ -51,19 +51,19 @@ class AppThemes {
     /// TextFields
     inputDecorationTheme: InputDecorationTheme(
       filled: true,
-      fillColor: Colors.grey[300],
+      fillColor: Colors.grey[200],
       focusColor: Colors.grey.shade300,
       border: OutlineInputBorder(
         borderRadius: BorderRadius.all(Radius.circular(12)),
-        borderSide: BorderSide(color: Colors.grey.shade300),
+        borderSide: BorderSide(color: Colors.grey.shade200),
       ),
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.all(Radius.circular(12)),
-        borderSide: BorderSide(color: Colors.grey.shade300),
+        borderSide: BorderSide(color: Colors.grey.shade200),
       ),
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.all(Radius.circular(12)),
-        borderSide: BorderSide(color: Colors.grey.shade300, width: 2),
+        borderSide: BorderSide(color: Colors.grey.shade200, width: 2),
       ),
       errorBorder: OutlineInputBorder(
         borderRadius: BorderRadius.all(Radius.circular(12)),
