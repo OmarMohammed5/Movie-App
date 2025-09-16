@@ -26,10 +26,24 @@ class MovieDetailsBody extends StatelessWidget {
               ////  play trailer
               PlayTrailer(movieId: movie.id),
 
-              Gap(20),
+              Gap(25),
               //// Name of Movie
-              AppText(movie.title, fontSize: 26, fontWeight: FontWeight.bold),
-              Gap(10),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 36),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    AppText(
+                      movie.title,
+                      fontSize: 26,
+                      fontWeight: FontWeight.bold,
+                      maxLines: 2,
+                    ),
+                  ],
+                ),
+              ),
+              Gap(22),
 
               /// Year + Rate
               Row(
