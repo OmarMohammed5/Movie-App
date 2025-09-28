@@ -45,6 +45,7 @@ class _LoginFormWidgetState extends State<LoginFormWidget> {
                 fontSize: 15,
                 color: Colors.white,
               ),
+              duration: Duration(seconds: 3),
             ),
           );
 
