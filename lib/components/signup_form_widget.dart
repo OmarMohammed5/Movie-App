@@ -150,6 +150,17 @@ class _SignupFormWidgetState extends State<SignupFormWidget> {
         BlocConsumer<AuthCubit, AuthState>(
           listener: (context, state) {
             if (state is AuthLoaded) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  backgroundColor: Colors.grey.shade800,
+                  duration: Duration(seconds: 3),
+                  content: AppText(
+                    "Account Created Successfully",
+                    color: Colors.white,
+                  ),
+                ),
+              );
+
               /// Navigate to bottom nav bar (home screen)
               Navigator.of(context).pushReplacement(
                 MaterialPageRoute(builder: (_) => BottomNavBar()),
@@ -179,16 +190,6 @@ class _SignupFormWidgetState extends State<SignupFormWidget> {
                     email: widget._email.text.trim(),
                     password: widget._password.text.trim(),
                     context: context,
-                  );
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      backgroundColor: Colors.grey.shade800,
-                      content: AppText(
-                        "Account Created Successfully",
-                        color: Colors.white,
-                      ),
-                      duration: Duration(seconds: 3),
-                    ),
                   );
                 } else {
                   ScaffoldMessenger.of(context).showSnackBar(
