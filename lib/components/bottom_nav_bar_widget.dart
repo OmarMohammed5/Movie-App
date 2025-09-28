@@ -43,7 +43,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
             /// Home
             PersistentBottomNavBarItem(
               icon: HugeIcon(
-                icon: HugeIcons.strokeRoundedHome01,
+                icon: HugeIcons.strokeRoundedHome03,
                 color: Colors.red,
               ),
               inactiveIcon: HugeIcon(
@@ -82,7 +82,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
             PersistentBottomNavBarItem(
               icon: HugeIcon(
                 icon: HugeIcons.strokeRoundedFavourite,
-                color: Colors.redAccent,
+                color: Colors.red,
               ),
               inactiveIcon: HugeIcon(
                 icon: HugeIcons.strokeRoundedFavourite,
@@ -112,7 +112,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
                 fontFamily: GoogleFonts.acme().fontFamily,
                 fontSize: 14,
               ),
-              activeColorPrimary: Colors.redAccent,
+              activeColorPrimary: Colors.red,
               inactiveColorPrimary: isDark ? Colors.white70 : Colors.black87,
             ),
           ],
@@ -122,7 +122,10 @@ class _BottomNavBarState extends State<BottomNavBar> {
           resizeToAvoidBottomInset: true,
           stateManagement: true,
           decoration: NavBarDecoration(
-            borderRadius: BorderRadius.zero,
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(25),
+              topRight: Radius.circular(25),
+            ),
             colorBehindNavBar: isDark ? Colors.black : Colors.white,
           ),
           navBarStyle: NavBarStyle.style9,
