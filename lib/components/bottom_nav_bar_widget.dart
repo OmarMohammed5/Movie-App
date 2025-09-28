@@ -7,6 +7,7 @@ import 'package:moviee_app/screens/favourite_screen.dart';
 import 'package:moviee_app/screens/home_screen.dart';
 import 'package:moviee_app/screens/profile_screen.dart';
 import 'package:moviee_app/screens/search_screen.dart';
+import 'package:moviee_app/theme/app_colors.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 
 class BottomNavBar extends StatefulWidget {
@@ -126,7 +127,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
               topLeft: Radius.circular(25),
               topRight: Radius.circular(25),
             ),
-            colorBehindNavBar: isDark ? Colors.black : Colors.white,
+            colorBehindNavBar: isDark ? AppColors.kPrimaryColor : Colors.white,
           ),
           navBarStyle: NavBarStyle.style9,
         );
