@@ -21,7 +21,7 @@ class ThemeCubit extends Cubit<ThemeMode> {
     prefs.setBool("is Dark", newTheme == ThemeMode.dark);
   }
 
-  /// Saved theme mode
+  /// Saved theme mode when user open your app again
   void loadTheme() async {
     /// load theme mode from local storage
     final prefs = await SharedPreferences.getInstance();
