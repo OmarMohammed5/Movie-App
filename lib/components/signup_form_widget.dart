@@ -159,6 +159,7 @@ class _SignupFormWidgetState extends State<SignupFormWidget> {
                 SnackBar(
                   backgroundColor: Colors.grey.shade800,
                   content: Text(state.errorMessage),
+                  duration: Duration(seconds: 3),
                 ),
               );
             }
@@ -186,6 +187,7 @@ class _SignupFormWidgetState extends State<SignupFormWidget> {
                         "Account Created Successfully",
                         color: Colors.white,
                       ),
+                      duration: Duration(seconds: 3),
                     ),
                   );
                 } else {
@@ -193,7 +195,7 @@ class _SignupFormWidgetState extends State<SignupFormWidget> {
                     SnackBar(
                       backgroundColor: Colors.grey.shade800,
                       content: AppText(
-                        "Please fill all fields correctly ",
+                        "Please fill all fields correctly",
                         color: Colors.white,
                       ),
                     ),
