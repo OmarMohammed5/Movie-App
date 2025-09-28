@@ -52,6 +52,10 @@ class _MovieSearchViewState extends State<MovieSearchView> {
                     fontSize: 16,
                     color: Colors.grey.shade500,
                   ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(12)),
+                    borderSide: BorderSide(color: Colors.red, width: 2),
+                  ),
                   prefixIcon: Icon(
                     HugeIcons.strokeRoundedSearch01,
                     color: Colors.grey.shade500,

@@ -47,7 +47,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
                 color: Colors.red,
               ),
               inactiveIcon: HugeIcon(
-                icon: HugeIcons.strokeRoundedHome01,
+                icon: HugeIcons.strokeRoundedHome03,
                 color: isDark ? Colors.white70 : Colors.black87,
               ),
               title: "Home",

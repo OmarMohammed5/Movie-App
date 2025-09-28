@@ -63,7 +63,7 @@ class AppThemes {
       ),
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.all(Radius.circular(12)),
-        borderSide: BorderSide(color: Colors.grey.shade200, width: 2),
+        borderSide: BorderSide(color: Colors.red, width: 2),
       ),
       errorBorder: OutlineInputBorder(
         borderRadius: BorderRadius.all(Radius.circular(12)),
