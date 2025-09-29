@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:moviee_app/theme/app_colors.dart';
-import 'package:moviee_app/theme/app_text_style.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class TextSplashWidget extends StatelessWidget {
   const TextSplashWidget({super.key});
@@ -13,12 +12,21 @@ class TextSplashWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         spacing: 15,
         children: [
-          AppText("Movie", fontSize: 50, fontWeight: FontWeight.bold),
-          AppText(
+          Text(
+            "Movie",
+            style: TextStyle(
+              fontSize: 50,
+              fontWeight: FontWeight.bold,
+              fontFamily: GoogleFonts.acme().fontFamily,
+            ),
+          ),
+          Text(
             "saga",
-            color: AppColors.kLogoColor,
-            fontSize: 50,
-            fontWeight: FontWeight.bold,
+            style: TextStyle(
+              fontSize: 50,
+              fontWeight: FontWeight.bold,
+              fontFamily: GoogleFonts.acme().fontFamily,
+            ),
           ),
         ],
       ),
