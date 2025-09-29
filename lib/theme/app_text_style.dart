@@ -24,8 +24,7 @@ class AppText extends StatelessWidget {
       maxLines: maxLines.toInt(),
       overflow: TextOverflow.ellipsis,
       style: TextStyle(
-        // fontFamily: "Alan Sans",
-        fontFamily: GoogleFonts.actor().fontFamily,
+        fontFamily: GoogleFonts.lato().fontFamily,
         fontSize: fontSize,
         fontWeight: fontWeight,
         color: color ?? Theme.of(context).textTheme.bodyMedium?.color,
