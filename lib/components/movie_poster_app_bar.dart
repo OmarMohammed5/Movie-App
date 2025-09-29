@@ -50,12 +50,12 @@ class MoviePosterAppBar extends StatelessWidget {
                 ),
               ),
             ),
-
-            /// App Bar Buttons (back & favorite)
-            MovieDetailsAppBar(movie: movie),
           ],
         ),
       ),
+
+      /// Fixed App Bar Buttons (back & favorite)
+      title: MovieDetailsAppBar(movie: movie),
     );
   }
 }
