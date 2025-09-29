@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class AppText extends StatelessWidget {
   final String text;
@@ -24,7 +23,7 @@ class AppText extends StatelessWidget {
       maxLines: maxLines.toInt(),
       overflow: TextOverflow.ellipsis,
       style: TextStyle(
-        fontFamily: GoogleFonts.acme().fontFamily,
+        fontFamily: "Alan Sans",
         fontSize: fontSize,
         fontWeight: fontWeight,
         color: color ?? Theme.of(context).textTheme.bodyMedium?.color,
