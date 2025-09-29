@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:moviee_app/theme/app_colors.dart';
-import 'package:moviee_app/theme/app_text_style.dart';
 
 class AppBarWidget extends StatelessWidget implements PreferredSize {
   const AppBarWidget({super.key});
@@ -37,18 +37,24 @@ class AppBarWidget extends StatelessWidget implements PreferredSize {
               fit: BoxFit.contain,
             ),
           ),
-          AppText(
+          Text(
             "Movie",
-            fontSize: 28,
-            fontWeight: FontWeight.bold,
+            style: TextStyle(
+              fontSize: 28,
+              fontWeight: FontWeight.bold,
+              fontFamily: GoogleFonts.acme().fontFamily,
+            ),
             // color: Colors.black,
           ),
 
-          AppText(
+          Text(
             "saga",
-            color: AppColors.kLogoColor,
-            fontSize: 28,
-            fontWeight: FontWeight.bold,
+            style: TextStyle(
+              color: AppColors.kLogoColor,
+              fontSize: 28,
+              fontWeight: FontWeight.bold,
+              fontFamily: GoogleFonts.acme().fontFamily,
+            ),
           ),
         ],
       ),
