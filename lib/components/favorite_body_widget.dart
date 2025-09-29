@@ -44,8 +44,8 @@ class FavoriteBodyWidget extends StatelessWidget {
             itemCount: state.favorites.length,
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
-              mainAxisSpacing: 12,
-              crossAxisSpacing: 12,
+              mainAxisSpacing: 20,
+              crossAxisSpacing: 16,
               childAspectRatio: 0.65,
             ),
             itemBuilder: (context, index) {
