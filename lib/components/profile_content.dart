@@ -157,8 +157,7 @@ class _ProfileContentState extends State<ProfileContent> {
             color: isDarkMode ? Colors.white : Colors.black,
             title: AppText("About App", fontSize: 16),
             onTap: () {
-              Navigator.push(
-                context,
+              Navigator.of(context, rootNavigator: true).push(
                 MaterialPageRoute(
                   builder: (context) {
                     return AboutAppScreen();
