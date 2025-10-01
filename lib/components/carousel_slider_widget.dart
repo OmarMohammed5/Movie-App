@@ -13,6 +13,7 @@ class CarouselSliderWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final scHeight = MediaQuery.of(context).size.height;
     return BlocProvider(
       create: (context) => BannerCubit(DioConsumer(dio: Dio()))..fetchBanners(),
       child: BlocBuilder<BannerCubit, BannerState>(
@@ -77,7 +78,7 @@ class CarouselSliderWidget extends StatelessWidget {
 
                           //// Title
                           Positioned(
-                            bottom: 40,
+                            bottom: scHeight * 0.033,
                             left: 0,
                             right: 0,
                             child: Container(
