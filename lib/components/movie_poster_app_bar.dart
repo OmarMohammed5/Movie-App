@@ -50,12 +50,18 @@ class MoviePosterAppBar extends StatelessWidget {
                 ),
               ),
             ),
+
+            // /// Fixed App Bar Buttons (back & favorite)
+            // MovieDetailsAppBar(movie: movie),
           ],
         ),
       ),
 
-      /// Fixed App Bar Buttons (back & favorite)
-      title: MovieDetailsAppBar(movie: movie),
+      // /// Fixed App Bar Buttons (back & favorite)
+      title: PreferredSize(
+        preferredSize: const Size.fromHeight(60),
+        child: MovieDetailsAppBar(movie: movie),
+      ),
     );
   }
 }
