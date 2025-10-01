@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gap/flutter_gap.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:moviee_app/theme/app_colors.dart';
 import 'package:moviee_app/theme/app_text_style.dart';
 
@@ -23,7 +24,15 @@ class AboutAppScreen extends StatelessWidget {
               },
               child: Icon(Icons.arrow_back_ios, size: 20),
             ),
-            Expanded(child: Center(child: AppText("About App", fontSize: 24))),
+            Expanded(
+              child: Center(
+                child: AppText(
+                  "About App",
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
             Gap(30),
           ],
         ),
@@ -59,16 +68,22 @@ class AboutAppScreen extends StatelessWidget {
               spacing: 5,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const AppText(
+                Text(
                   "Movie ",
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
+                  style: TextStyle(
+                    fontSize: 26,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: GoogleFonts.acme().fontFamily,
+                  ),
                 ),
-                AppText(
+                Text(
                   "saga ",
-                  fontSize: 24,
-                  color: AppColors.kLogoColor,
-                  fontWeight: FontWeight.bold,
+                  style: TextStyle(
+                    fontSize: 26,
+                    color: AppColors.kLogoColor,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: GoogleFonts.acme().fontFamily,
+                  ),
                 ),
               ],
             ),
@@ -79,7 +94,7 @@ class AboutAppScreen extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: const AppText(
                 "Discover movies, watch trailers, and save your favorites in one place.",
-                fontSize: 16,
+                fontSize: 18,
                 // color: Colors.grey,
                 maxLines: 7,
               ),
@@ -97,7 +112,7 @@ class AboutAppScreen extends StatelessWidget {
                   "This app lets you explore the latest movies, watch their trailers, "
                   "and keep track of the ones you love. With the favorites feature, "
                   "you can easily save movies and revisit them anytime.",
-                  fontSize: 16,
+                  fontSize: 18,
                   maxLines: 7,
                 ),
               ),
@@ -108,19 +123,9 @@ class AboutAppScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: const [
                 ListTile(
-                  leading: Icon(Icons.info_outline),
-                  title: AppText("Version"),
-                  subtitle: AppText("1.0.0"),
-                ),
-                ListTile(
                   leading: Icon(Icons.developer_mode),
                   title: AppText("Developer"),
-                  subtitle: AppText("Omar Mohamed"),
-                ),
-                ListTile(
-                  leading: Icon(Icons.email_outlined),
-                  title: AppText("Contact"),
-                  subtitle: AppText("support@movieapp.com"),
+                  subtitle: AppText("Omar Mohammed"),
                 ),
               ],
             ),
