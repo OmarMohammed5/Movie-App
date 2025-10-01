@@ -1,6 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:moviee_app/components/movie_details_app_bar.dart';
 import 'package:moviee_app/models/movie_model.dart';
 import 'package:moviee_app/theme/app_colors.dart';
 
@@ -50,17 +49,8 @@ class MoviePosterAppBar extends StatelessWidget {
                 ),
               ),
             ),
-
-            // /// Fixed App Bar Buttons (back & favorite)
-            // MovieDetailsAppBar(movie: movie),
           ],
         ),
-      ),
-
-      // /// Fixed App Bar Buttons (back & favorite)
-      title: PreferredSize(
-        preferredSize: const Size.fromHeight(60),
-        child: MovieDetailsAppBar(movie: movie),
       ),
     );
   }
