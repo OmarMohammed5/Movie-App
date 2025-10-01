@@ -114,7 +114,7 @@ class _LoginFormWidgetState extends State<LoginFormWidget> {
                     isPasswordVisible
                         ? Icons.visibility_outlined
                         : Icons.visibility_off_outlined,
-                    size: 20,
+                    size: 25,
                   ),
                 ),
                 controller: _password,

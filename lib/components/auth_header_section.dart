@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gap/flutter_gap.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:moviee_app/theme/app_colors.dart';
-import 'package:moviee_app/theme/app_text_style.dart';
 
 class AuthHeaderSection extends StatelessWidget {
   const AuthHeaderSection({super.key});
@@ -31,17 +31,23 @@ class AuthHeaderSection extends StatelessWidget {
           spacing: 10,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            AppText(
+            Text(
               "Movie",
-              fontSize: 28,
-              fontWeight: FontWeight.bold,
-              color: Colors.white,
+              style: TextStyle(
+                fontSize: 30,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+                fontFamily: GoogleFonts.acme().fontFamily,
+              ),
             ),
-            AppText(
+            Text(
               "saga",
-              fontSize: 28,
-              fontWeight: FontWeight.bold,
-              color: AppColors.kLogoColor,
+              style: TextStyle(
+                fontSize: 30,
+                fontWeight: FontWeight.bold,
+                color: AppColors.kLogoColor,
+                fontFamily: GoogleFonts.acme().fontFamily,
+              ),
             ),
           ],
         ),

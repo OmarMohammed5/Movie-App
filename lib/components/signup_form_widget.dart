@@ -99,7 +99,7 @@ class _SignupFormWidgetState extends State<SignupFormWidget> {
               isPasswordVisible
                   ? Icons.visibility_outlined
                   : Icons.visibility_off_outlined,
-              size: 20,
+              size: 25,
             ),
           ),
           validator: (value) {
@@ -131,7 +131,7 @@ class _SignupFormWidgetState extends State<SignupFormWidget> {
               isConfirmPasswordVisible
                   ? Icons.visibility_outlined
                   : Icons.visibility_off_outlined,
-              size: 20,
+              size: 25,
             ),
           ),
           validator: (value) {

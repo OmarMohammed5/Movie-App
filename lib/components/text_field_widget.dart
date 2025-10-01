@@ -48,7 +48,7 @@ class TextFieldWidget extends StatelessWidget {
               borderSide: BorderSide(color: AppColors.kLogoColor),
             ),
             errorStyle: TextStyle(height: 0),
-            prefixIcon: Icon(prefixIcon, color: Colors.grey, size: 20),
+            prefixIcon: Icon(prefixIcon, color: Colors.black54, size: 25),
             suffixIcon: suffixIcon,
             hint: AppText(hint, color: Colors.grey),
             filled: true,
