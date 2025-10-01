@@ -37,19 +37,26 @@ class _BottomNavBarState extends State<BottomNavBar> {
     return BlocBuilder<BottomNavCubit, int>(
       builder: (context, state) {
         return PersistentTabView(
+          padding: EdgeInsets.all(7),
           context,
           controller: _controller,
           screens: _buildScreens(),
           items: [
             /// Home
             PersistentBottomNavBarItem(
-              icon: HugeIcon(
-                icon: HugeIcons.strokeRoundedHome03,
-                color: Colors.red,
+              icon: Padding(
+                padding: const EdgeInsets.only(top: 4),
+                child: HugeIcon(
+                  icon: HugeIcons.strokeRoundedHome03,
+                  color: Colors.red,
+                ),
               ),
-              inactiveIcon: HugeIcon(
-                icon: HugeIcons.strokeRoundedHome03,
-                color: isDark ? Colors.white70 : Colors.black87,
+              inactiveIcon: Padding(
+                padding: const EdgeInsets.only(top: 4),
+                child: HugeIcon(
+                  icon: HugeIcons.strokeRoundedHome03,
+                  color: isDark ? Colors.white70 : Colors.black54,
+                ),
               ),
               title: "Home",
               textStyle: TextStyle(
@@ -57,18 +64,24 @@ class _BottomNavBarState extends State<BottomNavBar> {
                 fontSize: 14,
               ),
               activeColorPrimary: Colors.red,
-              inactiveColorPrimary: isDark ? Colors.white70 : Colors.black87,
+              inactiveColorPrimary: isDark ? Colors.white70 : Colors.black54,
             ),
 
             /// Search
             PersistentBottomNavBarItem(
-              icon: HugeIcon(
-                icon: HugeIcons.strokeRoundedSearch01,
-                color: Colors.red,
+              icon: Padding(
+                padding: const EdgeInsets.only(top: 4),
+                child: HugeIcon(
+                  icon: HugeIcons.strokeRoundedSearch01,
+                  color: Colors.red,
+                ),
               ),
-              inactiveIcon: HugeIcon(
-                icon: HugeIcons.strokeRoundedSearch01,
-                color: isDark ? Colors.white70 : Colors.black87,
+              inactiveIcon: Padding(
+                padding: const EdgeInsets.only(top: 4),
+                child: HugeIcon(
+                  icon: HugeIcons.strokeRoundedSearch01,
+                  color: isDark ? Colors.white70 : Colors.black54,
+                ),
               ),
               title: "Search",
               textStyle: TextStyle(
@@ -76,18 +89,24 @@ class _BottomNavBarState extends State<BottomNavBar> {
                 fontSize: 14,
               ),
               activeColorPrimary: Colors.red,
-              inactiveColorPrimary: isDark ? Colors.white70 : Colors.black87,
+              inactiveColorPrimary: isDark ? Colors.white70 : Colors.black54,
             ),
 
             /// Favorite
             PersistentBottomNavBarItem(
-              icon: HugeIcon(
-                icon: HugeIcons.strokeRoundedFavourite,
-                color: Colors.red,
+              icon: Padding(
+                padding: const EdgeInsets.only(top: 4),
+                child: HugeIcon(
+                  icon: HugeIcons.strokeRoundedFavourite,
+                  color: Colors.red,
+                ),
               ),
-              inactiveIcon: HugeIcon(
-                icon: HugeIcons.strokeRoundedFavourite,
-                color: isDark ? Colors.white70 : Colors.black87,
+              inactiveIcon: Padding(
+                padding: const EdgeInsets.only(top: 4),
+                child: HugeIcon(
+                  icon: HugeIcons.strokeRoundedFavourite,
+                  color: isDark ? Colors.white70 : Colors.black54,
+                ),
               ),
               title: "Favorite",
               textStyle: TextStyle(
@@ -95,18 +114,25 @@ class _BottomNavBarState extends State<BottomNavBar> {
                 fontSize: 14,
               ),
               activeColorPrimary: Colors.red,
-              inactiveColorPrimary: isDark ? Colors.white70 : Colors.black87,
+              inactiveColorPrimary: isDark ? Colors.white70 : Colors.black54,
             ),
 
             /// Profile
             PersistentBottomNavBarItem(
-              icon: HugeIcon(
-                icon: HugeIcons.strokeRoundedUser,
-                color: Colors.red,
+              icon: Padding(
+                padding: const EdgeInsets.only(top: 4),
+                child: HugeIcon(
+                  icon: HugeIcons.strokeRoundedUser,
+                  color: Colors.red,
+                ),
               ),
-              inactiveIcon: HugeIcon(
-                icon: HugeIcons.strokeRoundedUser,
-                color: isDark ? Colors.white70 : Colors.black87,
+              inactiveIcon: Padding(
+                padding: const EdgeInsets.only(top: 4),
+
+                child: HugeIcon(
+                  icon: HugeIcons.strokeRoundedUser,
+                  color: isDark ? Colors.white70 : Colors.black54,
+                ),
               ),
               title: "Profile",
               textStyle: TextStyle(
@@ -114,24 +140,24 @@ class _BottomNavBarState extends State<BottomNavBar> {
                 fontSize: 14,
               ),
               activeColorPrimary: Colors.red,
-              inactiveColorPrimary: isDark ? Colors.white70 : Colors.black87,
+              inactiveColorPrimary: isDark ? Colors.white70 : Colors.black54,
             ),
           ],
 
           backgroundColor: isDark ? Colors.grey.shade900 : Colors.grey.shade200,
-          handleAndroidBackButtonPress: true,
-          resizeToAvoidBottomInset: true,
+          navBarHeight: kBottomNavigationBarHeight + 8,
+          navBarStyle: NavBarStyle.style6,
+          confineToSafeArea: true,
+          hideNavigationBarWhenKeyboardAppears: true,
           stateManagement: true,
+          resizeToAvoidBottomInset: true,
           decoration: NavBarDecoration(
             borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(25),
-              topRight: Radius.circular(25),
+              topLeft: Radius.circular(40),
+              topRight: Radius.circular(40),
             ),
-            colorBehindNavBar: isDark
-                ? AppColors.kPrimaryColor
-                : Color(0xfff6f6f6),
+            colorBehindNavBar: isDark ? AppColors.kPrimaryColor : Colors.white,
           ),
-          navBarStyle: NavBarStyle.style9,
         );
       },
     );
