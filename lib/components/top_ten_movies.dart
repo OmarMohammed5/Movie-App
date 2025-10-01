@@ -19,7 +19,7 @@ class TopTenMovies extends StatelessWidget {
             children: [
               AppText(
                 "Top Ten Movies",
-                fontSize: 18,
+                fontSize: 20,
                 fontWeight: FontWeight.bold,
               ),
             ],

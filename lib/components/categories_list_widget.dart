@@ -35,7 +35,7 @@ class _CategoriesListWidgetState extends State<CategoriesListWidget> {
               children: [
                 AppText(
                   "Categories",
-                  fontSize: 18,
+                  fontSize: 20,
                   fontWeight: FontWeight.bold,
                 ),
               ],
