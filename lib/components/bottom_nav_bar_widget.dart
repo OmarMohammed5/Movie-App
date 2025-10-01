@@ -127,7 +127,9 @@ class _BottomNavBarState extends State<BottomNavBar> {
               topLeft: Radius.circular(25),
               topRight: Radius.circular(25),
             ),
-            colorBehindNavBar: isDark ? AppColors.kPrimaryColor : Colors.white,
+            colorBehindNavBar: isDark
+                ? AppColors.kPrimaryColor
+                : Color(0xfff6f6f6),
           ),
           navBarStyle: NavBarStyle.style9,
         );
