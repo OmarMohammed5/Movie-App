@@ -33,14 +33,28 @@ class _CategoriesListWidgetState extends State<CategoriesListWidget> {
           children: [
             Row(
               children: [
-                AppText(
-                  "Categories",
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
+                Container(
+                  padding: EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    color: Colors.red.withValues(alpha: 0.8),
+                    shape: BoxShape.rectangle,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(40),
+                      bottomRight: Radius.circular(40),
+                      topRight: Radius.circular(20),
+                      bottomLeft: Radius.circular(20),
+                    ),
+                  ),
+                  child: AppText(
+                    "Categories",
+                    fontSize: 20,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ],
             ),
-            Gap(15),
+            Gap(30),
             BlocConsumer<GenersCubit, GenersState>(
               listener: (context, state) {},
               builder: (context, state) {

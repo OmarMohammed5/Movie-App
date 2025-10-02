@@ -17,10 +17,24 @@ class TopTenMovies extends StatelessWidget {
         children: [
           Row(
             children: [
-              AppText(
-                "Top Ten Movies",
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
+              Container(
+                padding: EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                  color: Colors.red.withValues(alpha: 0.8),
+                  shape: BoxShape.rectangle,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(40),
+                    bottomRight: Radius.circular(40),
+                    topRight: Radius.circular(20),
+                    bottomLeft: Radius.circular(20),
+                  ),
+                ),
+                child: AppText(
+                  "Top Ten Movies",
+                  fontSize: 20,
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ],
           ),
