@@ -8,14 +8,12 @@ import 'package:moviee_app/components/movie_details_body.dart';
 import 'package:moviee_app/components/movie_poster_app_bar.dart';
 import 'package:moviee_app/core/cubit/cubit/favorites_cubit.dart';
 import 'package:moviee_app/core/cubit/cubit/movie_details_cubit.dart';
-import 'package:moviee_app/models/movie_model.dart';
 import 'package:moviee_app/theme/app_colors.dart';
 import 'package:moviee_app/theme/app_text_style.dart';
 
 class DetailsMovieScreen extends StatefulWidget {
-  const DetailsMovieScreen({super.key, required this.movieId, this.movie});
+  const DetailsMovieScreen({super.key, required this.movieId});
   final int movieId;
-  final MovieModel? movie;
 
   @override
   State<DetailsMovieScreen> createState() => _DetailsMovieScreenState();
@@ -98,50 +96,61 @@ class _DetailsMovieScreenState extends State<DetailsMovieScreen> {
                     ),
                   ),
                 ),
-                BlocSelector<FavoritesCubit, FavoritesState, bool>(
-                  selector: (favState) {
-                    if (favState is FavoritesLoaded) {
-                      return favState.favorites.any(
-                        (fav) =>
-                            fav['id'].toString() == widget.movie!.id.toString(),
+                BlocBuilder<MovieDetailsCubit, MovieDetailsState>(
+                  builder: (context, state) {
+                    if (state is MovieDetailsLoaded) {
+                      final movie = state.movie;
+
+                      return BlocSelector<FavoritesCubit, FavoritesState, bool>(
+                        selector: (favState) {
+                          if (favState is FavoritesLoaded) {
+                            return favState.favorites.any(
+                              (fav) =>
+                                  fav['id'].toString() == movie.id.toString(),
+                            );
+                          }
+                          return false;
+                        },
+                        builder: (context, isFav) {
+                          return IconButton(
+                            onPressed: () {
+                              final user = FirebaseAuth.instance.currentUser;
+                              if (user == null) {
+                                showDialog(
+                                  context: context,
+                                  builder: (context) => AuthFavoriteDialog(),
+                                );
+                              } else {
+                                context.read<FavoritesCubit>().toggleFavorite({
+                                  'id': movie.id,
+                                  'title': movie.title,
+                                  'poster': movie.poster,
+                                  'vote_average': movie.voteAverage,
+                                  'release_date': movie.releaseDate,
+                                });
+                              }
+                            },
+                            icon: Container(
+                              padding: EdgeInsets.all(8),
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: Colors.black.withValues(alpha: 0.7),
+                              ),
+                              child: Icon(
+                                CupertinoIcons.heart_solid,
+                                color: isFav
+                                    ? AppColors.kLogoColor
+                                    : Colors.white,
+                                size: 25,
+                              ),
+                            ),
+                          );
+                        },
                       );
                     }
-                    return false;
-                  },
-                  builder: (context, isFav) {
-                    return IconButton(
-                      onPressed: () {
-                        final user = FirebaseAuth.instance.currentUser;
-                        if (user == null) {
-                          showDialog(
-                            context: context,
-                            builder: (context) {
-                              return AuthFavoriteDialog();
-                            },
-                          );
-                        } else {
-                          context.read<FavoritesCubit>().toggleFavorite({
-                            'id': widget.movie!.id,
-                            'title': widget.movie!.title,
-                            'poster': widget.movie!.poster,
-                            'vote_average': widget.movie!.voteAverage,
-                            'release_date': widget.movie!.releaseDate,
-                          });
-                        }
-                      },
-                      icon: Container(
-                        padding: EdgeInsets.all(8),
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Colors.black.withValues(alpha: 0.7),
-                        ),
-                        child: Icon(
-                          CupertinoIcons.heart_solid,
-                          color: isFav ? AppColors.kLogoColor : Colors.white,
-                          size: 25,
-                        ),
-                      ),
-                    );
+
+                    /// If not exist data
+                    return SizedBox.shrink();
                   },
                 ),
               ],
