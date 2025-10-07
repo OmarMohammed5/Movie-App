@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gap/flutter_gap.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:moviee_app/theme/app_colors.dart';
 import 'package:moviee_app/theme/app_text_style.dart';
 
 class AboutAppScreen extends StatelessWidget {
@@ -46,19 +44,11 @@ class AboutAppScreen extends StatelessWidget {
           children: [
             Gap(30),
             //// Logo
-            Container(
-              height: 100,
-              width: 100,
-              padding: EdgeInsets.all(12),
-              decoration: BoxDecoration(
-                color: AppColors.kLogoColor,
-                shape: BoxShape.circle,
-              ),
-              child: Center(
-                child: Image.asset(
-                  "assets/svg/play_circle_outline.svg",
-                  fit: BoxFit.cover,
-                ),
+            Center(
+              child: Image.asset(
+                "assets/images/Movies-removebg-preview.png",
+                fit: BoxFit.cover,
+                width: 200,
               ),
             ),
 
@@ -69,18 +59,10 @@ class AboutAppScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "Movie ",
+                  "MFlix",
                   style: TextStyle(
-                    fontSize: 26,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: GoogleFonts.acme().fontFamily,
-                  ),
-                ),
-                Text(
-                  "saga ",
-                  style: TextStyle(
-                    fontSize: 26,
-                    color: AppColors.kLogoColor,
+                    fontSize: 32,
+                    // color: AppColors.kLogoColor,
                     fontWeight: FontWeight.bold,
                     fontFamily: GoogleFonts.acme().fontFamily,
                   ),
@@ -88,7 +70,7 @@ class AboutAppScreen extends StatelessWidget {
               ],
             ),
 
-            Gap(20),
+            Gap(30),
             // Short description
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
