@@ -17,7 +17,7 @@ class TextSplashWidget extends StatelessWidget {
             "MFlix",
             style: TextStyle(
               fontSize: 56,
-              color: isDark ? Colors.white : Color(0xffe52e22),
+              color: isDark ? Colors.white : Colors.black,
               fontWeight: FontWeight.bold,
               fontFamily: GoogleFonts.acme().fontFamily,
             ),

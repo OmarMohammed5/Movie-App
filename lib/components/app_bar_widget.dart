@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:hugeicons/hugeicons.dart';
 
 class AppBarWidget extends StatelessWidget implements PreferredSize {
@@ -22,7 +23,23 @@ class AppBarWidget extends StatelessWidget implements PreferredSize {
       title: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Image.asset("assets/images/Movies-removebg-preview.png", width: 60),
+          Row(
+            children: [
+              Image.asset(
+                "assets/images/Movies-removebg-preview.png",
+                width: 60,
+              ),
+              Text(
+                "MFlix",
+                style: TextStyle(
+                  color: isDark ? Colors.white : Colors.black,
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: GoogleFonts.acme().fontFamily,
+                ),
+              ),
+            ],
+          ),
           HugeIcon(
             icon: HugeIcons.strokeRoundedNotification01,
             color: isDark ? Colors.white : Colors.black87,
