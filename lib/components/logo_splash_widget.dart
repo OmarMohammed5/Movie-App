@@ -9,7 +9,7 @@ class LogoSplashWidget extends StatelessWidget {
       children: [
         Center(
           child: ClipRRect(
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: BorderRadius.circular(16),
             child: Image.asset("assets/images/Movies.png", width: 160),
           ),
         ),

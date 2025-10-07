@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:moviee_app/theme/app_colors.dart';
 
 class TextSplashWidget extends StatelessWidget {
   const TextSplashWidget({super.key});
@@ -22,15 +21,6 @@ class TextSplashWidget extends StatelessWidget {
               fontFamily: GoogleFonts.acme().fontFamily,
             ),
           ),
-          // Text(
-          //   "saga",
-          //   style: TextStyle(
-          //     fontSize: 50,
-          //     fontWeight: FontWeight.bold,
-          //     fontFamily: GoogleFonts.acme().fontFamily,
-          //     color: AppColors.kLogoColor,
-          //   ),
-          // ),
         ],
       ),
     );
