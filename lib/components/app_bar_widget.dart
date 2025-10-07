@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:hugeicons/hugeicons.dart';
-import 'package:moviee_app/theme/app_colors.dart';
 
 class AppBarWidget extends StatelessWidget implements PreferredSize {
   const AppBarWidget({super.key});
