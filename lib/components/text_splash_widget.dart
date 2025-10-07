@@ -14,22 +14,23 @@ class TextSplashWidget extends StatelessWidget {
         spacing: 15,
         children: [
           Text(
-            "Movie",
+            "MFlix",
             style: TextStyle(
-              fontSize: 50,
+              fontSize: 56,
+              color: Color(0xffe52e22),
               fontWeight: FontWeight.bold,
               fontFamily: GoogleFonts.acme().fontFamily,
             ),
           ),
-          Text(
-            "saga",
-            style: TextStyle(
-              fontSize: 50,
-              fontWeight: FontWeight.bold,
-              fontFamily: GoogleFonts.acme().fontFamily,
-              color: AppColors.kLogoColor,
-            ),
-          ),
+          // Text(
+          //   "saga",
+          //   style: TextStyle(
+          //     fontSize: 50,
+          //     fontWeight: FontWeight.bold,
+          //     fontFamily: GoogleFonts.acme().fontFamily,
+          //     color: AppColors.kLogoColor,
+          //   ),
+          // ),
         ],
       ),
     );

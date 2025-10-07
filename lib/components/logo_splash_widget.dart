@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:moviee_app/theme/app_colors.dart';
 
 class LogoSplashWidget extends StatelessWidget {
   const LogoSplashWidget({super.key});
@@ -9,18 +7,10 @@ class LogoSplashWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Container(
-          height: 160,
-          width: 160,
-          decoration: BoxDecoration(
-            color: AppColors.kLogoColor,
-            shape: BoxShape.circle,
-          ),
-          child: Center(
-            child: SvgPicture.asset(
-              "assets/svg/play_circle_outline.svg",
-              width: 120,
-            ),
+        Center(
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(12),
+            child: Image.asset("assets/images/Movies.png", width: 160),
           ),
         ),
       ],
