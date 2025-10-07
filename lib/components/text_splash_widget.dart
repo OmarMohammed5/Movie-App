@@ -6,6 +6,7 @@ class TextSplashWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 60),
       child: Row(
@@ -16,6 +17,7 @@ class TextSplashWidget extends StatelessWidget {
             "MFlix",
             style: TextStyle(
               fontSize: 56,
+              color: isDark ? Colors.white : Color(0xffe52e22),
               fontWeight: FontWeight.bold,
               fontFamily: GoogleFonts.acme().fontFamily,
             ),
