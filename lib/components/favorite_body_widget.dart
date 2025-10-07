@@ -124,8 +124,13 @@ class FavoriteBodyWidget extends StatelessWidget {
                         child: Container(
                           padding: EdgeInsets.all(12),
                           decoration: BoxDecoration(
-                            color: Colors.black.withValues(alpha: 0.6),
-                            borderRadius: BorderRadius.circular(16),
+                            color: Colors.black.withValues(alpha: 0.8),
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(16),
+                              topRight: Radius.circular(16),
+                              bottomLeft: Radius.circular(16),
+                              bottomRight: Radius.circular(16),
+                            ),
                           ),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
