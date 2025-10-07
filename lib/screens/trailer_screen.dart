@@ -27,6 +27,7 @@ class _TrailerScreenState extends State<TrailerScreen> {
     )..addListener(fullScreen);
   }
 
+  /// Method to check isFullScreen or no && When user click on it the appBar is disapear
   void fullScreen() {
     if (_controller.value.isFullScreen != _isFullScreen) {
       setState(() {
