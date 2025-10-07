@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hugeicons/hugeicons.dart';
 import 'package:moviee_app/theme/app_colors.dart';
 
 class AppBarWidget extends StatelessWidget implements PreferredSize {
@@ -14,6 +15,7 @@ class AppBarWidget extends StatelessWidget implements PreferredSize {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return AppBar(
       automaticallyImplyLeading: false,
       scrolledUnderElevation: 0,
@@ -21,40 +23,12 @@ class AppBarWidget extends StatelessWidget implements PreferredSize {
       elevation: 0,
       centerTitle: true,
       title: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        spacing: 10,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Container(
-            height: kToolbarHeight * 0.7,
-            width: kToolbarHeight * 0.7,
-            padding: EdgeInsets.all(6),
-            decoration: BoxDecoration(
-              color: AppColors.kLogoColor,
-              shape: BoxShape.circle,
-            ),
-            child: SvgPicture.asset(
-              "assets/svg/play_circle_outline.svg",
-              fit: BoxFit.contain,
-            ),
-          ),
-          Text(
-            "Movie",
-            style: TextStyle(
-              fontSize: 28,
-              fontWeight: FontWeight.bold,
-              fontFamily: GoogleFonts.acme().fontFamily,
-            ),
-            // color: Colors.black,
-          ),
-
-          Text(
-            "saga",
-            style: TextStyle(
-              color: AppColors.kLogoColor,
-              fontSize: 28,
-              fontWeight: FontWeight.bold,
-              fontFamily: GoogleFonts.acme().fontFamily,
-            ),
+          Image.asset("assets/images/Movies-removebg-preview.png", width: 60),
+          HugeIcon(
+            icon: HugeIcons.strokeRoundedNotification01,
+            color: isDark ? Colors.white : Colors.black87,
           ),
         ],
       ),

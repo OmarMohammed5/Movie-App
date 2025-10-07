@@ -55,7 +55,7 @@ class AboutAppScreen extends StatelessWidget {
                 shape: BoxShape.circle,
               ),
               child: Center(
-                child: SvgPicture.asset(
+                child: Image.asset(
                   "assets/svg/play_circle_outline.svg",
                   fit: BoxFit.cover,
                 ),
