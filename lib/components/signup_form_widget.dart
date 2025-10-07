@@ -43,10 +43,10 @@ class _SignupFormWidgetState extends State<SignupFormWidget> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Gap(90),
+        Gap(70),
         // Header
         AuthHeaderSection(),
-        Gap(40),
+        Gap(30),
 
         //// Name
         TextFieldWidget(
@@ -145,7 +145,7 @@ class _SignupFormWidgetState extends State<SignupFormWidget> {
           },
         ),
 
-        Gap(30),
+        Gap(25),
 
         BlocConsumer<AuthCubit, AuthState>(
           listener: (context, state) {
@@ -211,7 +211,7 @@ class _SignupFormWidgetState extends State<SignupFormWidget> {
 
         /// Sign up now
         AuthTextRowWidget(
-          title: 'Already on Movie saga ?',
+          title: 'Already on MFlix ?',
           textAuth: 'Log in.',
           onTap: () {
             Navigator.pop(context);

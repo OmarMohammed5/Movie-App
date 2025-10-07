@@ -130,7 +130,7 @@ class _LoginFormWidgetState extends State<LoginFormWidget> {
                 // If you want the toggle functionality, update your TextFieldWidget to accept a Widget for suffixIcon.
               ),
 
-              Gap(40),
+              Gap(30),
 
               /// Login Button
               if (state is AuthLoading)
@@ -160,7 +160,7 @@ class _LoginFormWidgetState extends State<LoginFormWidget> {
               Gap(60),
               //// if you new >>> Sign up
               AuthTextRowWidget(
-                title: 'New to Movie saga ?',
+                title: 'New to MFlix ?',
                 textAuth: 'Sign up now.',
                 onTap: () {
                   Navigator.push(
