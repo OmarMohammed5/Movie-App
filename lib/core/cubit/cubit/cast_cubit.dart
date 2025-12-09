@@ -2,7 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:moviee_app/core/api/api_consumer.dart';
 import 'package:moviee_app/core/errors/exceptions.dart';
-import 'package:moviee_app/models/cast_model.dart';
+import 'package:moviee_app/core/models/cast_model.dart';
 
 part 'cast_state.dart';
 

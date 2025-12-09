@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:moviee_app/theme/app_colors.dart';
+import 'package:moviee_app/core/constant/app_colors.dart';
 
 class AppThemes {
   /// ====================== light Mode ================================

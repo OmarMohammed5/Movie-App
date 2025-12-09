@@ -2,7 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:moviee_app/core/api/api_consumer.dart';
 import 'package:moviee_app/core/errors/exceptions.dart';
-import 'package:moviee_app/models/banner_model.dart';
+import 'package:moviee_app/core/models/banner_model.dart';
 
 part 'banner_state.dart';
 

@@ -19,7 +19,7 @@ import 'package:moviee_app/core/cubit/cubit/profile_cubit.dart';
 import 'package:moviee_app/core/cubit/cubit/search_movie_cubit.dart';
 import 'package:moviee_app/core/cubit/cubit/theme_cubit.dart';
 import 'package:moviee_app/core/cubit/cubit/top_movies_cubit.dart';
-import 'package:moviee_app/screens/splash_screen.dart';
+import 'package:moviee_app/splash/screen/splash.dart';
 import 'package:moviee_app/theme/app_themes.dart';
 
 void main() async {
@@ -67,7 +67,7 @@ class MoviesApp extends StatelessWidget {
           themeMode: themeMode,
           theme: AppThemes.light,
           darkTheme: AppThemes.dark,
-          home: const SplashScreen(),
+          home: const Splash(),
         );
       },
     );

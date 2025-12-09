@@ -2,7 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:moviee_app/core/api/api_consumer.dart';
 import 'package:moviee_app/core/errors/exceptions.dart';
-import 'package:moviee_app/models/movie_triller.dart';
+import 'package:moviee_app/core/models/movie_triller.dart';
 
 part 'movie_trailer_state.dart';
 

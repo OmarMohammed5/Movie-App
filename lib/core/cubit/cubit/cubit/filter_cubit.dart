@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
-import 'package:moviee_app/models/movie_model.dart';
+import 'package:moviee_app/core/models/movie_model.dart';
 
 part 'filter_state.dart';
 

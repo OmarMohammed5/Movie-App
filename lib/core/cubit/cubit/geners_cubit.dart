@@ -2,7 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:moviee_app/core/api/api_consumer.dart';
 import 'package:moviee_app/core/errors/exceptions.dart';
-import 'package:moviee_app/models/gener_model.dart';
+import 'package:moviee_app/core/models/gener_model.dart';
 
 part 'geners_state.dart';
 
