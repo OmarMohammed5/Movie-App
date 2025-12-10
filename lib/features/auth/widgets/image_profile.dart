@@ -34,7 +34,11 @@ class ImageProfile extends StatelessWidget {
           backgroundColor: isDark ? Colors.black : Colors.white,
           child: ClipOval(
             child: selectedImage == null
-                ? null
+                ? Icon(
+                    Icons.person,
+                    size: 110,
+                    color: isDark ? Colors.white : Colors.blueGrey,
+                  )
                 : Image.file(
                     File(selectedImage!.path),
                     height: 140,

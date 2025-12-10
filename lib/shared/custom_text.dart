@@ -14,7 +14,7 @@ class CustomText extends StatelessWidget {
     this.fontSize = 16,
     this.fontWeight = FontWeight.normal,
     this.color,
-    this.maxLines = 1,
+    this.maxLines = 15,
   });
 
   @override

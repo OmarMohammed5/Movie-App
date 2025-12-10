@@ -1,8 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_gap/flutter_gap.dart';
-import 'package:hugeicons/hugeicons.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:moviee_app/features/auth/widgets/profile_content.dart';
 import 'package:moviee_app/core/cubit/cubit/auth_cubit.dart';
@@ -42,12 +40,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   void initState() {
     super.initState();
-    context.read<ProfileCubit>().loadUserProfile();
+    final profileCubit = context.read<ProfileCubit>();
     _savedImage();
+    profileCubit.loadUserProfile();
+    // profileCubit.savedImage();
   }
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return BlocListener<AuthCubit, AuthState>(
       listener: (context, state) {
         if (state is AuthLoaded) {
@@ -56,13 +57,22 @@ class _ProfileScreenState extends State<ProfileScreen> {
       },
       child: Scaffold(
         appBar: AppBar(
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              CustomText("Profile", fontSize: 22, fontWeight: FontWeight.bold),
-            ],
+          automaticallyImplyLeading: false,
+          backgroundColor: isDark ? Colors.black : Colors.white,
+          elevation: 2,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(50),
+              bottomRight: Radius.circular(50),
+            ),
           ),
-          actions: [Icon(HugeIcons.strokeRoundedUser), Gap(10)],
+          shadowColor: Colors.black26,
+          centerTitle: true,
+          title: CustomText(
+            "Profile",
+            fontSize: 22,
+            fontWeight: FontWeight.bold,
+          ),
         ),
         body: BlocBuilder<AuthCubit, AuthState>(
           builder: (context, state) {

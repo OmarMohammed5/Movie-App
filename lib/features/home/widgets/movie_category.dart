@@ -3,7 +3,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gap/flutter_gap.dart';
-import 'package:hugeicons/hugeicons.dart';
 import 'package:moviee_app/features/home/widgets/auth_favorite_dialog.dart';
 import 'package:moviee_app/core/cubit/cubit/favorites_cubit.dart';
 import 'package:moviee_app/core/cubit/cubit/movie_details_cubit.dart';
@@ -15,150 +14,190 @@ class MovieCategory extends StatelessWidget {
   const MovieCategory({super.key, this.movie});
 
   final dynamic movie;
+
   @override
   Widget build(BuildContext context) {
-    final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
+
     return GestureDetector(
       onTap: () {
         context.read<MovieDetailsCubit>().getDetailsMovie(movie.id);
-        Navigator.of(context, rootNavigator: true).push(
+        Navigator.push(
+          context,
           MaterialPageRoute(
             fullscreenDialog: true,
-            builder: (context) => DetailsMovieScreen(movieId: movie.id),
+            builder: (_) => DetailsMovieScreen(movieId: movie.id),
           ),
         );
       },
+
       child: Container(
-        width: double.infinity,
+        width: screenWidth,
+        margin: const EdgeInsets.symmetric(vertical: 8),
         decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
           boxShadow: const [
             BoxShadow(
-              color: Colors.black12,
-              blurRadius: 20,
-              offset: Offset(0, 4),
+              color: Colors.black26,
+              blurRadius: 25,
+              offset: Offset(0, 10),
             ),
           ],
         ),
-        child: Stack(
-          children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(16),
-              child: CachedNetworkImage(
+
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(20),
+          child: Stack(
+            children: [
+              /// --- Image ---
+              CachedNetworkImage(
                 imageUrl: movie.poster,
+                width: screenWidth,
+                height: 240,
                 fit: BoxFit.cover,
-                width: double.infinity,
-                placeholder: (context, url) => Center(
+                placeholder: (_, __) => Center(
                   child: CircularProgressIndicator(
                     color: AppColors.kLogoColor,
                     strokeWidth: 2,
                   ),
                 ),
-                errorWidget: (context, url, error) => Center(
-                  child: Icon(Icons.error, color: AppColors.kLogoColor),
-                ),
+                errorWidget: (_, __, ___) =>
+                    Icon(Icons.error, color: AppColors.kLogoColor),
               ),
-            ),
 
-            Positioned(
-              right: -2,
-              top: -2,
-              child: BlocSelector<FavoritesCubit, FavoritesState, bool>(
-                selector: (favState) {
-                  if (favState is FavoritesLoaded) {
-                    return favState.favorites.any(
-                      (fav) => fav['id'].toString() == movie.id.toString(),
-                    );
-                  }
-                  return false;
-                },
-                builder: (context, isFav) {
-                  return IconButton(
-                    onPressed: () {
-                      final user = FirebaseAuth.instance.currentUser;
-                      if (user == null) {
-                        showDialog(
-                          context: context,
-                          builder: (context) => AuthFavoriteDialog(),
-                        );
-                      } else {
-                        context.read<FavoritesCubit>().toggleFavorite({
-                          'id': movie.id,
-                          'title': movie.title,
-                          'poster': movie.poster,
-                          'vote_average': movie.voteAverage,
-                          'release_date': movie.releaseDate,
-                        });
-                      }
-                    },
-                    icon: Icon(
-                      Icons.favorite_rounded,
-                      color: isFav ? Colors.red : Colors.white,
-                      size: 25.0,
+              /// --- Gradient Overlay ---
+              Positioned.fill(
+                child: Container(
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: [
+                        Colors.transparent,
+                        Colors.black.withValues(alpha: .35),
+                        Colors.black.withValues(alpha: 0.85),
+                      ],
                     ),
-                  );
-                },
-              ),
-            ),
-
-            Positioned(
-              bottom: screenHeight * 0.033,
-              left: screenWidth * 0,
-              right: screenWidth * 0,
-              child: Container(
-                padding: const EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                  color: Colors.black.withValues(alpha: 0.8),
-                  borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(16),
-                    bottomRight: Radius.circular(16),
-                    topLeft: Radius.circular(16),
-                    topRight: Radius.circular(16),
                   ),
                 ),
+              ),
+
+              /// --- Favorite Button ---
+              Positioned(
+                top: 12,
+                right: 12,
+                child: BlocSelector<FavoritesCubit, FavoritesState, bool>(
+                  selector: (state) {
+                    if (state is FavoritesLoaded) {
+                      return state.favorites.any(
+                        (fav) => fav['id'].toString() == movie.id.toString(),
+                      );
+                    }
+                    return false;
+                  },
+                  builder: (_, isFav) {
+                    return AnimatedContainer(
+                      duration: Duration(milliseconds: 250),
+                      height: 40,
+                      width: 40,
+                      decoration: BoxDecoration(
+                        color: Colors.black.withValues(alpha: 0.35),
+                        shape: BoxShape.circle,
+                      ),
+                      child: IconButton(
+                        icon: Icon(
+                          Icons.favorite,
+                          color: isFav ? Colors.redAccent : Colors.white,
+                          size: 22,
+                        ),
+                        onPressed: () {
+                          final user = FirebaseAuth.instance.currentUser;
+                          if (user == null) {
+                            showDialog(
+                              context: context,
+                              builder: (_) => AuthFavoriteDialog(),
+                            );
+                            return;
+                          }
+                          context.read<FavoritesCubit>().toggleFavorite({
+                            'id': movie.id,
+                            'title': movie.title,
+                            'poster': movie.poster,
+                            'vote_average': movie.voteAverage,
+                            'release_date': movie.releaseDate,
+                          });
+                        },
+                      ),
+                    );
+                  },
+                ),
+              ),
+
+              /// --- Movie Info ---
+              Positioned(
+                left: 12,
+                right: 12,
+                bottom: 14,
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    /// Title
                     CustomText(
                       movie.title,
-                      fontSize: 16,
+                      fontSize: 18,
                       fontWeight: FontWeight.bold,
                       color: Colors.white,
+                      maxLines: 2,
                     ),
-                    const Gap(8),
+
+                    Gap(6),
+
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
+                        /// Rating
                         Row(
                           children: [
-                            HugeIcon(
-                              icon: HugeIcons.strokeRoundedStar,
-                              color: Colors.orangeAccent,
+                            Icon(
+                              Icons.star_rounded,
+                              color: Colors.amber,
                               size: 20,
                             ),
-                            Gap(4),
+                            SizedBox(width: 4),
                             CustomText(
-                              (movie.voteAverage as num).toStringAsFixed(1),
+                              movie.voteAverage.toStringAsFixed(1),
                               fontSize: 14,
-                              fontWeight: FontWeight.bold,
                               color: Colors.white,
+                              fontWeight: FontWeight.bold,
                             ),
                           ],
                         ),
-                        CustomText(
-                          movie.year,
-                          fontSize: 14,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
+
+                        SizedBox(width: 20),
+
+                        /// Year Tag
+                        Container(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 10,
+                            vertical: 4,
+                          ),
+                          decoration: BoxDecoration(
+                            color: Colors.white.withValues(alpha: 0.15),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: CustomText(
+                            movie.year,
+                            fontSize: 12,
+                            color: Colors.white,
+                            fontWeight: FontWeight.w500,
+                          ),
                         ),
                       ],
                     ),
                   ],
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

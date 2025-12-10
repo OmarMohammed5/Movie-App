@@ -9,7 +9,6 @@ import 'package:moviee_app/features/home/widgets/auth_favorite_dialog.dart';
 import 'package:moviee_app/features/auth/widgets/image_profile.dart';
 import 'package:moviee_app/features/auth/widgets/logout_button.dart';
 import 'package:moviee_app/features/auth/widgets/name_and_email_profile.dart';
-import 'package:moviee_app/features/auth/widgets/profile_menu.dart';
 import 'package:moviee_app/core/cubit/cubit/profile_cubit.dart';
 import 'package:moviee_app/core/cubit/cubit/theme_cubit.dart';
 import 'package:moviee_app/features/about%20app/screen/about_app_screen.dart';
@@ -95,6 +94,7 @@ class _ProfileContentState extends State<ProfileContent> {
     final isDarkMode = themeCubit.state == ThemeMode.dark;
     final screenHight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return SingleChildScrollView(
       child: Column(
         children: [
@@ -131,41 +131,79 @@ class _ProfileContentState extends State<ProfileContent> {
             ],
           ),
 
-          Gap(80),
+          Gap(40),
 
           //// Name && Email
           NameAndEmailProfile(),
-          Gap(10),
+          Gap(13),
 
-          // Profile Menu
-          ProfileMenu(
-            icon: isDarkMode
-                ? HugeIcons.strokeRoundedSun02
-                : HugeIcons.strokeRoundedMoon02,
-            color: isDarkMode ? Colors.white : Colors.black,
-
-            title: CustomText(
-              isDarkMode ? "Light Mode" : "Dark Mode",
-              fontSize: 16,
-            ),
-            onTap: () {
-              context.read<ThemeCubit>().toggleTheme();
-            },
-          ),
-          ProfileMenu(
-            icon: HugeIcons.strokeRoundedInformationCircle,
-            color: isDarkMode ? Colors.white : Colors.black,
-            title: CustomText("About App", fontSize: 16),
-            onTap: () {
-              Navigator.of(context, rootNavigator: true).push(
-                MaterialPageRoute(
-                  builder: (context) {
-                    return AboutAppScreen();
-                  },
+          /// Theme Mode Card (Light / Dark)
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: Card(
+              color: isDark ? Colors.grey[850] : Colors.grey.shade200,
+              child: Padding(
+                padding: const EdgeInsets.all(15.5),
+                child: Row(
+                  spacing: 14,
+                  children: [
+                    Icon(
+                      isDarkMode
+                          ? HugeIcons.strokeRoundedSun02
+                          : HugeIcons.strokeRoundedMoon02,
+                      color: isDarkMode ? Colors.white : Colors.black,
+                      size: 25,
+                    ),
+                    Expanded(
+                      child: GestureDetector(
+                        onTap: () {
+                          context.read<ThemeCubit>().toggleTheme();
+                        },
+                        child: CustomText(
+                          isDarkMode ? "Light Mode" : "Dark Mode",
+                          fontSize: 16,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-              );
-            },
+              ),
+            ),
           ),
+          Gap(13),
+
+          /// About App Card
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: Card(
+              color: isDark ? Colors.grey[850] : Colors.grey.shade200,
+              child: InkWell(
+                borderRadius: BorderRadius.circular(12),
+                onTap: () {
+                  Navigator.of(
+                    context,
+                    rootNavigator: true,
+                  ).push(MaterialPageRoute(builder: (_) => AboutAppScreen()));
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(15.5),
+                  child: Row(
+                    spacing: 14,
+                    children: [
+                      Icon(
+                        HugeIcons.strokeRoundedInformationCircle,
+                        size: 25,
+                        color: isDarkMode ? Colors.white : Colors.black,
+                      ),
+                      CustomText("About App", fontSize: 16),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ),
+          Gap(12),
+
           //// Log out Button
           LogoutButton(),
         ],

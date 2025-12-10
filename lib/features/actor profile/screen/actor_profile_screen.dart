@@ -26,16 +26,25 @@ class _ActorProfileScreenState extends State<ActorProfileScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Scaffold(
       appBar: AppBar(
-        scrolledUnderElevation: 0,
+        backgroundColor: isDark ? Colors.black : Colors.white,
+        elevation: 2,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+            bottomLeft: Radius.circular(40),
+            bottomRight: Radius.circular(40),
+          ),
+        ),
+        shadowColor: Colors.black26,
+        centerTitle: true,
         leading: IconButton(
           onPressed: () {
             Navigator.pop(context);
           },
           icon: Icon(Icons.arrow_back_ios, size: 20),
         ),
-        centerTitle: true,
         title: CustomText(
           "Actor Profile",
           fontSize: 24,

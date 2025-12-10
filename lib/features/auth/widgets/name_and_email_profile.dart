@@ -11,6 +11,7 @@ class NameAndEmailProfile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return BlocBuilder<ProfileCubit, ProfileState>(
       builder: (context, state) {
         if (state is ProfileLoading) {
@@ -27,26 +28,38 @@ class NameAndEmailProfile extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Row(
-                  spacing: 14,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Icon(CupertinoIcons.person, size: 25),
-                    CustomText(
-                      "Name   :    ${state.name}",
-                      fontSize: 16,
-                      maxLines: 2,
+                Card(
+                  color: isDark ? Colors.grey[850] : Colors.grey.shade200,
+                  child: Padding(
+                    padding: const EdgeInsets.all(15.5),
+                    child: Row(
+                      spacing: 14,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Icon(CupertinoIcons.person, size: 25),
+                        CustomText(
+                          "Name   :    ${state.name}",
+                          fontSize: 16,
+                          maxLines: 2,
+                        ),
+                      ],
                     ),
-                  ],
+                  ),
                 ),
-                Gap(20),
-                Row(
-                  spacing: 14,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Icon(Icons.email_outlined, size: 25),
-                    CustomText("Email   :    ${state.email}", fontSize: 16),
-                  ],
+                Gap(10),
+                Card(
+                  color: isDark ? Colors.grey[850] : Colors.grey.shade200,
+                  child: Padding(
+                    padding: const EdgeInsets.all(15.5),
+                    child: Row(
+                      spacing: 14,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Icon(Icons.email_outlined, size: 25),
+                        CustomText("Email   :    ${state.email}", fontSize: 16),
+                      ],
+                    ),
+                  ),
                 ),
               ],
             ),

@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gap/flutter_gap.dart';
+import 'package:lottie/lottie.dart';
 import 'package:moviee_app/core/cubit/cubit/favorites_cubit.dart';
 import 'package:moviee_app/features/movie/screen/details_movie_screen.dart';
 import 'package:moviee_app/core/constant/app_colors.dart';
@@ -36,11 +37,17 @@ class FavoriteBodyWidget extends StatelessWidget {
           final favorites = state.favorites;
 
           if (favorites.isEmpty) {
-            return Center(child: CustomText("No favorites yet", fontSize: 22));
+            return Center(
+              child: Lottie.asset(
+                "assets/Heart Animated.json",
+                fit: BoxFit.cover,
+                width: 200,
+              ),
+            );
           }
 
           return GridView.builder(
-            padding: const EdgeInsets.all(12),
+            padding: const EdgeInsets.all(16),
             itemCount: state.favorites.length,
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,

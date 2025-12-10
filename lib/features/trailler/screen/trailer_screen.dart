@@ -38,11 +38,22 @@ class _TrailerScreenState extends State<TrailerScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Scaffold(
       appBar: _isFullScreen
           ? null
           : AppBar(
               toolbarHeight: 40,
+              backgroundColor: isDark ? Colors.black : Colors.white,
+              elevation: 2,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(40),
+                  bottomRight: Radius.circular(40),
+                ),
+              ),
+              shadowColor: Colors.black26,
+              centerTitle: true,
               title: Row(
                 spacing: 6,
                 mainAxisSize: MainAxisSize.min,

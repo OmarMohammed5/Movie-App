@@ -20,7 +20,7 @@ class TopTenMovies extends StatelessWidget {
               Container(
                 padding: EdgeInsets.all(10),
                 decoration: BoxDecoration(
-                  color: Colors.red.withValues(alpha: 0.8),
+                  color: Colors.red.shade700,
                   shape: BoxShape.rectangle,
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(40),

@@ -22,6 +22,7 @@ class MoviePosterAppBar extends StatelessWidget {
       backgroundColor: Colors.black.withValues(alpha: 0.0),
       automaticallyImplyLeading: false,
       flexibleSpace: FlexibleSpaceBar(
+        // collapseMode: CollapseMode,
         background: Stack(
           fit: StackFit.expand,
           children: [

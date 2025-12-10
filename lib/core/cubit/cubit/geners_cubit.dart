@@ -15,6 +15,7 @@ class GenersCubit extends Cubit<GenersState> {
   final String apiKey = "ae4d10cfad37d9846ffed212ea75dbc0";
   //// fetchGeners
   fetchGeners() async {
+    if (isClosed) return;
     emit(GenersLoading());
     try {
       final response = await api.get(
@@ -24,9 +25,10 @@ class GenersCubit extends Cubit<GenersState> {
       geners = results.map((json) => GenerModel.from(json)).toList();
       emit(GenersLoaded(geners, selectedIndex));
     } on ServerException catch (e) {
-      emit(GenersError(e.errorModel.errorMessage));
+      if (!isClosed) emit(GenersError(e.errorModel.errorMessage));
     } catch (e) {
-      emit(GenersError("Unexpected Error"));
+      print("===== ========$e====================");
+      if (!isClosed) emit(GenersError("Network Connection Error"));
     }
   }
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gap/flutter_gap.dart';
-import 'package:moviee_app/features/home/widgets/app_bar_widget.dart';
-import 'package:moviee_app/features/home/widgets/carousel_slider_widget.dart';
+import 'package:moviee_app/features/home/widgets/Banner_carousel.dart';
+import 'package:moviee_app/features/home/widgets/custom_app_bar.dart';
 import 'package:moviee_app/features/home/widgets/categories_list_widget.dart';
 import 'package:moviee_app/features/home/widgets/movie_card_widget.dart';
 import 'package:moviee_app/features/home/widgets/top_ten_movies.dart';
@@ -19,14 +19,14 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarWidget(),
+      appBar: CustomAppBar(),
       body: CustomScrollView(
         physics: BouncingScrollPhysics(),
         slivers: [
           SliverToBoxAdapter(child: Gap(40)),
 
           /// Banners
-          SliverToBoxAdapter(child: CarouselSliderWidget()),
+          SliverToBoxAdapter(child: BannerCarousel()),
           SliverToBoxAdapter(child: Gap(30)),
 
           /// Top 10 Movies

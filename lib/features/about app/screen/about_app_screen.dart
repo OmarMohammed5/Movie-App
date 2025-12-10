@@ -8,12 +8,24 @@ class AboutAppScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Scaffold(
       appBar: AppBar(
+        // automaticallyImplyLeading: false,
+        // elevation: 0,
+        // scrolledUnderElevation: 0,
+        // leadingWidth: 0,
         automaticallyImplyLeading: false,
-        elevation: 0,
-        scrolledUnderElevation: 0,
-        leadingWidth: 0,
+        backgroundColor: isDark ? Colors.black : Colors.white,
+        elevation: 2,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+            bottomLeft: Radius.circular(40),
+            bottomRight: Radius.circular(40),
+          ),
+        ),
+        shadowColor: Colors.black26,
+        centerTitle: true,
         title: Row(
           children: [
             GestureDetector(
@@ -34,8 +46,6 @@ class AboutAppScreen extends StatelessWidget {
             Gap(30),
           ],
         ),
-
-        centerTitle: true,
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 20),

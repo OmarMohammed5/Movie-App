@@ -1,7 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gap/flutter_gap.dart';
-import 'package:moviee_app/core/constant/app_colors.dart';
 import 'package:moviee_app/shared/custom_text.dart';
 
 class FavoriteAppBar extends StatelessWidget implements PreferredSize {
@@ -14,18 +11,24 @@ class FavoriteAppBar extends StatelessWidget implements PreferredSize {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return AppBar(
-      scrolledUnderElevation: 0,
-      title: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          CustomText("My Favorites", fontSize: 22, fontWeight: FontWeight.bold),
-        ],
+      automaticallyImplyLeading: false,
+      backgroundColor: isDark ? Colors.black : Colors.white,
+      elevation: 2,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          bottomLeft: Radius.circular(50),
+          bottomRight: Radius.circular(50),
+        ),
       ),
-      actions: [
-        Icon(CupertinoIcons.heart, color: AppColors.kLogoColor),
-        Gap(10),
-      ],
+      shadowColor: Colors.black26,
+      centerTitle: true,
+      title: CustomText(
+        "My Favorites",
+        fontSize: 22,
+        fontWeight: FontWeight.bold,
+      ),
     );
   }
 }

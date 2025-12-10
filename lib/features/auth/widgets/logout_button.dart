@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hugeicons/hugeicons.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:moviee_app/features/auth/widgets/profile_menu.dart';
 import 'package:moviee_app/core/cubit/cubit/auth_cubit.dart';
 import 'package:moviee_app/core/cubit/cubit/bottom_nav_cubit.dart';
 import 'package:moviee_app/core/cubit/cubit/favorites_cubit.dart';
@@ -22,71 +21,97 @@ class _LogoutButtonState extends State<LogoutButton> {
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    return ProfileMenu(
-      icon: HugeIcons.strokeRoundedLogout02,
-      color: AppColors.kLogoColor,
-      title: CustomText("Log Out", fontSize: 16, color: AppColors.kLogoColor),
-      onTap: () {
-        showDialog(
-          context: context,
-          builder: (context) {
-            return AlertDialog(
-              contentPadding: EdgeInsets.symmetric(
-                horizontal: 20,
-                vertical: 10,
-              ),
-              backgroundColor: isDark ? Colors.grey.shade900 : Colors.white,
-              title: CustomText(
-                "Are you sure you want to log out ?",
-                fontSize: 18,
-                maxLines: 2,
-              ),
-              actions: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    TextButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                      child: CustomText("Cancel"),
-                    ),
-                    BlocBuilder<AuthCubit, AuthState>(
-                      builder: (context, state) {
-                        return TextButton(
+
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
+      child: Card(
+        color: isDark ? Colors.grey[850] : Colors.grey.shade200,
+        child: InkWell(
+          borderRadius: BorderRadius.circular(12),
+          onTap: () {
+            showDialog(
+              context: context,
+              builder: (context) {
+                return AlertDialog(
+                  contentPadding: EdgeInsets.symmetric(
+                    horizontal: 20,
+                    vertical: 10,
+                  ),
+                  backgroundColor: isDark ? Colors.grey.shade900 : Colors.white,
+                  title: CustomText(
+                    "Are you sure you want to log out ?",
+                    fontSize: 18,
+                    maxLines: 2,
+                  ),
+                  actions: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        TextButton(
                           onPressed: () {
                             Navigator.pop(context);
-                            context.read<AuthCubit>().logout(context);
-                            // Clear Favorites after logout
-                            context.read<FavoritesCubit>().clearFavorites();
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: CustomText(
-                                  "Logout Successfully",
-                                  color: Colors.white,
-                                ),
-                                backgroundColor: Colors.grey.shade800,
+                          },
+                          child: CustomText("Cancel"),
+                        ),
+                        BlocBuilder<AuthCubit, AuthState>(
+                          builder: (context, state) {
+                            return TextButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                                context.read<AuthCubit>().logout(context);
+
+                                context.read<FavoritesCubit>().clearFavorites();
+
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: CustomText(
+                                      "Logout Successfully",
+                                      color: Colors.white,
+                                    ),
+                                    backgroundColor: Colors.grey.shade800,
+                                  ),
+                                );
+
+                                context.read<BottomNavCubit>().changeTab(0);
+
+                                setState(() {
+                                  selectedImage = null;
+                                });
+                              },
+                              child: CustomText(
+                                "Log Out",
+                                color: AppColors.kLogoColor,
                               ),
                             );
-                            context.read<BottomNavCubit>().changeTab(0);
-                            setState(() {
-                              selectedImage = null;
-                            });
                           },
-                          child: CustomText(
-                            "Log Out",
-                            color: AppColors.kLogoColor,
-                          ),
-                        );
-                      },
+                        ),
+                      ],
                     ),
                   ],
-                ),
-              ],
+                );
+              },
             );
           },
-        );
-      },
+          child: Padding(
+            padding: const EdgeInsets.all(15.5),
+            child: Row(
+              spacing: 14,
+              children: [
+                Icon(
+                  HugeIcons.strokeRoundedLogout02,
+                  size: 25,
+                  color: AppColors.kLogoColor,
+                ),
+                CustomText(
+                  "Log Out",
+                  fontSize: 16,
+                  color: AppColors.kLogoColor,
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
     );
   }
 }

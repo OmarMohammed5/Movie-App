@@ -36,7 +36,7 @@ class _CategoriesListWidgetState extends State<CategoriesListWidget> {
                 Container(
                   padding: EdgeInsets.all(10),
                   decoration: BoxDecoration(
-                    color: Colors.red.withValues(alpha: 0.8),
+                    color: Colors.red.shade700,
                     shape: BoxShape.rectangle,
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(40),
@@ -111,7 +111,7 @@ class _CategoriesListWidgetState extends State<CategoriesListWidget> {
                                 ? AppColors.kLogoColor
                                 : Colors.grey.withValues(alpha: 0.6),
                             shape: BoxShape.rectangle,
-                            borderRadius: BorderRadius.circular(8),
+                            borderRadius: BorderRadius.circular(16),
                           ),
                           child: Center(
                             child: CustomText(

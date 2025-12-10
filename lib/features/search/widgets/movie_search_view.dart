@@ -59,6 +59,7 @@ class _MovieSearchViewState extends State<MovieSearchView> {
                   prefixIcon: Icon(
                     HugeIcons.strokeRoundedSearch01,
                     color: Colors.grey.shade500,
+                    fontWeight: FontWeight.w700,
                   ),
                   suffixIcon:
                       /// Clear Text Button >> only show when the search text field is not empty
@@ -77,8 +78,9 @@ class _MovieSearchViewState extends State<MovieSearchView> {
                             });
                           },
                           child: Icon(
-                            HugeIcons.strokeRoundedTextClear,
+                            Icons.clear,
                             color: Colors.grey.shade500,
+                            fontWeight: FontWeight.w700,
                           ),
                         )
                       : null,
