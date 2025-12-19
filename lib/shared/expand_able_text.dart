@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gap/flutter_gap.dart';
 
 class ExpandableText extends StatefulWidget {
   final String text;
@@ -41,7 +42,7 @@ class _ExpandableTextState extends State<ExpandableText> {
           overflow: isExpanded ? TextOverflow.visible : TextOverflow.ellipsis,
           style: defaultTextStyle,
         ),
-        const SizedBox(height: 4),
+        const Gap(4),
         GestureDetector(
           onTap: () {
             setState(() {

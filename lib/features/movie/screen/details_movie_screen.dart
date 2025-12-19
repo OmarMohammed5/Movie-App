@@ -3,13 +3,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hugeicons/hugeicons.dart';
+import 'package:lottie/lottie.dart';
 import 'package:moviee_app/features/home/widgets/auth_favorite_dialog.dart';
 import 'package:moviee_app/features/movie/widgets/movie_details_body.dart';
 import 'package:moviee_app/features/movie/widgets/movie_poster_app_bar.dart';
 import 'package:moviee_app/core/cubit/cubit/favorites_cubit.dart';
 import 'package:moviee_app/core/cubit/cubit/movie_details_cubit.dart';
 import 'package:moviee_app/core/constant/app_colors.dart';
-import 'package:moviee_app/shared/custom_text.dart';
 
 class DetailsMovieScreen extends StatefulWidget {
   const DetailsMovieScreen({super.key, required this.movieId});
@@ -59,10 +59,11 @@ class _DetailsMovieScreenState extends State<DetailsMovieScreen> {
                 );
               } else if (state is MovieDetailsError) {
                 return Center(
-                  child: CustomText(
-                    state.errorMessage,
-                    color: AppColors.kLogoColor,
-                    fontSize: 16,
+                  child: Lottie.asset(
+                    "assets/spider 404.json",
+                    width: 250,
+                    height: 250,
+                    fit: BoxFit.cover,
                   ),
                 );
               } else {

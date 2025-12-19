@@ -33,27 +33,66 @@ class _CategoriesListWidgetState extends State<CategoriesListWidget> {
           children: [
             Row(
               children: [
-                Container(
-                  padding: EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    color: Colors.red.shade700,
-                    shape: BoxShape.rectangle,
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(40),
-                      bottomRight: Radius.circular(40),
-                      topRight: Radius.circular(20),
-                      bottomLeft: Radius.circular(20),
-                    ),
+                ClipRRect(
+                  borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(40),
+                    bottomRight: Radius.circular(40),
+                    topRight: Radius.circular(20),
+                    bottomLeft: Radius.circular(20),
                   ),
-                  child: CustomText(
-                    "Categories",
-                    fontSize: 20,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 16,
+                      vertical: 10,
+                    ),
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                        colors: Theme.of(context).brightness == Brightness.dark
+                            ? [
+                                Colors.white.withValues(alpha: .15),
+                                Colors.white.withValues(alpha: 0.05),
+                              ]
+                            : [
+                                Colors.white.withValues(alpha: 0.7),
+                                Colors.white.withValues(alpha: 0.4),
+                              ],
+                      ),
+                      borderRadius: const BorderRadius.only(
+                        topLeft: Radius.circular(40),
+                        bottomRight: Radius.circular(40),
+                        topRight: Radius.circular(20),
+                        bottomLeft: Radius.circular(20),
+                      ),
+                      border: Border.all(
+                        color: Theme.of(context).brightness == Brightness.dark
+                            ? Colors.white.withValues(alpha: 0.25)
+                            : Colors.black.withValues(alpha: 0.1),
+                      ),
+                    ),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        const Icon(
+                          Icons.movie_filter_outlined,
+                          color: Colors.redAccent,
+                          size: 22,
+                        ),
+                        const Gap(8),
+                        CustomText(
+                          "Categories",
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: Theme.of(context).colorScheme.onSurface,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ],
             ),
+
             Gap(30),
             BlocConsumer<GenersCubit, GenersState>(
               listener: (context, state) {},

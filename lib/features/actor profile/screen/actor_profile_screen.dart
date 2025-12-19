@@ -29,12 +29,12 @@ class _ActorProfileScreenState extends State<ActorProfileScreen> {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: isDark ? Colors.black : Colors.white,
+        backgroundColor: isDark ? Colors.black26 : Colors.white,
         elevation: 2,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
-            bottomLeft: Radius.circular(40),
-            bottomRight: Radius.circular(40),
+            bottomLeft: Radius.circular(12),
+            bottomRight: Radius.circular(12),
           ),
         ),
         shadowColor: Colors.black26,

@@ -135,6 +135,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lottie/lottie.dart';
 import 'package:moviee_app/core/api/dio_consumer.dart';
 import 'package:moviee_app/core/cubit/cubit/banner_cubit.dart';
 import 'package:moviee_app/core/constant/app_colors.dart';
@@ -261,11 +262,11 @@ class BannerCarousel extends StatelessWidget {
             );
           } else if (state is BannerError) {
             return Center(
-              child: CustomText(
-                state.errorMessage,
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-                color: Colors.red,
+              child: Lottie.asset(
+                "assets/spider 404.json",
+                width: 250,
+                height: 250,
+                fit: BoxFit.cover,
               ),
             );
           } else {

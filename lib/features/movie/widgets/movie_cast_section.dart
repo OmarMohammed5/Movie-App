@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gap/flutter_gap.dart';
+import 'package:lottie/lottie.dart';
 import 'package:moviee_app/core/cubit/cubit/cast_cubit.dart';
 import 'package:moviee_app/core/constant/app_colors.dart';
 import 'package:moviee_app/shared/custom_text.dart';
@@ -130,10 +131,11 @@ class _MovieCastSectionState extends State<MovieCastSection> {
               );
             } else if (state is CastError) {
               return Center(
-                child: CustomText(
-                  state.errorMessage,
-                  color: AppColors.kLogoColor,
-                  fontSize: 16,
+                child: Lottie.asset(
+                  "assets/spider 404.json",
+                  width: 250,
+                  height: 250,
+                  fit: BoxFit.cover,
                 ),
               );
             } else {

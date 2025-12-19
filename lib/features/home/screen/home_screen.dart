@@ -23,7 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
       body: CustomScrollView(
         physics: BouncingScrollPhysics(),
         slivers: [
-          SliverToBoxAdapter(child: Gap(40)),
+          SliverToBoxAdapter(child: Gap(30)),
 
           /// Banners
           SliverToBoxAdapter(child: BannerCarousel()),
@@ -39,9 +39,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
           /// Movie Cards
           SliverToBoxAdapter(child: MovieCardWidget(movie: widget.movieModel)),
-
-          /// Gap
-          SliverToBoxAdapter(child: Gap(30)),
         ],
       ),
     );

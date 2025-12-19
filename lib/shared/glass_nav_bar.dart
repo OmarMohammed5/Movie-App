@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:flutter_gap/flutter_gap.dart';
 import 'package:moviee_app/core/constant/app_colors.dart';
 import 'package:moviee_app/shared/custom_text.dart';
 
@@ -177,10 +178,10 @@ class _GlassBottomNavBarState extends State<GlassBottomNavBar> {
                                             : item.icon,
                                       ),
                                     ),
-                                    const SizedBox(height: 2),
+                                    const Gap(2),
                                     CustomText(
                                       item.label,
-                                      fontSize: 11.7,
+                                      fontSize: 10.6,
                                       fontWeight: FontWeight.w600,
                                       color: isSelected
                                           ? AppColors.kPrimaryColor.withValues(

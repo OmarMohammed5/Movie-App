@@ -16,12 +16,12 @@ class AboutAppScreen extends StatelessWidget {
         // scrolledUnderElevation: 0,
         // leadingWidth: 0,
         automaticallyImplyLeading: false,
-        backgroundColor: isDark ? Colors.black : Colors.white,
+        backgroundColor: isDark ? Colors.black26 : Colors.white,
         elevation: 2,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
-            bottomLeft: Radius.circular(40),
-            bottomRight: Radius.circular(40),
+            bottomLeft: Radius.circular(12),
+            bottomRight: Radius.circular(12),
           ),
         ),
         shadowColor: Colors.black26,
@@ -53,12 +53,19 @@ class AboutAppScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Gap(30),
+
             //// Logo
-            Center(
+            Container(
+              padding: EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                color: isDark ? Colors.white10 : Colors.black12,
+                borderRadius: BorderRadius.circular(12),
+              ),
               child: Image.asset(
                 "assets/images/Movies-removebg-preview.png",
-                fit: BoxFit.cover,
-                width: 200,
+                width: 70,
+                height: 70,
+                fit: BoxFit.contain,
               ),
             ),
 

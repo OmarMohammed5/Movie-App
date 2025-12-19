@@ -14,12 +14,12 @@ class FavoriteAppBar extends StatelessWidget implements PreferredSize {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     return AppBar(
       automaticallyImplyLeading: false,
-      backgroundColor: isDark ? Colors.black : Colors.white,
       elevation: 2,
+      backgroundColor: isDark ? Colors.black26 : Colors.white,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
-          bottomLeft: Radius.circular(50),
-          bottomRight: Radius.circular(50),
+          bottomLeft: Radius.circular(12),
+          bottomRight: Radius.circular(12),
         ),
       ),
       shadowColor: Colors.black26,

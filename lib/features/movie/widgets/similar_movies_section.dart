@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gap/flutter_gap.dart';
+import 'package:lottie/lottie.dart';
 import 'package:moviee_app/features/home/widgets/auth_favorite_dialog.dart';
 import 'package:moviee_app/core/api/dio_consumer.dart';
 import 'package:moviee_app/core/cubit/cubit/cubit/similar_movies_cubit.dart';
@@ -126,8 +127,8 @@ class _SimilarMoviesSectionState extends State<SimilarMoviesSection> {
                                       end: Alignment.bottomCenter,
                                       colors: [
                                         Colors.transparent,
-                                        Colors.black.withOpacity(.35),
-                                        Colors.black.withOpacity(.85),
+                                        Colors.black.withValues(alpha: .35),
+                                        Colors.black.withValues(alpha: .85),
                                       ],
                                     ),
                                   ),
@@ -254,8 +255,8 @@ class _SimilarMoviesSectionState extends State<SimilarMoviesSection> {
                                             vertical: 3,
                                           ),
                                           decoration: BoxDecoration(
-                                            color: Colors.white.withOpacity(
-                                              0.15,
+                                            color: Colors.white.withValues(
+                                              alpha: 0.15,
                                             ),
                                             borderRadius: BorderRadius.circular(
                                               6,
@@ -285,10 +286,11 @@ class _SimilarMoviesSectionState extends State<SimilarMoviesSection> {
 
             if (state is SimilarMoviesError) {
               return Center(
-                child: CustomText(
-                  state.errorMessage,
-                  color: AppColors.kLogoColor,
-                  fontSize: 16,
+                child: Lottie.asset(
+                  "assets/spider 404.json",
+                  width: 250,
+                  height: 250,
+                  fit: BoxFit.cover,
                 ),
               );
             }

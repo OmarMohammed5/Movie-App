@@ -172,7 +172,7 @@ class MovieCategory extends StatelessWidget {
                           ],
                         ),
 
-                        SizedBox(width: 20),
+                        Gap(20),
 
                         /// Year Tag
                         Container(

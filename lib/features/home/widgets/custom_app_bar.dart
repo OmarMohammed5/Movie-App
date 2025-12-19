@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gap/flutter_gap.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSize {
@@ -13,15 +14,15 @@ class CustomAppBar extends StatelessWidget implements PreferredSize {
 
     return AppBar(
       automaticallyImplyLeading: false,
-      backgroundColor: isDark ? Colors.black : Colors.white,
       elevation: 2,
+      backgroundColor: isDark ? Colors.black26 : Colors.white,
+      shadowColor: Colors.black26,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
-          bottomLeft: Radius.circular(50),
-          bottomRight: Radius.circular(50),
+          bottomLeft: Radius.circular(12),
+          bottomRight: Radius.circular(12),
         ),
       ),
-      shadowColor: Colors.black26,
       centerTitle: true,
       title: Row(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -30,7 +31,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSize {
           Container(
             padding: EdgeInsets.all(6),
             decoration: BoxDecoration(
-              color: isDark ? Colors.white12 : Colors.black12,
+              color: isDark ? Colors.white10 : Colors.black12,
               borderRadius: BorderRadius.circular(12),
             ),
             child: Image.asset(
@@ -40,7 +41,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSize {
               fit: BoxFit.contain,
             ),
           ),
-          SizedBox(width: 8),
+          Gap(8),
 
           /// --- App Name ---
           Text(

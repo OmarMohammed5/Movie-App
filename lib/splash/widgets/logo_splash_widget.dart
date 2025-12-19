@@ -5,18 +5,24 @@ class LogoSplashWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Center(
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(16),
-            child: Image.asset(
-              "assets/images/Movies-removebg-preview.png",
-              width: 160,
-            ),
+    return Container(
+      padding: const EdgeInsets.all(20),
+      decoration: BoxDecoration(
+        color: Colors.white10,
+        borderRadius: BorderRadius.circular(20),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.redAccent.withValues(alpha: 0.2),
+            blurRadius: 30,
+            spreadRadius: 2,
           ),
-        ),
-      ],
+        ],
+      ),
+      child: Image.asset(
+        "assets/images/Movies-removebg-preview.png",
+        width: 110,
+        height: 110,
+      ),
     );
   }
 }

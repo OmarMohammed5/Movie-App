@@ -44,12 +44,12 @@ class _TrailerScreenState extends State<TrailerScreen> {
           ? null
           : AppBar(
               toolbarHeight: 40,
-              backgroundColor: isDark ? Colors.black : Colors.white,
+              backgroundColor: isDark ? Colors.black26 : Colors.white,
               elevation: 2,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(40),
-                  bottomRight: Radius.circular(40),
+                  bottomLeft: Radius.circular(12),
+                  bottomRight: Radius.circular(12),
                 ),
               ),
               shadowColor: Colors.black26,

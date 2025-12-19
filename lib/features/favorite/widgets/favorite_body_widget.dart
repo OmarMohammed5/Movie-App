@@ -19,10 +19,11 @@ class FavoriteBodyWidget extends StatelessWidget {
     final user = FirebaseAuth.instance.currentUser;
     if (user == null) {
       return Center(
-        child: CustomText(
-          "User not Logged in",
-          color: AppColors.kLogoColor,
-          fontSize: 18,
+        child: Lottie.asset(
+          "assets/Pin code Password Protection, Secure Login animation.json",
+          fit: BoxFit.cover,
+          height: 300,
+          width: 300,
         ),
       );
     }
@@ -45,9 +46,8 @@ class FavoriteBodyWidget extends StatelessWidget {
               ),
             );
           }
-
           return GridView.builder(
-            padding: const EdgeInsets.all(16),
+            padding: const EdgeInsets.all(14),
             itemCount: state.favorites.length,
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
@@ -59,7 +59,7 @@ class FavoriteBodyWidget extends StatelessWidget {
               final movie = state.favorites[index];
               return GestureDetector(
                 onTap: () {
-                  // print("Movie tapped: ${movie['id']}, ${movie['title']}");
+                  // log("Movie tapped: ${movie['id']}, ${movie['title']}");
                   Navigator.of(context, rootNavigator: true).push(
                     MaterialPageRoute(
                       builder: (context) {
@@ -131,13 +131,8 @@ class FavoriteBodyWidget extends StatelessWidget {
                         child: Container(
                           padding: EdgeInsets.all(12),
                           decoration: BoxDecoration(
-                            color: Colors.black.withValues(alpha: 0.8),
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(16),
-                              topRight: Radius.circular(16),
-                              bottomLeft: Radius.circular(16),
-                              bottomRight: Radius.circular(16),
-                            ),
+                            borderRadius: BorderRadius.circular(16),
+                            color: Colors.black.withValues(alpha: 0.3),
                           ),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
@@ -171,13 +166,23 @@ class FavoriteBodyWidget extends StatelessWidget {
                                       ),
                                     ],
                                   ),
-                                  CustomText(
-                                    DateTime.parse(
-                                      movie['release_date'],
-                                    ).year.toString(),
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.white,
+                                  Container(
+                                    padding: EdgeInsets.symmetric(
+                                      horizontal: 8,
+                                      vertical: 4,
+                                    ),
+                                    decoration: BoxDecoration(
+                                      color: Colors.grey.withValues(alpha: 0.4),
+                                      borderRadius: BorderRadius.circular(12),
+                                    ),
+                                    child: CustomText(
+                                      DateTime.parse(
+                                        movie['release_date'],
+                                      ).year.toString(),
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white,
+                                    ),
                                   ),
                                 ],
                               ),

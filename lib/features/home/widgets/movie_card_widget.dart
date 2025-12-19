@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lottie/lottie.dart';
 import 'package:moviee_app/features/home/widgets/movie_category.dart';
 import 'package:moviee_app/core/cubit/cubit/movie_cubit.dart';
 import 'package:moviee_app/core/models/movie_model.dart';
 import 'package:moviee_app/core/constant/app_colors.dart';
-import 'package:moviee_app/shared/custom_text.dart';
 
 class MovieCardWidget extends StatefulWidget {
   const MovieCardWidget({super.key, this.movie});
@@ -55,11 +55,11 @@ class _MovieCardWidgetState extends State<MovieCardWidget> {
             );
           } else if (state is MovieError) {
             return Center(
-              child: CustomText(
-                state.errorMessage,
-                color: AppColors.kLogoColor,
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
+              child: Lottie.asset(
+                "assets/spider 404.json",
+                width: 250,
+                height: 250,
+                fit: BoxFit.cover,
               ),
             );
           } else {
