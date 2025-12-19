@@ -79,7 +79,6 @@ class _SplashState extends State<Splash> with SingleTickerProviderStateMixin {
         : [
             Color.fromARGB(255, 71, 4, 4),
             Colors.red.shade300,
-            Colors.red.shade200,
             Colors.red.shade300,
             Color.fromARGB(255, 71, 4, 4),
           ];
