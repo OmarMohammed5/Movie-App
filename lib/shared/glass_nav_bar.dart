@@ -66,138 +66,131 @@ class _GlassBottomNavBarState extends State<GlassBottomNavBar> {
 
             return ClipRRect(
               borderRadius: BorderRadius.circular(100),
-              child: BackdropFilter(
-                filter: ImageFilter.blur(sigmaX: 50, sigmaY: 80),
-                child: Container(
-                  height: 60,
-                  decoration: BoxDecoration(
+              child: Container(
+                height: 60,
+                decoration: BoxDecoration(
+                  color: Colors.white.withValues(alpha: 0.1),
+                  borderRadius: BorderRadius.circular(100),
+                  border: Border.all(
                     color: Colors.white.withValues(alpha: 0.1),
-                    borderRadius: BorderRadius.circular(100),
-                    border: Border.all(
-                      color: Colors.white.withValues(alpha: 0.1),
-                      width: 1,
-                    ),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.white.withValues(alpha: 0.1),
-                        blurRadius: 25,
-                        offset: Offset(10, 40),
-                      ),
-                    ],
+                    width: 1,
                   ),
-                  child: Stack(
-                    clipBehavior: Clip.none,
-                    children: [
-                      AnimatedPositioned(
-                        duration: Duration(milliseconds: 250),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.white.withValues(alpha: 0.1),
+                      blurRadius: 25,
+                      offset: Offset(10, 40),
+                    ),
+                  ],
+                ),
+                child: Stack(
+                  clipBehavior: Clip.none,
+                  children: [
+                    AnimatedPositioned(
+                      duration: Duration(milliseconds: 250),
+                      curve: Curves.linear,
+                      left: _pillLeft,
+                      top: -4,
+                      child: AnimatedContainer(
+                        duration: Duration(milliseconds: 300),
                         curve: Curves.linear,
-                        left: _pillLeft,
-                        top: -4,
-                        child: AnimatedContainer(
-                          duration: Duration(milliseconds: 300),
-                          curve: Curves.linear,
-                          width: 40,
-                          height: 40,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            gradient: LinearGradient(
-                              colors: [
-                                Colors.white.withValues(alpha: 0.8),
-                                Colors.white.withValues(alpha: 0.9),
-                              ],
-                              begin: Alignment.topLeft,
-                              end: Alignment.bottomRight,
-                            ),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey.withValues(alpha: 0.4),
-                                blurRadius: 20,
-                              ),
+                        width: 40,
+                        height: 40,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          gradient: LinearGradient(
+                            colors: [
+                              Colors.white.withValues(alpha: 0.8),
+                              Colors.white.withValues(alpha: 0.9),
                             ],
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
                           ),
-                          child: BackdropFilter(
-                            filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
-                            child: SizedBox(),
-                          ),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withValues(alpha: 0.4),
+                              blurRadius: 20,
+                            ),
+                          ],
+                        ),
+                        child: BackdropFilter(
+                          filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
+                          child: SizedBox(),
                         ),
                       ),
+                    ),
 
-                      ///Row with items
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: List.generate(widget.items.length, (index) {
-                          final item = widget.items[index];
-                          final isSelected = index == widget.currentIndex;
-                          return Expanded(
-                            child: InkWell(
-                              onTap: () {
-                                widget.onTap(index);
-                                final targetLeft =
-                                    itemWidth * index + (itemWidth - 10) / 2;
-                                setState(
-                                  () => _pillLeft = targetLeft.clamp(
-                                    10.0,
-                                    totalWidth - 100.0,
-                                  ),
-                                );
-                              },
-                              borderRadius: BorderRadius.circular(16),
-                              child: Container(
-                                height: 72,
-                                decoration: isSelected
-                                    ? BoxDecoration(
-                                        color: Colors.grey.withValues(
-                                          alpha: 0.4,
-                                        ),
-                                        borderRadius: BorderRadius.circular(
-                                          100,
-                                        ),
-                                      )
-                                    : null,
-                                padding: isSelected
-                                    ? const EdgeInsets.symmetric(
-                                        horizontal: 20,
-                                        vertical: 5,
-                                      )
-                                    : null,
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    AnimatedSwitcher(
-                                      duration: Duration(milliseconds: 280),
-                                      child: IconTheme(
-                                        data: IconThemeData(
-                                          size: isSelected ? 25 : 20,
-                                          color: isSelected
-                                              ? AppColors.kPrimaryColor
-                                                    .withValues(alpha: 0.9)
-                                              : Colors.black54,
-                                        ),
-                                        child: isSelected
-                                            ? item.filledIcon
-                                            : item.icon,
-                                      ),
-                                    ),
-                                    const Gap(2),
-                                    CustomText(
-                                      item.label,
-                                      fontSize: 10.6,
-                                      fontWeight: FontWeight.w600,
-                                      color: isSelected
-                                          ? AppColors.kPrimaryColor.withValues(
-                                              alpha: 0.6,
-                                            )
-                                          : Colors.black54,
-                                    ),
-                                  ],
+                    ///Row with items
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: List.generate(widget.items.length, (index) {
+                        final item = widget.items[index];
+                        final isSelected = index == widget.currentIndex;
+                        return Expanded(
+                          child: InkWell(
+                            onTap: () {
+                              widget.onTap(index);
+                              final targetLeft =
+                                  itemWidth * index + (itemWidth - 10) / 2;
+                              setState(
+                                () => _pillLeft = targetLeft.clamp(
+                                  10.0,
+                                  totalWidth - 100.0,
                                 ),
+                              );
+                            },
+                            borderRadius: BorderRadius.circular(16),
+                            child: Container(
+                              height: 72,
+                              decoration: isSelected
+                                  ? BoxDecoration(
+                                      color: Colors.grey.withValues(alpha: 0.4),
+                                      borderRadius: BorderRadius.circular(100),
+                                    )
+                                  : null,
+                              padding: isSelected
+                                  ? const EdgeInsets.symmetric(
+                                      horizontal: 20,
+                                      vertical: 5,
+                                    )
+                                  : null,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  AnimatedSwitcher(
+                                    duration: Duration(milliseconds: 280),
+                                    child: IconTheme(
+                                      data: IconThemeData(
+                                        size: isSelected ? 25 : 20,
+                                        color: isSelected
+                                            ? AppColors.kPrimaryColor
+                                                  .withValues(alpha: 0.9)
+                                            : Colors.black54,
+                                      ),
+                                      child: isSelected
+                                          ? item.filledIcon
+                                          : item.icon,
+                                    ),
+                                  ),
+                                  const Gap(2),
+                                  CustomText(
+                                    item.label,
+                                    fontSize: 10.6,
+                                    fontWeight: FontWeight.w600,
+                                    color: isSelected
+                                        ? AppColors.kPrimaryColor.withValues(
+                                            alpha: 0.6,
+                                          )
+                                        : Colors.black54,
+                                  ),
+                                ],
                               ),
                             ),
-                          );
-                        }),
-                      ),
-                    ],
-                  ),
+                          ),
+                        );
+                      }),
+                    ),
+                  ],
                 ),
               ),
             );
