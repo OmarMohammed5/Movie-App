@@ -76,11 +76,14 @@ class _SplashState extends State<Splash> with SingleTickerProviderStateMixin {
 
     final gradientColors = isDark
         ? const [Color(0xFF000000), Color(0xFF111111), Color(0xFF000000)]
-        : const [
-            Color.fromARGB(255, 95, 16, 16),
-            Colors.black26,
-            Color.fromARGB(255, 95, 16, 16),
+        : [
+            Color.fromARGB(255, 71, 4, 4),
+            Colors.red.shade300,
+            Colors.red.shade200,
+            Colors.red.shade300,
+            Color.fromARGB(255, 71, 4, 4),
           ];
+
     return Scaffold(
       body: Container(
         width: double.infinity,
