@@ -150,17 +150,6 @@ class _SignupFormWidgetState extends State<SignupFormWidget> {
         BlocConsumer<AuthCubit, AuthState>(
           listener: (context, state) {
             if (state is AuthLoaded) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  backgroundColor: Colors.grey.shade800,
-                  duration: Duration(seconds: 3),
-                  content: CustomText(
-                    "Account Created Successfully",
-                    color: Colors.white,
-                  ),
-                ),
-              );
-
               /// Navigate to bottom nav bar (home screen)
               Navigator.of(
                 context,
