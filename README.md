@@ -1,22 +1,6 @@
-<!-- # moviee_app
-
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference. -->
 # 🎬 Movie App
 
-A modern and clean Movie Application that allows users to explore movies, watch trailers, browse categories, search for films, and manage favorites — with full Dark & Light mode support 🌙☀️
+A modern and clean Movie Application that allows users to explore movies, watch trailers, browse categories, search for films, manage favorites, and authenticate users — with full Dark & Light mode support 🌙☀️
 
 ---
 
@@ -34,52 +18,93 @@ A modern and clean Movie Application that allows users to explore movies, watch 
 
 ---
 
-## 🚀 Features
+# 🔐 Authentication
 
-### 🏠 Home Screen
-- Movie Banner Section
-- Top 10 Movies
-- Browse by Categories (Action, Horror, Comedy, Documentary, etc.)
-- Horizontal Scrollable Lists
+Secure user authentication system with clean and modern UI.
 
-### 🎬 Movie Details Screen
-- Movie Poster
-- Play Trailer Button
-- Cast Section (Clickable Actors)
-- Similar Movies
-
-### 🎭 Actor Details Screen
-- Actor Image
-- Biography
-- Age
-- Known Works
-
-### 🔍 Search Screen
-- Search for any movie
-- Dynamic search results
-
-### ❤️ Favorites Screen
-- Add / Remove movies from favorites
-- Persistent favorite list
-
-### 👤 Profile Screen
-- Clean user profile interface
-
-### 🌗 Theme Support
-- Dark Mode
-- Light Mode
-- Smooth theme switching
-
-### 🧭 Navigation
-- Bottom Navigation Bar
-- Clean & Modern UI
+- User Login  
+- User Registration  
+- Form Validation  
+- Secure Input Fields  
+- Protected Navigation  
 
 ---
 
-## 🛠 Tech Stack
+# 📸 App Screenshots
 
-- Flutter
-- REST API Integration
-- State Management
-- Clean Architecture
-- Responsive UI
+## 🏠 Home Screen
+
+![Home](assets/screenshots/Home.png)
+
+---
+
+## 🔍 Search Screen
+
+![Search](assets/screenshots/Search.png)
+
+---
+
+## ❤️ Favorites Screen
+
+![Favorites](assets/screenshots/Favorites.png)
+
+---
+
+## 👤 User Profile Screen
+
+![Profile](assets/screenshots/User_Profile.png)
+
+---
+
+## 🎬 Movie Details Screen
+
+![Movie Details](assets/screenshots/Details_Movie.png)
+
+---
+
+## ▶️ Movie Details & Trailer
+
+![Details & Trailer](assets/screenshots/Details&Trailer.png)
+
+---
+
+## 🎭 Actor Profile Screen
+
+![Actor Profile](assets/screenshots/Details&Actor_Profile.png)
+
+---
+
+# 🚀 Features
+
+- 🎞 Movie Banner Section  
+- 🔟 Top 10 Movies  
+- 🎭 Browse by Categories  
+- 🔍 Smart Search Functionality  
+- ❤️ Add / Remove Favorites  
+- 👤 User Profile  
+- 🎬 Movie Details with Cast  
+- ▶️ Watch Movie Trailer  
+- 🎭 Actor Profile with Known Works  
+- 🔐 Authentication (Login / Sign Up)  
+- 🌗 Dark & Light Mode Support  
+- 🧭 Bottom Navigation Bar  
+
+---
+
+# 🛠 Tech Stack
+
+- Flutter  
+- REST API Integration  
+- State Management  
+- Clean Architecture  
+- Responsive UI  
+
+---
+
+# 📦 Installation
+
+```bash
+git clone https://github.com/your-username/movie_app.git
+cd movie_app
+flutter pub get
+flutter run
